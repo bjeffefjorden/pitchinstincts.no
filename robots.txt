@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /okt
+Disallow: /ovelse

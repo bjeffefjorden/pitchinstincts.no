@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Delt treningsøkt · Pitch Instincts</title>
+<style>
+:root{--bg:#0f2a1d;--card:#163a29;--text:#f2f5f1;--muted:#b9c9bd;--accent:#f4c542;--btn:#ffffff;--btntext:#0f2a1d}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--text);font:17px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+main{max-width:520px;margin:0 auto;padding:40px 20px 56px}
+h1{font-size:30px;line-height:1.15;margin:0 0 6px}.tag{color:var(--muted);margin:0 0 28px}
+.card{background:var(--card);border-radius:16px;padding:20px;margin:0 0 18px}
+.card h2{font-size:20px;margin:0 0 8px}.note{white-space:pre-wrap;border-left:3px solid var(--accent);padding-left:12px;margin:12px 0 0}
+a.btn{display:block;text-align:center;text-decoration:none;font-weight:600;background:var(--btn);color:var(--btntext);border-radius:12px;padding:14px 16px;margin:10px 0 0}
+a.btn.ghost{background:transparent;color:var(--text);border:1.5px solid var(--muted)}
+.soon{color:var(--muted);text-align:center;margin:10px 0 0;font-size:15px}
+footer{color:var(--muted);font-size:14px;margin-top:28px}footer a{color:var(--muted)}
+[hidden]{display:none!important}
+</style>
+</head>
+<body><main>
+<h1 id="title">Delt treningsøkt</h1>
+<p class="tag" id="sub"></p>
+<div class="card" id="share">
+<h2 id="count"></h2>
+<p class="note" id="note" hidden></p>
+<a class="btn" id="open" href="#">Åpne i Pitch Instincts</a>
+</div>
+<div class="card"><h2 id="noapp">Har du ikke appen?</h2><a class="btn" id="appstore" href="https://apps.apple.com/app/id6818114354">Last ned i App Store</a><a class="btn" id="play" hidden></a><p class="soon" id="soon">Android-utgaven kommer.</p></div>
+<footer><span id="by"></span> · <a id="privacy" href="https://sites.google.com/view/pitchinstincts/privacy"></a></footer>
+</main>
+<script>
+const APP_STORE="https://apps.apple.com/app/id6818114354";
+const PLAY_LIVE=false; // settes til true når Android-appen er i Google Play
+const PLAY="https://play.google.com/store/apps/details?id=no.hoff.treningsapp";
+const nb=/^(nb|no|nn)\b/i.test(navigator.language||"nb");
+const ua=navigator.userAgent||"";
+const isIOS=/iPhone|iPad|iPod/.test(ua)||(/Macintosh/.test(ua)&&navigator.maxTouchPoints>1);
+const isAndroid=/Android/.test(ua);
+function t(no,en){return nb?no:en}
+function setText(id,s){const e=document.getElementById(id);if(e)e.textContent=s}
+function stores(){
+  const a=document.getElementById("appstore"),p=document.getElementById("play"),s=document.getElementById("soon");
+  a.href=APP_STORE;a.textContent=t("Last ned i App Store","Download on the App Store");
+  if(PLAY_LIVE){p.href=PLAY;p.textContent=t("Last ned i Google Play","Get it on Google Play");p.hidden=false;s.hidden=true}
+  else{p.hidden=true;s.hidden=false;s.textContent=t("Android-utgaven kommer.","The Android version is coming.")}
+  if(isIOS)p.hidden=true; if(isAndroid&&PLAY_LIVE)a.hidden=true;
+}
+document.documentElement.lang=nb?"nb":"en";
+// Økta står etter # i lenka (v=innhold, o=øvelser, n=notat). Den delen sendes aldri til serveren:
+// den leses bare her i nettleseren og av appen.
+const raw=location.hash.replace(/^#/,"");
+const q=new URLSearchParams(raw);
+const ids=(q.get("o")||"").split(",").filter(Boolean);
+const ok=ids.length>=1&&ids.length<=6&&ids.every(s=>/^[a-z0-9_]+$/.test(s))&&!!q.get("v");
+setText("title",t("Delt treningsøkt","Shared training session"));
+setText("sub",t("En trener har delt en økt fra Pitch Instincts med deg.","A coach has shared a session from Pitch Instincts with you."));
+setText("noapp",t("Har du ikke appen?","Don't have the app?"));
+if(ok){
+  setText("count",ids.length===1?t("1 øvelse","1 exercise"):t(ids.length+" øvelser",ids.length+" exercises"));
+  const n=(q.get("n")||"").slice(0,500);
+  if(n){const e=document.getElementById("note");e.textContent=n;e.hidden=false}
+  const o=document.getElementById("open");o.textContent=t("Åpne i Pitch Instincts","Open in Pitch Instincts");o.href="treningsapp://okt?"+raw;
+}else{
+  setText("count",t("Lenka er ufullstendig.","The link is incomplete."));document.getElementById("open").hidden=true;
+}
+stores();setText("by",t("Gratis app for fotballtrenere, laget av en hobbytrener.","A free app for football coaches, made by a hobby coach."));setText("privacy",t("Personvern","Privacy"));
+</script></body></html>

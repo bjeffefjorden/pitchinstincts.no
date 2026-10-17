@@ -1,0 +1,13 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["27F5J9T33Z.no.hoff.treningsapp"],
+        "components": [
+          { "/": "/okt*", "comment": "Delt treningsøkt" },
+          { "/": "/ovelse*", "comment": "Delt øvelse" }
+        ]
+      }
+    ]
+  }
+}
