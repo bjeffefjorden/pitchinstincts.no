@@ -1,0 +1,13 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "no.hoff.treningsapp",
+      "sha256_cert_fingerprints": [
+        "B8:85:E1:B8:A3:AE:5B:E5:22:6E:3D:D2:30:E7:2C:00:8C:B5:94:76:D0:0C:E4:05:A7:C6:13:A7:11:3A:69:80",
+        "F3:E4:1E:D7:EE:4E:37:A8:34:2E:5E:AE:0C:8E:68:7C:B5:C8:44:47:26:D1:2F:46:E8:A3:02:8C:22:ED:C7:45"
+      ]
+    }
+  }
+]
