@@ -73,13 +73,27 @@ html[data-lang="nb"] #en,html[data-lang="en"] #nb{display:none}
 .note{color:var(--muted);font-size:15px;margin:18px 0 0}
 </style>
 <script>
-// Språk: nettleserens språk, eller #nb / #en i lenka. #nb-share, #en-share osv. åpner det svaret.
+// Språk: hvor besøkende er fra (norsk når noe i språklista er norsk eller har region Norge, ellers engelsk), eller #nb / #en (?lang=nb / ?lang=en) i lenka. #nb-share, #en-share osv. åpner det svaret.
 // Uten JavaScript står begge språkene under hverandre.
 (function(){
   var d=document.documentElement;
+  /*pickLang*/
+  function pickLang(langs,search,hash){
+    var o=/^#(nb|en)(?:-[a-z]+)?$/.exec(hash||"")||/[?&]lang=(nb|en)(?![a-z])/.exec(search||"");
+    if(o)return o[1];
+    var known=false;
+    for(var i=0;langs&&i<langs.length;i++){
+      var m=/^([a-z]{2,3})(?:-[a-z]{4})?(?:-([a-z]{2}|\d{3}))?(?![a-z0-9])/i.exec(langs[i]||"");
+      if(!m)continue;
+      known=true;
+      if(/^(nb|nn|no)$/i.test(m[1])||/^(no|sj)$/i.test(m[2]||""))return "nb";
+    }
+    return known?"en":"nb";
+  }
+  /*end*/
   function lang(){
     var h=location.hash.slice(1),m=/^(nb|en)(-[a-z]+)?$/.exec(h);
-    var l=m?m[1]:(/^(nb|no|nn)\b/i.test(navigator.language||"nb")?"nb":"en");
+    var l=pickLang(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language],location.search,location.hash);
     d.className="js";d.setAttribute("data-lang",l);d.lang=l;
     document.title=l==="nb"?"Bli testtrener · Pitch Instincts":"Test coach · Pitch Instincts";
     return m&&m[2]?h:"";

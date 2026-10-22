@@ -34,7 +34,36 @@ footer{color:var(--muted);font-size:14px;margin-top:28px}footer a{color:var(--mu
 .top{margin:0 0 16px}
 .top a.brand{display:inline-flex;align-items:center;gap:10px;color:var(--text);text-decoration:none;font-weight:700;font-size:17px}
 .top a.brand img{width:36px;height:auto;display:block}
+html[data-lang="nb"] #en,html[data-lang="en"] #nb{display:none}
 </style>
+<script>
+// Språk: hvor besøkende er fra (norsk når noe i språklista er norsk eller har region Norge, ellers engelsk), eller #nb / #en (?lang=nb / ?lang=en) i lenka.
+// Uten JavaScript står begge språkene under hverandre.
+(function(){
+  var d=document.documentElement;
+  /*pickLang*/
+  function pickLang(langs,search,hash){
+    var o=/^#(nb|en)(?:-[a-z]+)?$/.exec(hash||"")||/[?&]lang=(nb|en)(?![a-z])/.exec(search||"");
+    if(o)return o[1];
+    var known=false;
+    for(var i=0;langs&&i<langs.length;i++){
+      var m=/^([a-z]{2,3})(?:-[a-z]{4})?(?:-([a-z]{2}|\d{3}))?(?![a-z0-9])/i.exec(langs[i]||"");
+      if(!m)continue;
+      known=true;
+      if(/^(nb|nn|no)$/i.test(m[1])||/^(no|sj)$/i.test(m[2]||""))return "nb";
+    }
+    return known?"en":"nb";
+  }
+  /*end*/
+  function lang(){
+    var l=pickLang(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language],location.search,location.hash);
+    d.className="js";d.setAttribute("data-lang",l);d.lang=l;
+    document.title=l==="nb"?"Personvern · Pitch Instincts":"Privacy · Pitch Instincts";
+  }
+  lang();
+  window.addEventListener("hashchange",lang);
+})();
+</script>
 </head>
 <body><main>
 <p class="top"><a class="brand" href="/"><img src="/wolf.png" width="36" height="35" alt="">Pitch Instincts</a></p>

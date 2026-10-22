@@ -28,7 +28,8 @@ h1{font-size:30px;line-height:1.15;margin:0 0 6px}.tag{color:var(--muted);margin
 .card h2{font-size:20px;margin:0 0 8px}.note{white-space:pre-wrap;border-left:3px solid var(--accent);padding-left:12px;margin:12px 0 0}
 a.btn{display:block;text-align:center;text-decoration:none;font-weight:600;background:var(--btn);color:var(--btntext);border-radius:12px;padding:14px 16px;margin:10px 0 0}
 a.btn.ghost{background:transparent;color:var(--text);border:1.5px solid var(--muted)}
-.soon{color:var(--muted);text-align:center;margin:10px 0 0;font-size:15px}
+a.badge{display:flex;justify-content:center;margin:12px 0 0}a.badge img{display:block;height:48px;width:auto;max-width:100%}a.badge:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:10px}
+.soon{color:var(--muted);text-align:center;margin:14px 0 0;font-size:15px}
 footer{color:var(--muted);font-size:14px;margin-top:28px}footer a{color:var(--muted)}
 .brand{display:inline-flex;align-items:center;gap:10px;margin:0 0 18px;color:var(--text);text-decoration:none;font-weight:700}
 .brand img{width:44px;height:auto;display:block}
@@ -40,23 +41,41 @@ footer{color:var(--muted);font-size:14px;margin-top:28px}footer a{color:var(--mu
 <h1 id="title">Delt øvelse</h1>
 <p class="tag" id="sub"></p>
 <div class="card" id="share"><a class="btn" id="open" href="#">Åpne i Pitch Instincts</a></div>
-<div class="card"><h2 id="noapp">Har du ikke appen?</h2><a class="btn" id="appstore" href="https://apps.apple.com/app/id6818114354">Last ned i App Store</a><a class="btn" id="play" hidden></a><p class="soon" id="soon">Android-utgaven kommer.</p></div>
-<footer><span id="by"></span><br><a id="support" href="/support/"></a> · <a id="privacy" href="/privacy/"></a><br><a href="https://www.instagram.com/pitch_instincts/">Instagram</a> · <a href="https://www.threads.com/@pitch_instincts">Threads</a> · <a href="https://www.facebook.com/PitchInstincts">Facebook</a></footer>
+<div class="card"><h2 id="noapp">Har du ikke appen?</h2><a class="badge" id="appstore" href="https://apps.apple.com/app/id6818114354"><img src="/badges/app-store-no.png" width="144" height="48" alt="Last ned fra App Store"></a><a class="badge" id="play" hidden><img width="161" height="48" alt=""></a><p class="soon" id="soon">Android-utgaven kommer.</p></div>
+<footer><span id="by"></span><br><a id="support" href="/support/"></a> · <a id="privacy" href="/privacy/"></a> · <a id="langswitch" href="#"></a><br><a href="https://www.instagram.com/pitch_instincts/">Instagram</a> · <a href="https://www.threads.com/@pitch_instincts">Threads</a> · <a href="https://www.facebook.com/PitchInstincts">Facebook</a></footer>
 </main>
 <script>
 const APP_STORE="https://apps.apple.com/app/id6818114354";
 const PLAY_LIVE=false; // settes til true når Android-appen er i Google Play
 const PLAY="https://play.google.com/store/apps/details?id=no.hoff.treningsapp";
-const nb=/^(nb|no|nn)\b/i.test(navigator.language||"nb");
+// Språket følger hvor besøkende er fra: norsk når noe i nettleserens språkliste er norsk (nb, nn, no) eller har region Norge
+// (en engelsk iPhone eller Mac satt til Norge melder «en-NO»), ellers engelsk. ?lang=nb eller ?lang=en (eller #nb / #en) i lenka velger selv.
+/*pickLang*/
+function pickLang(langs,search,hash){
+  var o=/^#(nb|en)(?:-[a-z]+)?$/.exec(hash||"")||/[?&]lang=(nb|en)(?![a-z])/.exec(search||"");
+  if(o)return o[1];
+  var known=false;
+  for(var i=0;langs&&i<langs.length;i++){
+    var m=/^([a-z]{2,3})(?:-[a-z]{4})?(?:-([a-z]{2}|\d{3}))?(?![a-z0-9])/i.exec(langs[i]||"");
+    if(!m)continue;
+    known=true;
+    if(/^(nb|nn|no)$/i.test(m[1])||/^(no|sj)$/i.test(m[2]||""))return "nb";
+  }
+  return known?"en":"nb";
+}
+/*end*/
+const nb=pickLang(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language],location.search,location.hash)==="nb";
 const ua=navigator.userAgent||"";
 const isIOS=/iPhone|iPad|iPod/.test(ua)||(/Macintosh/.test(ua)&&navigator.maxTouchPoints>1);
 const isAndroid=/Android/.test(ua);
 function t(no,en){return nb?no:en}
 function setText(id,s){const e=document.getElementById(id);if(e)e.textContent=s}
+function badge(a,file,alt){const i=a.firstElementChild;i.src="/badges/"+file+".png";i.alt=alt}
 function stores(){
   const a=document.getElementById("appstore"),p=document.getElementById("play"),s=document.getElementById("soon");
-  a.href=APP_STORE;a.textContent=t("Last ned i App Store","Download on the App Store");
-  if(PLAY_LIVE){p.href=PLAY;p.textContent=t("Last ned i Google Play","Get it on Google Play");p.hidden=false;s.hidden=true}
+  const L=nb?"no":"en";
+  a.href=APP_STORE;badge(a,"app-store-"+L,t("Last ned fra App Store","Download on the App Store"));
+  if(PLAY_LIVE){p.href=PLAY;badge(p,"google-play-"+L,t("Last ned på Google Play","Get it on Google Play"));p.hidden=false;s.hidden=true}
   else{p.hidden=true;s.hidden=false;s.textContent=t("Android-utgaven kommer.","The Android version is coming.")}
   if(isIOS)p.hidden=true; if(isAndroid&&PLAY_LIVE)a.hidden=true;
 }
@@ -64,10 +83,12 @@ document.documentElement.lang=nb?"nb":"en";
 // Øvelsen står etter # i lenka (id=…), og sendes aldri til serveren.
 const raw=location.hash.replace(/^#/,"");
 const id=new URLSearchParams(raw).get("id")||"";
-setText("title",t("Delt øvelse","Shared exercise"));
+setText("title",t("Delt øvelse","Shared exercise"));document.title=t("Delt øvelse","Shared exercise")+" · Pitch Instincts";
 setText("sub",t("En trener har delt en øvelse fra Pitch Instincts med deg.","A coach has shared an exercise from Pitch Instincts with you."));
 setText("noapp",t("Har du ikke appen?","Don't have the app?"));
 const o=document.getElementById("open");
 if(/^[a-z0-9_]+$/.test(id)){o.textContent=t("Åpne i Pitch Instincts","Open in Pitch Instincts");o.href="treningsapp://ovelse?id="+id}else{o.hidden=true}
 stores();setText("by",t("Gratis app for fotballtrenere, laget av en trener.","A free app for football coaches, made by a coach."));setText("support",t("Støtte","Support"));setText("privacy",t("Personvern","Privacy"));
+// Språkvalg i bunnlinja: det andre språket. Hashen følger med (en delt økt eller øvelse står der).
+(function(){const a=document.getElementById("langswitch");if(a){a.textContent=nb?"English":"Norsk";a.lang=nb?"en":"nb";a.href=location.pathname+"?lang="+(nb?"en":"nb")+location.hash}})();
 </script></body></html>
