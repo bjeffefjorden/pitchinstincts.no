@@ -52,7 +52,12 @@ a.bubble:hover{background:#fff}a.bubble:focus-visible{outline:2px solid var(--ac
 <footer><span id="by"></span><br><a id="support" href="/support/"></a> · <a id="privacy" href="/privacy/"></a> · <a id="androidfoot" href="/android/"></a> · <a id="langswitch" href="#"></a><br><a href="https://www.instagram.com/pitch_instincts/">Instagram</a> · <a href="https://www.threads.com/@pitch_instincts">Threads</a> · <a href="https://www.facebook.com/PitchInstincts">Facebook</a></footer>
 </main>
 <script>
-const APP_STORE="https://apps.apple.com/app/id6818114354";
+// Kampanjenavnet (Ørjan 2026-10-23: lenka i Reels skal gå hit, og App Store skal se at besøket kom derfra): /app?ct=instagram_reel
+// sender iPhone til App Store-lenka med samme navn, så nedlastingen telles under kampanjen i App Store Connect. Bare et kort
+// navn vi selv har satt i lenka (a-z, 0-9, _ og -); alt annet ignoreres og gir den vanlige lenka. Siden selv lagrer og sender
+// ingenting om besøkende.
+const CT=(function(){var m=/[?&]ct=([a-z0-9_-]{1,40})(?=&|$)/i.exec(location.search||"");return m?m[1].toLowerCase():""})();
+const APP_STORE=CT?"https://apps.apple.com/app/apple-store/id6818114354?pt=129520659&ct="+CT+"&mt=8":"https://apps.apple.com/app/id6818114354";
 const PLAY_LIVE=false; // settes til true når Android-appen er i Google Play
 const PLAY="https://play.google.com/store/apps/details?id=no.hoff.treningsapp";
 // Språket følger hvor besøkende er fra: norsk når noe i nettleserens språkliste er norsk (nb, nn, no) eller har region Norge
