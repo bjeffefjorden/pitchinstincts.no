@@ -33,7 +33,7 @@ a.bubble:hover{background:#fff}a.bubble:focus-visible{outline:2px solid var(--ac
 </style>
 </head>
 <body><main>
-<div class="hero"><img class="logo" src="/wolf.png" width="120" height="116" alt=""><a class="bubble" id="bubble" href="/android/"><span id="bubbletext">Ingen ulv jakter alene. Meld deg på Android-testen!</span></a></div>
+<div class="hero"><img class="logo" src="/wolf-smile.png" width="120" height="116" alt=""><a class="bubble" id="bubble" href="/android/"><span id="bubbletext">Tusen takk til alle som tester! Flere er hjertelig velkomne.</span></a></div>
 <h1>Pitch Instincts</h1>
 <p class="tag" id="tag">Fant ikke sida.</p>
 <div class="card" id="storecard"><a class="badge" id="appstore" href="https://apps.apple.com/app/id6818114354"><img src="/badges/app-store-no.png" width="144" height="48" alt="Last ned fra App Store"></a><a class="badge" id="play" hidden><img width="161" height="48" alt=""></a><p class="soon" id="soon">Android-utgaven kommer.</p></div>
@@ -78,7 +78,7 @@ function stores(){
   if(tc){
     tc.hidden=PLAY_LIVE;
     // Snakkeboblen på ulven: kort som et Instagram-notat (høyst 60 tegn), og borte når appen er i Google Play
-    const bb=document.getElementById("bubble");if(bb){bb.hidden=PLAY_LIVE;setText("bubbletext",t("Ingen ulv jakter alene. Meld deg på Android-testen!","No wolf hunts alone. Sign up for the Android test!"))}
+    const bb=document.getElementById("bubble");if(bb){bb.hidden=PLAY_LIVE;setText("bubbletext",t("Tusen takk til alle som tester! Flere er hjertelig velkomne.","Thank you to everyone testing! More are always welcome."))}
     setText("testhead",t("Vi trenger flere Android-testere","We need more Android testers"));
     setText("testtext",t("Pitch Instincts kommer til Google Play. Google krever at minst 12 tester appen i 14 dager. 12 har meldt seg, men vi trenger flere for å være trygge. Testen kan tidligst være ferdig 4.–5. november. Det tar to minutter å bli med.","Pitch Instincts is coming to Google Play. Google requires at least 12 people to test the app for 14 days. 12 have signed up, but we need more to be safe. The test can be finished on 4–5 November at the earliest. Joining takes two minutes."));
     setText("androidtest",t("Bli testtrener på Android","Become an Android test coach"));
