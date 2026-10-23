@@ -4,8 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="no-referrer">
-<meta name="description" content="Hjelp og støtte for Pitch Instincts, appen for fotballtrenere / Help and support for Pitch Instincts, the app for football coaches">
-<title>Støtte / Support · Pitch Instincts</title>
+<meta name="description" content="Hjelp og støtte for Pitch Instincts, appen for fotballtrenere / Help and support for Pitch Instincts, the app for football coaches / Ajuda e suporte do Pitch Instincts, o app para treinadores de futebol">
+<title>Støtte / Support / Suporte · Pitch Instincts</title>
 <link rel="canonical" href="https://pitchinstincts.no/support/">
 <meta name="theme-color" content="#0f2a1d">
 <link rel="icon" href="/favicon.ico" sizes="48x48">
@@ -13,8 +13,8 @@
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Pitch Instincts">
-<meta property="og:title" content="Støtte / Support · Pitch Instincts">
-<meta property="og:description" content="Hjelp og støtte for Pitch Instincts, appen for fotballtrenere / Help and support for Pitch Instincts, the app for football coaches">
+<meta property="og:title" content="Støtte / Support / Suporte · Pitch Instincts">
+<meta property="og:description" content="Hjelp og støtte for Pitch Instincts, appen for fotballtrenere / Help and support for Pitch Instincts, the app for football coaches / Ajuda e suporte do Pitch Instincts, o app para treinadores de futebol">
 <meta property="og:url" content="https://pitchinstincts.no/support/">
 <meta property="og:image" content="https://pitchinstincts.no/og.jpg">
 <meta property="og:image:width" content="1200">
@@ -60,33 +60,34 @@ details[open]>summary::after{transform:rotate(-135deg) translate(-2px,-2px)}
 footer{color:var(--muted);font-size:14px;margin-top:28px}
 footer a{color:var(--muted)}
 html:not(.js) .L+.L{margin-top:56px;padding-top:40px;border-top:1px solid var(--line)}
-html[data-lang="nb"] #en,html[data-lang="en"] #nb{display:none}
+html[data-lang="nb"] #en,html[data-lang="nb"] #pt,html[data-lang="en"] #nb,html[data-lang="en"] #pt,html[data-lang="pt"] #nb,html[data-lang="pt"] #en{display:none}
 @media (prefers-reduced-motion:no-preference){summary::after{transition:transform .15s}}
 </style>
 <script>
-// Språk: hvor besøkende er fra (norsk når noe i språklista er norsk eller har region Norge, ellers engelsk), eller #nb / #en (?lang=nb / ?lang=en) i lenka. #nb-share, #en-share osv. åpner det svaret.
+// Språk: hvor besøkende er fra (norsk når noe i språklista er norsk eller har region Norge, ellers portugisisk når noe er portugisisk, ellers engelsk), eller #nb / #en / #pt (?lang=nb / ?lang=en / ?lang=pt) i lenka. #nb-share, #en-share, #pt-share osv. åpner det svaret.
 // Uten JavaScript står begge språkene under hverandre.
 (function(){
   var d=document.documentElement;
   /*pickLang*/
   function pickLang(langs,search,hash){
-    var o=/^#(nb|en)(?:-[a-z]+)?$/.exec(hash||"")||/[?&]lang=(nb|en)(?![a-z])/.exec(search||"");
+    var o=/^#(nb|en|pt)(?:-[a-z]+)?$/.exec(hash||"")||/[?&]lang=(nb|en|pt)(?![a-z])/.exec(search||"");
     if(o)return o[1];
-    var known=false;
+    var known=false,port=false;
     for(var i=0;langs&&i<langs.length;i++){
       var m=/^([a-z]{2,3})(?:-[a-z]{4})?(?:-([a-z]{2}|\d{3}))?(?![a-z0-9])/i.exec(langs[i]||"");
       if(!m)continue;
       known=true;
       if(/^(nb|nn|no)$/i.test(m[1])||/^(no|sj)$/i.test(m[2]||""))return "nb";
+      if(/^pt$/i.test(m[1]))port=true;
     }
-    return known?"en":"nb";
+    return port?"pt":known?"en":"nb";
   }
   /*end*/
   function lang(){
-    var h=location.hash.slice(1),m=/^(nb|en)(-[a-z]+)?$/.exec(h);
+    var h=location.hash.slice(1),m=/^(nb|en|pt)(-[a-z]+)?$/.exec(h);
     var l=pickLang(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language],location.search,location.hash);
-    d.className="js";d.setAttribute("data-lang",l);d.lang=l;
-    document.title=l==="nb"?"Støtte · Pitch Instincts":"Support · Pitch Instincts";
+    d.className="js";d.setAttribute("data-lang",l);d.lang=l==="pt"?"pt-BR":l;
+    document.title=l==="nb"?"Støtte · Pitch Instincts":l==="pt"?"Suporte · Pitch Instincts":"Support · Pitch Instincts";
     return m&&m[2]?h:"";
   }
   function reveal(){
@@ -102,7 +103,7 @@ html[data-lang="nb"] #en,html[data-lang="en"] #nb{display:none}
 <body><main>
 
 <div class="L" id="nb" lang="nb">
-<p class="top"><a class="brand" href="/"><img src="/wolf.png" width="36" height="35" alt="">Pitch Instincts</a><a href="#en">English</a></p>
+<p class="top"><a class="brand" href="/"><img src="/wolf.png" width="36" height="35" alt="">Pitch Instincts</a><span><a href="#en">English</a> · <a href="#pt">Português</a></span></p>
 <h1>Hjelp og støtte</h1>
 <p class="lead">Svar på det trenere spør mest om. Finner du ikke ditt, skriv til meg. Jeg svarer selv.</p>
 <a class="btn" href="mailto:pitchinstincts@gmail.com?subject=Pitch%20Instincts%3A%20sp%C3%B8rsm%C3%A5l&amp;body=Hei%21%0A%0A%0A%0A---%0ASkriv%20over%20streken.%20Det%20under%20hjelper%20meg%3A%0ATelefon%3A%20%0AVersjon%20av%20appen%20%28st%C3%A5r%20nederst%20under%20Mine%20treninger%29%3A%20%0A">Skriv til meg</a>
@@ -177,7 +178,7 @@ html[data-lang="nb"] #en,html[data-lang="en"] #nb{display:none}
 </div>
 
 <div class="L" id="en" lang="en">
-<p class="top"><a class="brand" href="/"><img src="/wolf.png" width="36" height="35" alt="">Pitch Instincts</a><a href="#nb">Norsk</a></p>
+<p class="top"><a class="brand" href="/"><img src="/wolf.png" width="36" height="35" alt="">Pitch Instincts</a><span><a href="#nb">Norsk</a> · <a href="#pt">Português</a></span></p>
 <h1>Help and support</h1>
 <p class="lead">Answers to what coaches ask most. If you can't find yours, write to me. I answer myself.</p>
 <a class="btn" href="mailto:pitchinstincts@gmail.com?subject=Pitch%20Instincts%3A%20question&amp;body=Hi%21%0A%0A%0A%0A---%0AWrite%20above%20the%20line.%20What%20is%20below%20helps%20me%3A%0APhone%3A%20%0AApp%20version%20%28at%20the%20bottom%20of%20My%20sessions%29%3A%20%0A">Email me</a>
@@ -249,6 +250,81 @@ html[data-lang="nb"] #en,html[data-lang="en"] #nb{display:none}
 </section>
 
 <footer><a href="/">Pitch Instincts</a> · <a href="/privacy/">Privacy</a><br><a href="https://www.instagram.com/pitch_instincts/">Instagram</a> · <a href="https://www.threads.com/@pitch_instincts">Threads</a> · <a href="https://www.facebook.com/PitchInstincts">Facebook</a></footer>
+</div>
+
+<div class="L" id="pt" lang="pt-BR">
+<p class="top"><a class="brand" href="/"><img src="/wolf.png" width="36" height="35" alt="">Pitch Instincts</a><span><a href="#nb">Norsk</a> · <a href="#en">English</a></span></p>
+<h1>Ajuda e suporte</h1>
+<p class="lead">Respostas para o que os treinadores mais perguntam. Se você não encontrar a sua, escreva para mim. Eu mesmo respondo.</p>
+<a class="btn" href="mailto:pitchinstincts@gmail.com?subject=Pitch%20Instincts%3A%20pergunta&amp;body=Ol%C3%A1%21%0A%0A%0A%0A---%0AEscreva%20acima%20da%20linha.%20O%20que%20est%C3%A1%20abaixo%20me%20ajuda%3A%0ACelular%3A%20%0AVers%C3%A3o%20do%20app%20%28fica%20no%20final%20de%20Meus%20treinos%29%3A%20%0A">Me mande um e-mail</a>
+<p class="addr"><span>pitchinstincts@gmail.com</span></p>
+
+<h2>O que você quer fazer?</h2>
+<div class="list">
+
+<details id="pt-player"><summary>Ver o que um jogador vê</summary><div class="ans">
+<ol>
+<li>Abra um exercício em <span class="ui">Exercícios</span>.</li>
+<li>Vire o celular de lado.</li>
+<li>Toque em um jogador.</li>
+</ol>
+<p>Você vê o que esse jogador vê, como o corpo está posicionado e qual movimentação é a mais indicada. À direita, você liga e desliga as visualizações: <span class="ui">Olhar</span>, <span class="ui">Movimentação</span>, <span class="ui">Distância até os adversários</span> e <span class="ui">Distância até a bola</span>.</p>
+<p>Arraste um jogador para outro lugar e veja o que muda. <span class="ui">Recolocar</span> devolve todos às posições do desenho. Ficou na dúvida sobre o que uma cor significa? Toque em <span class="ui">Legenda</span>.</p>
+</div></details>
+
+<details id="pt-find"><summary>Encontrar exercícios adequados</summary><div class="ans">
+<p>Em <span class="ui">Exercícios</span>, escolha um tema no topo, depois quantos jogadores você tem e qual o tamanho do seu espaço de jogo. A lista mostra só o que serve.</p>
+<p>Em <span class="ui">Mostrar</span>, você pode escolher <span class="ui">Só com oposição</span>. Você também pode buscar nos nomes e na organização, ou abrir <span class="ui">Ler os princípios</span> para começar pela teoria.</p>
+</div></details>
+
+<details id="pt-session"><summary>Montar um treino</summary><div class="ans">
+<p><span class="ui">Treino pronto</span>: escolha um tema ou princípio, quantos minutos você tem, quantos jogadores e o tamanho do espaço de jogo. Você recebe 2–3 exercícios que vão crescendo, e jogo livre no último terço do treino. Para ver outro treino, toque em <span class="ui">Outra sugestão</span>.</p>
+<p>Ou monte o treino por conta própria: toque no + dos exercícios que quiser (até seis). Em <span class="ui">Meu treino</span>, toque em <span class="ui">Sugerir ordem</span> e arraste os exercícios para onde quiser. <span class="ui">Salvar em Meus treinos</span> guarda o treino.</p>
+</div></details>
+
+<details id="pt-share"><summary>Compartilhar um treino ou exercício</summary><div class="ans">
+<p><b>Com outros treinadores:</b> toque em <span class="ui">Compartilhar com treinadores (link)</span> em Meu treino ou Meus treinos. Eles abrem o treino no app deles. Se não tiverem o app, chegam a uma página onde podem baixá-lo de graça.</p>
+<p><b>Uma ficha que qualquer pessoa consegue ler:</b> <span class="ui">Compartilhar ficha do treino (PDF)</span> cria uma ficha em A4 que você pode enviar por e-mail ou em um grupo de mensagens, ou imprimir.</p>
+<p><b>Um exercício em vídeo:</b> abra o exercício e toque em <span class="ui">Compartilhar como vídeo</span> abaixo do desenho. O app cria um vídeo curto na vertical. Toque em <span class="ui">Compartilhar o vídeo</span> e escolha <span class="ui">Salvar Vídeo</span> para guardá-lo em Fotos, ou envie direto para alguém.</p>
+</div></details>
+
+<details id="pt-favourites"><summary>Favoritos e celular novo</summary><div class="ans">
+<p>Abra um exercício e toque na estrela no canto superior direito para marcá-lo como favorito. Com <span class="ui">Só favoritos</span>, você vê apenas esses.</p>
+<p>Seus favoritos ficam guardados no seu próprio iCloud, se você estiver conectado a ele, e por isso voltam quando você troca de celular. Os treinos em <span class="ui">Meus treinos</span> ficam só no celular. Eles vão junto se você restaurar o celular novo a partir de um backup do antigo, mas não se você configurá-lo como novo.</p>
+</div></details>
+
+<details id="pt-feedback"><summary>Dar feedback ou sugerir um exercício</summary><div class="ans">
+<p><b>Algo errado, ou algo bom:</b> abra o exercício e toque em <span class="ui">Dar feedback sobre o exercício</span>. O e-mail abre com o exercício e a versão do app já preenchidos, para eu saber de qual você está falando.</p>
+<p><b>Um exercício seu:</b> toque em <span class="ui">Sugerir um exercício</span> na lista em Exercícios e preencha o formulário no e-mail. Se você disser que posso usá-lo, ele pode entrar no app.</p>
+<p><b>Uma pergunta ou uma ideia:</b> <span class="ui">Enviar feedback</span>, na mesma lista.</p>
+</div></details>
+
+<details id="pt-trouble"><summary>Quando algo não funciona</summary><div class="ans">
+<ol>
+<li>Feche o app por completo e abra de novo.</li>
+<li>Veja na App Store se você tem a versão mais recente. Novos exercícios e correções chegam como atualizações, porque o app não busca nada na internet.</li>
+<li>O app é feito para iPhone com iOS 17 ou posterior.</li>
+</ol>
+<p>Está faltando um exercício que outro treinador compartilhou com você? Então a versão do seu app é mais antiga que a de quem enviou. Atualize o app e o treino abre como foi compartilhado.</p>
+<p>Não resolveu? Escreva para mim e conte em que você tocou e o que aconteceu.</p>
+</div></details>
+
+<details id="pt-about"><summary>Preço, conta e internet</summary><div class="ans">
+<p>O app é gratuito. Você não precisa de conta, e ele funciona sem internet. Todo o conteúdo está no app. Ele está disponível em norueguês, inglês e português (Brasil) e segue o idioma do celular.</p>
+<p>O app é feito por um treinador de futebol. Leia mais em <a href="/privacy/">privacidade</a>.</p>
+</div></details>
+
+</div>
+
+<section class="card">
+<h2>Não encontrou a resposta?</h2>
+<p>Escreva para mim e eu respondo assim que puder. Conte de qual exercício se trata e qual celular você tem.</p>
+<a class="btn" href="mailto:pitchinstincts@gmail.com?subject=Pitch%20Instincts%3A%20pergunta&amp;body=Ol%C3%A1%21%0A%0A%0A%0A---%0AEscreva%20acima%20da%20linha.%20O%20que%20est%C3%A1%20abaixo%20me%20ajuda%3A%0ACelular%3A%20%0AVers%C3%A3o%20do%20app%20%28fica%20no%20final%20de%20Meus%20treinos%29%3A%20%0A">Me mande um e-mail</a>
+<p class="addr"><span>pitchinstincts@gmail.com</span></p>
+<p class="who">Desenvolvedor: Ørjan Hoff</p>
+</section>
+
+<footer><a href="/">Pitch Instincts</a> · <a href="/privacy/">Privacidade</a><br><a href="https://www.instagram.com/pitch_instincts/">Instagram</a> · <a href="https://www.threads.com/@pitch_instincts">Threads</a> · <a href="https://www.facebook.com/PitchInstincts">Facebook</a></footer>
 </div>
 
 </main></body></html>

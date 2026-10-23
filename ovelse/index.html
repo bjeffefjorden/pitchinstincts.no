@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="no-referrer">
 <title>Delt øvelse · Pitch Instincts</title>
-<meta name="description" content="En øvelse delt fra Pitch Instincts, appen for fotballtrenere. / An exercise shared from Pitch Instincts, the app for football coaches.">
+<meta name="description" content="En øvelse delt fra Pitch Instincts, appen for fotballtrenere. / An exercise shared from Pitch Instincts, the app for football coaches. / Um exercício compartilhado do Pitch Instincts, o app para treinadores de futebol.">
 <meta name="theme-color" content="#0f2a1d">
 <link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
@@ -13,7 +13,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Pitch Instincts">
 <meta property="og:title" content="Delt øvelse · Pitch Instincts">
-<meta property="og:description" content="En øvelse delt fra Pitch Instincts, appen for fotballtrenere. / An exercise shared from Pitch Instincts, the app for football coaches.">
+<meta property="og:description" content="En øvelse delt fra Pitch Instincts, appen for fotballtrenere. / An exercise shared from Pitch Instincts, the app for football coaches. / Um exercício compartilhado do Pitch Instincts, o app para treinadores de futebol.">
 <meta property="og:image" content="https://pitchinstincts.no/og.jpg">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
@@ -42,53 +42,55 @@ footer{color:var(--muted);font-size:14px;margin-top:28px}footer a{color:var(--mu
 <p class="tag" id="sub"></p>
 <div class="card" id="share"><a class="btn" id="open" href="#">Åpne i Pitch Instincts</a></div>
 <div class="card"><h2 id="noapp">Har du ikke appen?</h2><a class="badge" id="appstore" href="https://apps.apple.com/app/id6818114354"><img src="/badges/app-store-no.png" width="144" height="48" alt="Last ned fra App Store"></a><a class="badge" id="play" hidden><img width="161" height="48" alt=""></a><p class="soon" id="soon">Android-utgaven kommer.</p></div>
-<footer><span id="by"></span><br><a id="support" href="/support/"></a> · <a id="privacy" href="/privacy/"></a> · <a id="langswitch" href="#"></a><br><a href="https://www.instagram.com/pitch_instincts/">Instagram</a> · <a href="https://www.threads.com/@pitch_instincts">Threads</a> · <a href="https://www.facebook.com/PitchInstincts">Facebook</a></footer>
+<footer><span id="by"></span><br><a id="support" href="/support/"></a> · <a id="privacy" href="/privacy/"></a> · <span id="langswitch"></span><br><a href="https://www.instagram.com/pitch_instincts/">Instagram</a> · <a href="https://www.threads.com/@pitch_instincts">Threads</a> · <a href="https://www.facebook.com/PitchInstincts">Facebook</a></footer>
 </main>
 <script>
 const APP_STORE="https://apps.apple.com/app/id6818114354";
 const PLAY_LIVE=false; // settes til true når Android-appen er i Google Play
 const PLAY="https://play.google.com/store/apps/details?id=no.hoff.treningsapp";
 // Språket følger hvor besøkende er fra: norsk når noe i nettleserens språkliste er norsk (nb, nn, no) eller har region Norge
-// (en engelsk iPhone eller Mac satt til Norge melder «en-NO»), ellers engelsk. ?lang=nb eller ?lang=en (eller #nb / #en) i lenka velger selv.
+// (en engelsk iPhone eller Mac satt til Norge melder «en-NO»), ellers portugisisk når noe er portugisisk (pt, pt-BR), ellers engelsk.
+// ?lang=nb, ?lang=en eller ?lang=pt (eller #nb / #en / #pt) i lenka velger selv.
 /*pickLang*/
 function pickLang(langs,search,hash){
-  var o=/^#(nb|en)(?:-[a-z]+)?$/.exec(hash||"")||/[?&]lang=(nb|en)(?![a-z])/.exec(search||"");
+  var o=/^#(nb|en|pt)(?:-[a-z]+)?$/.exec(hash||"")||/[?&]lang=(nb|en|pt)(?![a-z])/.exec(search||"");
   if(o)return o[1];
-  var known=false;
+  var known=false,port=false;
   for(var i=0;langs&&i<langs.length;i++){
     var m=/^([a-z]{2,3})(?:-[a-z]{4})?(?:-([a-z]{2}|\d{3}))?(?![a-z0-9])/i.exec(langs[i]||"");
     if(!m)continue;
     known=true;
     if(/^(nb|nn|no)$/i.test(m[1])||/^(no|sj)$/i.test(m[2]||""))return "nb";
+    if(/^pt$/i.test(m[1]))port=true;
   }
-  return known?"en":"nb";
+  return port?"pt":known?"en":"nb";
 }
 /*end*/
-const nb=pickLang(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language],location.search,location.hash)==="nb";
+const LANG=pickLang(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language],location.search,location.hash);const nb=LANG==="nb",pt=LANG==="pt";
 const ua=navigator.userAgent||"";
 const isIOS=/iPhone|iPad|iPod/.test(ua)||(/Macintosh/.test(ua)&&navigator.maxTouchPoints>1);
 const isAndroid=/Android/.test(ua);
-function t(no,en){return nb?no:en}
+function t(no,en,p){return nb?no:pt&&p!==undefined?p:en}
 function setText(id,s){const e=document.getElementById(id);if(e)e.textContent=s}
 function badge(a,file,alt){const i=a.firstElementChild;i.src="/badges/"+file+".png";i.alt=alt}
 function stores(){
   const a=document.getElementById("appstore"),p=document.getElementById("play"),s=document.getElementById("soon");
-  const L=nb?"no":"en";
-  a.href=APP_STORE;badge(a,"app-store-"+L,t("Last ned fra App Store","Download on the App Store"));
-  if(PLAY_LIVE){p.href=PLAY;badge(p,"google-play-"+L,t("Last ned på Google Play","Get it on Google Play"));p.hidden=false;s.hidden=true}
-  else{p.hidden=true;s.hidden=false;s.textContent=t("Android-utgaven kommer.","The Android version is coming.")}
+  const L=nb?"no":pt?"pt":"en";
+  a.href=APP_STORE;badge(a,"app-store-"+L,t("Last ned fra App Store","Download on the App Store","Baixar na App Store"));
+  if(PLAY_LIVE){p.href=PLAY;badge(p,"google-play-"+L,t("Last ned på Google Play","Get it on Google Play","Disponível no Google Play"));p.hidden=false;s.hidden=true}
+  else{p.hidden=true;s.hidden=false;s.textContent=t("Android-utgaven kommer.","The Android version is coming.","A versão para Android está chegando.")}
   if(isIOS)p.hidden=true; if(isAndroid&&PLAY_LIVE)a.hidden=true;
 }
-document.documentElement.lang=nb?"nb":"en";
+document.documentElement.lang=nb?"nb":pt?"pt-BR":"en";
 // Øvelsen står etter # i lenka (id=…), og sendes aldri til serveren.
 const raw=location.hash.replace(/^#/,"");
 const id=new URLSearchParams(raw).get("id")||"";
-setText("title",t("Delt øvelse","Shared exercise"));document.title=t("Delt øvelse","Shared exercise")+" · Pitch Instincts";
-setText("sub",t("En trener har delt en øvelse fra Pitch Instincts med deg.","A coach has shared an exercise from Pitch Instincts with you."));
-setText("noapp",t("Har du ikke appen?","Don't have the app?"));
+setText("title",t("Delt øvelse","Shared exercise","Exercício compartilhado"));document.title=t("Delt øvelse","Shared exercise","Exercício compartilhado")+" · Pitch Instincts";
+setText("sub",t("En trener har delt en øvelse fra Pitch Instincts med deg.","A coach has shared an exercise from Pitch Instincts with you.","Um treinador compartilhou um exercício do Pitch Instincts com você."));
+setText("noapp",t("Har du ikke appen?","Don't have the app?","Ainda não tem o app?"));
 const o=document.getElementById("open");
-if(/^[a-z0-9_]+$/.test(id)){o.textContent=t("Åpne i Pitch Instincts","Open in Pitch Instincts");o.href="treningsapp://ovelse?id="+id}else{o.hidden=true}
-stores();setText("by",t("Gratis app for fotballtrenere, laget av en trener.","A free app for football coaches, made by a coach."));setText("support",t("Støtte","Support"));setText("privacy",t("Personvern","Privacy"));
+if(/^[a-z0-9_]+$/.test(id)){o.textContent=t("Åpne i Pitch Instincts","Open in Pitch Instincts","Abrir no Pitch Instincts");o.href="treningsapp://ovelse?id="+id}else{o.hidden=true}
+stores();setText("by",t("Gratis app for fotballtrenere, laget av en trener.","A free app for football coaches, made by a coach.","App gratuito para treinadores de futebol, feito por um treinador."));setText("support",t("Støtte","Support","Suporte"));setText("privacy",t("Personvern","Privacy","Privacidade"));
 // Språkvalg i bunnlinja: det andre språket. Hashen følger med (en delt økt eller øvelse står der).
-(function(){const a=document.getElementById("langswitch");if(a){a.textContent=nb?"English":"Norsk";a.lang=nb?"en":"nb";a.href=location.pathname+"?lang="+(nb?"en":"nb")+location.hash}})();
+(function(){const w=document.getElementById("langswitch");if(w){const names={nb:["Norsk","nb"],en:["English","en"],pt:["Português","pt-BR"]};const cur=nb?"nb":pt?"pt":"en";w.textContent="";["nb","en","pt"].filter(function(x){return x!==cur}).forEach(function(x,i){if(i)w.appendChild(document.createTextNode(" · "));const a=document.createElement("a");a.textContent=names[x][0];a.lang=names[x][1];a.href=location.pathname+"?lang="+x+location.hash;w.appendChild(a)})}})();
 </script></body></html>
