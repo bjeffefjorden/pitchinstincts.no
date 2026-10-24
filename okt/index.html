@@ -80,8 +80,8 @@ function setText(id,s){const e=document.getElementById(id);if(e)e.textContent=s}
 function badge(a,file,alt){const i=a.firstElementChild;i.src="/badges/"+file+".png";i.alt=alt}
 function stores(){
   const a=document.getElementById("appstore"),p=document.getElementById("play"),s=document.getElementById("soon");
-  const L=nb?"no":pt?"pt":"en";
-  a.href=APP_STORE;badge(a,"app-store-"+L,t("Last ned fra App Store","Download on the App Store","Baixar na App Store","Scarica dall'App Store"));
+  const L=nb?"no":pt?"pt":it?"it":"en";
+  a.href=APP_STORE;badge(a,"app-store-"+L,t("Last ned fra App Store","Download on the App Store","Baixar na App Store","Scarica su App Store"));
   if(PLAY_LIVE){p.href=PLAY;badge(p,"google-play-"+L,t("Last ned på Google Play","Get it on Google Play","Disponível no Google Play","Disponibile su Google Play"));p.hidden=false;s.hidden=true}
   else{p.hidden=true;s.hidden=false;s.textContent=t("Android-utgaven kommer.","The Android version is coming.","A versão para Android está chegando.","La versione per Android sta arrivando.")}
   if(isIOS)p.hidden=true; if(isAndroid&&PLAY_LIVE)a.hidden=true;
