@@ -61,56 +61,57 @@ const APP_STORE=CT?"https://apps.apple.com/app/apple-store/id6818114354?pt=12952
 const PLAY_LIVE=false; // settes til true når Android-appen er i Google Play
 const PLAY="https://play.google.com/store/apps/details?id=no.hoff.treningsapp";
 // Språket følger hvor besøkende er fra: norsk når noe i nettleserens språkliste er norsk (nb, nn, no) eller har region Norge
-// (en engelsk iPhone eller Mac satt til Norge melder «en-NO»), ellers portugisisk når noe er portugisisk (pt, pt-BR), ellers engelsk.
-// ?lang=nb, ?lang=en eller ?lang=pt (eller #nb / #en / #pt) i lenka velger selv.
+// (en engelsk iPhone eller Mac satt til Norge melder «en-NO»), ellers portugisisk når noe er portugisisk (pt, pt-BR), ellers italiensk når noe er italiensk (it), ellers engelsk.
+// ?lang=nb, ?lang=en, ?lang=pt eller ?lang=it (eller #nb / #en / #pt / #it) i lenka velger selv.
 /*pickLang*/
 function pickLang(langs,search,hash){
-  var o=/^#(nb|en|pt)(?:-[a-z]+)?$/.exec(hash||"")||/[?&]lang=(nb|en|pt)(?![a-z])/.exec(search||"");
+  var o=/^#(nb|en|pt|it)(?:-[a-z]+)?$/.exec(hash||"")||/[?&]lang=(nb|en|pt|it)(?![a-z])/.exec(search||"");
   if(o)return o[1];
-  var known=false,port=false;
+  var known=false,port=false,ital=false;
   for(var i=0;langs&&i<langs.length;i++){
     var m=/^([a-z]{2,3})(?:-[a-z]{4})?(?:-([a-z]{2}|\d{3}))?(?![a-z0-9])/i.exec(langs[i]||"");
     if(!m)continue;
     known=true;
     if(/^(nb|nn|no)$/i.test(m[1])||/^(no|sj)$/i.test(m[2]||""))return "nb";
     if(/^pt$/i.test(m[1]))port=true;
+    if(/^it$/i.test(m[1]))ital=true;
   }
-  return port?"pt":known?"en":"nb";
+  return port?"pt":ital?"it":known?"en":"nb";
 }
 /*end*/
-const LANG=pickLang(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language],location.search,location.hash);const nb=LANG==="nb",pt=LANG==="pt";
+const LANG=pickLang(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language],location.search,location.hash);const nb=LANG==="nb",pt=LANG==="pt",it=LANG==="it";
 const ua=navigator.userAgent||"";
 const isIOS=/iPhone|iPad|iPod/.test(ua)||(/Macintosh/.test(ua)&&navigator.maxTouchPoints>1);
 const isAndroid=/Android/.test(ua);
-function t(no,en,p){return nb?no:pt&&p!==undefined?p:en}
+function t(no,en,p,i){return nb?no:pt&&p!==undefined?p:it&&i!==undefined?i:en}
 function setText(id,s){const e=document.getElementById(id);if(e)e.textContent=s}
 function badge(a,file,alt){const i=a.firstElementChild;i.src="/badges/"+file+".png";i.alt=alt}
 function stores(){
   const a=document.getElementById("appstore"),p=document.getElementById("play"),s=document.getElementById("soon");
   const L=nb?"no":pt?"pt":"en";
-  a.href=APP_STORE;badge(a,"app-store-"+L,t("Last ned fra App Store","Download on the App Store","Baixar na App Store"));
-  if(PLAY_LIVE){p.href=PLAY;badge(p,"google-play-"+L,t("Last ned på Google Play","Get it on Google Play","Disponível no Google Play"));p.hidden=false;s.hidden=true}
-  else{p.hidden=true;s.hidden=false;s.textContent=t("Android-utgaven kommer.","The Android version is coming.","A versão para Android está chegando.")}
+  a.href=APP_STORE;badge(a,"app-store-"+L,t("Last ned fra App Store","Download on the App Store","Baixar na App Store","Scarica dall'App Store"));
+  if(PLAY_LIVE){p.href=PLAY;badge(p,"google-play-"+L,t("Last ned på Google Play","Get it on Google Play","Disponível no Google Play","Disponibile su Google Play"));p.hidden=false;s.hidden=true}
+  else{p.hidden=true;s.hidden=false;s.textContent=t("Android-utgaven kommer.","The Android version is coming.","A versão para Android está chegando.","La versione per Android sta arrivando.")}
   if(isIOS)p.hidden=true; if(isAndroid&&PLAY_LIVE)a.hidden=true;
   const tc=document.getElementById("testcard");
   if(tc){
     tc.hidden=PLAY_LIVE;
     // Snakkeboblen på ulven: kort som et Instagram-notat (høyst 60 tegn), og borte når appen er i Google Play
-    const bb=document.getElementById("bubble");if(bb){bb.hidden=PLAY_LIVE;setText("bubbletext",t("Tusen takk til alle som tester! Flere er hjertelig velkomne.","Thank you to everyone testing! More are always welcome.","Obrigado a quem está testando! Mais gente é bem-vinda."))}
-    setText("testhead",t("Vi trenger flere Android-testere","We need more Android testers","Precisamos de mais testadores no Android"));
-    setText("testtext",t("Pitch Instincts kommer til Google Play. Google krever at minst 12 tester appen i 14 dager. 12 har meldt seg, men vi trenger flere for å være trygge. Testen kan tidligst være ferdig 4.–5. november. Det tar to minutter å bli med.","Pitch Instincts is coming to Google Play. Google requires at least 12 people to test the app for 14 days. 12 have signed up, but we need more to be safe. The test can be finished on 4–5 November at the earliest. Joining takes two minutes.","O Pitch Instincts está chegando ao Google Play. O Google exige que pelo menos 12 pessoas testem o app por 14 dias. 12 já se inscreveram, mas precisamos de mais gente para ficar tranquilos. O teste só pode terminar em 4–5 de novembro, no mínimo. Entrar leva dois minutos."));
-    setText("androidtest",t("Bli testtrener på Android","Become an Android test coach","Seja testador no Android"));
-    setText("testwait",t("Google kan bruke litt tid før appen dukker opp. Vær tålmodig.","Google can take a little while to show the app. Please be patient.","O Google pode demorar um pouco para mostrar o app. Tenha paciência."));
-    const f=document.getElementById("testfriend");f.textContent=t("Kjenner du noen med Android? Send dem hit.","Know someone on Android? Send them here.","Conhece alguém que usa Android? Envie esta página.");f.hidden=isAndroid;
+    const bb=document.getElementById("bubble");if(bb){bb.hidden=PLAY_LIVE;setText("bubbletext",t("Tusen takk til alle som tester! Flere er hjertelig velkomne.","Thank you to everyone testing! More are always welcome.","Obrigado a quem está testando! Mais gente é bem-vinda.","Grazie ai tester! Altri sono sempre benvenuti."))}
+    setText("testhead",t("Vi trenger flere Android-testere","We need more Android testers","Precisamos de mais testadores no Android","Cerchiamo altri tester su Android"));
+    setText("testtext",t("Pitch Instincts kommer til Google Play. Google krever at minst 12 tester appen i 14 dager. 12 har meldt seg, men vi trenger flere for å være trygge. Testen kan tidligst være ferdig 4.–5. november. Det tar to minutter å bli med.","Pitch Instincts is coming to Google Play. Google requires at least 12 people to test the app for 14 days. 12 have signed up, but we need more to be safe. The test can be finished on 4–5 November at the earliest. Joining takes two minutes.","O Pitch Instincts está chegando ao Google Play. O Google exige que pelo menos 12 pessoas testem o app por 14 dias. 12 já se inscreveram, mas precisamos de mais gente para ficar tranquilos. O teste só pode terminar em 4–5 de novembro, no mínimo. Entrar leva dois minutos.","Pitch Instincts sta arrivando su Google Play. Google richiede che almeno 12 persone testino l'app per 14 giorni. Se ne sono iscritte 12, ma ne servono altre per stare tranquilli. Il test può finire al più presto il 4–5 novembre. Partecipare richiede due minuti."));
+    setText("androidtest",t("Bli testtrener på Android","Become an Android test coach","Seja testador no Android","Diventa tester su Android"));
+    setText("testwait",t("Google kan bruke litt tid før appen dukker opp. Vær tålmodig.","Google can take a little while to show the app. Please be patient.","O Google pode demorar um pouco para mostrar o app. Tenha paciência.","Google può metterci un po' a mostrare l'app. Abbi pazienza."));
+    const f=document.getElementById("testfriend");f.textContent=t("Kjenner du noen med Android? Send dem hit.","Know someone on Android? Send them here.","Conhece alguém que usa Android? Envie esta página.","Conosci qualcuno con Android? Mandalo qui.");f.hidden=isAndroid;
     // Android-besøkende har ingen nytte av App Store: testingen står først for dem
     if(isAndroid&&!PLAY_LIVE)tc.parentNode.insertBefore(tc,document.getElementById("storecard"));
   }
 }
-document.documentElement.lang=nb?"nb":pt?"pt-BR":"en";
+document.documentElement.lang=nb?"nb":pt?"pt-BR":it?"it":"en";
 // QR-koden i videoer og PDF peker hit: iPhone rett til App Store, Android til Google Play når den er ute.
 if(isIOS){location.replace(APP_STORE)}else if(isAndroid&&PLAY_LIVE){location.replace(PLAY)}
-setText("tag",t("Gratis app for fotballtrenere, laget av en trener. Se øvelsene animert.","A free app for football coaches, made by a coach. See the exercises animated.","App gratuito para treinadores de futebol, feito por um treinador. Veja os exercícios animados."));
-stores();setText("by",t("Gratis app for fotballtrenere, laget av en trener.","A free app for football coaches, made by a coach.","App gratuito para treinadores de futebol, feito por um treinador."));setText("support",t("Støtte","Support","Suporte"));setText("privacy",t("Personvern","Privacy","Privacidade"));setText("androidfoot",t("Android-test","Android test","Teste no Android"));
+setText("tag",t("Gratis app for fotballtrenere, laget av en trener. Se øvelsene animert.","A free app for football coaches, made by a coach. See the exercises animated.","App gratuito para treinadores de futebol, feito por um treinador. Veja os exercícios animados.","App gratuita per allenatori di calcio, fatta da un allenatore. Guarda gli esercizi animati."));
+stores();setText("by",t("Gratis app for fotballtrenere, laget av en trener.","A free app for football coaches, made by a coach.","App gratuito para treinadores de futebol, feito por um treinador.","App gratuita per allenatori di calcio, fatta da un allenatore."));setText("support",t("Støtte","Support","Suporte","Supporto"));setText("privacy",t("Personvern","Privacy","Privacidade","Privacy"));setText("androidfoot",t("Android-test","Android test","Teste no Android","Test Android"));
 // Språkvalg i bunnlinja: det andre språket. Hashen følger med (en delt økt eller øvelse står der).
-(function(){const w=document.getElementById("langswitch");if(w){const names={nb:["Norsk","nb"],en:["English","en"],pt:["Português","pt-BR"]};const cur=nb?"nb":pt?"pt":"en";w.textContent="";["nb","en","pt"].filter(function(x){return x!==cur}).forEach(function(x,i){if(i)w.appendChild(document.createTextNode(" · "));const a=document.createElement("a");a.textContent=names[x][0];a.lang=names[x][1];a.href=location.pathname+"?lang="+x+location.hash;w.appendChild(a)})}})();
+(function(){const w=document.getElementById("langswitch");if(w){const names={nb:["Norsk","nb"],en:["English","en"],pt:["Português","pt-BR"],it:["Italiano","it"]};const cur=nb?"nb":pt?"pt":it?"it":"en";w.textContent="";["nb","en","pt","it"].filter(function(x){return x!==cur}).forEach(function(x,i){if(i)w.appendChild(document.createTextNode(" · "));const a=document.createElement("a");a.textContent=names[x][0];a.lang=names[x][1];a.href=location.pathname+"?lang="+x+location.hash;w.appendChild(a)})}})();
 </script></body></html>

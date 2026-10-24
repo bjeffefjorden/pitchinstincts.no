@@ -49,48 +49,49 @@ const APP_STORE="https://apps.apple.com/app/id6818114354";
 const PLAY_LIVE=false; // settes til true når Android-appen er i Google Play
 const PLAY="https://play.google.com/store/apps/details?id=no.hoff.treningsapp";
 // Språket følger hvor besøkende er fra: norsk når noe i nettleserens språkliste er norsk (nb, nn, no) eller har region Norge
-// (en engelsk iPhone eller Mac satt til Norge melder «en-NO»), ellers portugisisk når noe er portugisisk (pt, pt-BR), ellers engelsk.
-// ?lang=nb, ?lang=en eller ?lang=pt (eller #nb / #en / #pt) i lenka velger selv.
+// (en engelsk iPhone eller Mac satt til Norge melder «en-NO»), ellers portugisisk når noe er portugisisk (pt, pt-BR), ellers italiensk når noe er italiensk (it), ellers engelsk.
+// ?lang=nb, ?lang=en, ?lang=pt eller ?lang=it (eller #nb / #en / #pt / #it) i lenka velger selv.
 /*pickLang*/
 function pickLang(langs,search,hash){
-  var o=/^#(nb|en|pt)(?:-[a-z]+)?$/.exec(hash||"")||/[?&]lang=(nb|en|pt)(?![a-z])/.exec(search||"");
+  var o=/^#(nb|en|pt|it)(?:-[a-z]+)?$/.exec(hash||"")||/[?&]lang=(nb|en|pt|it)(?![a-z])/.exec(search||"");
   if(o)return o[1];
-  var known=false,port=false;
+  var known=false,port=false,ital=false;
   for(var i=0;langs&&i<langs.length;i++){
     var m=/^([a-z]{2,3})(?:-[a-z]{4})?(?:-([a-z]{2}|\d{3}))?(?![a-z0-9])/i.exec(langs[i]||"");
     if(!m)continue;
     known=true;
     if(/^(nb|nn|no)$/i.test(m[1])||/^(no|sj)$/i.test(m[2]||""))return "nb";
     if(/^pt$/i.test(m[1]))port=true;
+    if(/^it$/i.test(m[1]))ital=true;
   }
-  return port?"pt":known?"en":"nb";
+  return port?"pt":ital?"it":known?"en":"nb";
 }
 /*end*/
-const LANG=pickLang(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language],location.search,location.hash);const nb=LANG==="nb",pt=LANG==="pt";
+const LANG=pickLang(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language],location.search,location.hash);const nb=LANG==="nb",pt=LANG==="pt",it=LANG==="it";
 const ua=navigator.userAgent||"";
 const isIOS=/iPhone|iPad|iPod/.test(ua)||(/Macintosh/.test(ua)&&navigator.maxTouchPoints>1);
 const isAndroid=/Android/.test(ua);
-function t(no,en,p){return nb?no:pt&&p!==undefined?p:en}
+function t(no,en,p,i){return nb?no:pt&&p!==undefined?p:it&&i!==undefined?i:en}
 function setText(id,s){const e=document.getElementById(id);if(e)e.textContent=s}
 function badge(a,file,alt){const i=a.firstElementChild;i.src="/badges/"+file+".png";i.alt=alt}
 function stores(){
   const a=document.getElementById("appstore"),p=document.getElementById("play"),s=document.getElementById("soon");
   const L=nb?"no":pt?"pt":"en";
-  a.href=APP_STORE;badge(a,"app-store-"+L,t("Last ned fra App Store","Download on the App Store","Baixar na App Store"));
-  if(PLAY_LIVE){p.href=PLAY;badge(p,"google-play-"+L,t("Last ned på Google Play","Get it on Google Play","Disponível no Google Play"));p.hidden=false;s.hidden=true}
-  else{p.hidden=true;s.hidden=false;s.textContent=t("Android-utgaven kommer.","The Android version is coming.","A versão para Android está chegando.")}
+  a.href=APP_STORE;badge(a,"app-store-"+L,t("Last ned fra App Store","Download on the App Store","Baixar na App Store","Scarica dall'App Store"));
+  if(PLAY_LIVE){p.href=PLAY;badge(p,"google-play-"+L,t("Last ned på Google Play","Get it on Google Play","Disponível no Google Play","Disponibile su Google Play"));p.hidden=false;s.hidden=true}
+  else{p.hidden=true;s.hidden=false;s.textContent=t("Android-utgaven kommer.","The Android version is coming.","A versão para Android está chegando.","La versione per Android sta arrivando.")}
   if(isIOS)p.hidden=true; if(isAndroid&&PLAY_LIVE)a.hidden=true;
 }
-document.documentElement.lang=nb?"nb":pt?"pt-BR":"en";
+document.documentElement.lang=nb?"nb":pt?"pt-BR":it?"it":"en";
 // Øvelsen står etter # i lenka (id=…), og sendes aldri til serveren.
 const raw=location.hash.replace(/^#/,"");
 const id=new URLSearchParams(raw).get("id")||"";
-setText("title",t("Delt øvelse","Shared exercise","Exercício compartilhado"));document.title=t("Delt øvelse","Shared exercise","Exercício compartilhado")+" · Pitch Instincts";
-setText("sub",t("En trener har delt en øvelse fra Pitch Instincts med deg.","A coach has shared an exercise from Pitch Instincts with you.","Um treinador compartilhou um exercício do Pitch Instincts com você."));
-setText("noapp",t("Har du ikke appen?","Don't have the app?","Ainda não tem o app?"));
+setText("title",t("Delt øvelse","Shared exercise","Exercício compartilhado","Esercizio condiviso"));document.title=t("Delt øvelse","Shared exercise","Exercício compartilhado","Esercizio condiviso")+" · Pitch Instincts";
+setText("sub",t("En trener har delt en øvelse fra Pitch Instincts med deg.","A coach has shared an exercise from Pitch Instincts with you.","Um treinador compartilhou um exercício do Pitch Instincts com você.","Un allenatore ha condiviso con te un esercizio di Pitch Instincts."));
+setText("noapp",t("Har du ikke appen?","Don't have the app?","Ainda não tem o app?","Non hai l'app?"));
 const o=document.getElementById("open");
-if(/^[a-z0-9_]+$/.test(id)){o.textContent=t("Åpne i Pitch Instincts","Open in Pitch Instincts","Abrir no Pitch Instincts");o.href="treningsapp://ovelse?id="+id}else{o.hidden=true}
-stores();setText("by",t("Gratis app for fotballtrenere, laget av en trener.","A free app for football coaches, made by a coach.","App gratuito para treinadores de futebol, feito por um treinador."));setText("support",t("Støtte","Support","Suporte"));setText("privacy",t("Personvern","Privacy","Privacidade"));
+if(/^[a-z0-9_]+$/.test(id)){o.textContent=t("Åpne i Pitch Instincts","Open in Pitch Instincts","Abrir no Pitch Instincts","Apri in Pitch Instincts");o.href="treningsapp://ovelse?id="+id}else{o.hidden=true}
+stores();setText("by",t("Gratis app for fotballtrenere, laget av en trener.","A free app for football coaches, made by a coach.","App gratuito para treinadores de futebol, feito por um treinador.","App gratuita per allenatori di calcio, fatta da un allenatore."));setText("support",t("Støtte","Support","Suporte","Supporto"));setText("privacy",t("Personvern","Privacy","Privacidade","Privacy"));
 // Språkvalg i bunnlinja: det andre språket. Hashen følger med (en delt økt eller øvelse står der).
-(function(){const w=document.getElementById("langswitch");if(w){const names={nb:["Norsk","nb"],en:["English","en"],pt:["Português","pt-BR"]};const cur=nb?"nb":pt?"pt":"en";w.textContent="";["nb","en","pt"].filter(function(x){return x!==cur}).forEach(function(x,i){if(i)w.appendChild(document.createTextNode(" · "));const a=document.createElement("a");a.textContent=names[x][0];a.lang=names[x][1];a.href=location.pathname+"?lang="+x+location.hash;w.appendChild(a)})}})();
+(function(){const w=document.getElementById("langswitch");if(w){const names={nb:["Norsk","nb"],en:["English","en"],pt:["Português","pt-BR"],it:["Italiano","it"]};const cur=nb?"nb":pt?"pt":it?"it":"en";w.textContent="";["nb","en","pt","it"].filter(function(x){return x!==cur}).forEach(function(x,i){if(i)w.appendChild(document.createTextNode(" · "));const a=document.createElement("a");a.textContent=names[x][0];a.lang=names[x][1];a.href=location.pathname+"?lang="+x+location.hash;w.appendChild(a)})}})();
 </script></body></html>
