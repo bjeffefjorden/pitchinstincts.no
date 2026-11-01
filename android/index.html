@@ -60,7 +60,7 @@ details[open]>summary::after{transform:rotate(-135deg) translate(-2px,-2px)}
 footer{color:var(--muted);font-size:14px;margin-top:28px}
 footer a{color:var(--muted)}
 html:not(.js) .L+.L{margin-top:56px;padding-top:40px;border-top:1px solid var(--line)}
-html[data-lang]:not([data-lang="nb"]) #nb,html[data-lang]:not([data-lang="en"]) #en,html[data-lang]:not([data-lang="pt"]) #pt,html[data-lang]:not([data-lang="it"]) #it{display:none}
+html[data-lang]:not([data-lang="nb"]) #nb,html[data-lang]:not([data-lang="en"]) #en,html[data-lang]:not([data-lang="pt"]) #pt,html[data-lang]:not([data-lang="it"]) #it,html[data-lang]:not([data-lang="es"]) #es,html[data-lang]:not([data-lang="fr"]) #fr{display:none}
 @media (prefers-reduced-motion:no-preference){summary::after{transition:transform .15s}}
 </style>
 <style>
@@ -74,15 +74,15 @@ html[data-lang]:not([data-lang="nb"]) #nb,html[data-lang]:not([data-lang="en"]) 
 .steps li.wait{counter-increment:none;background:transparent;border:1.5px solid var(--accent);padding:16px 18px 18px}.steps li.wait h3::before{display:none}.steps li.wait p{color:var(--text)}
 </style>
 <script>
-// Språk: hvor besøkende er fra (norsk når noe i språklista er norsk eller har region Norge, ellers portugisisk når noe er portugisisk, ellers italiensk når noe er italiensk, ellers engelsk), eller #nb / #en / #pt / #it (?lang=nb / ?lang=en / ?lang=pt / ?lang=it) i lenka. #nb-share, #en-share osv. åpner det svaret.
+// Språk: hvor besøkende er fra (norsk når noe i språklista er norsk eller har region Norge, ellers portugisisk når noe er portugisisk, ellers italiensk, ellers spansk, ellers fransk, ellers engelsk), eller #nb / #en / #pt / #it / #es / #fr (?lang=nb / ?lang=en / ?lang=pt / ?lang=it / ?lang=es / ?lang=fr) i lenka. #nb-share, #en-share osv. åpner det svaret.
 // Uten JavaScript står alle språkene under hverandre.
 (function(){
   var d=document.documentElement;
   /*pickLang*/
   function pickLang(langs,search,hash){
-    var o=/^#(nb|en|pt|it)(?:-[a-z]+)?$/.exec(hash||"")||/[?&]lang=(nb|en|pt|it)(?![a-z])/.exec(search||"");
+    var o=/^#(nb|en|pt|it|es|fr)(?:-[a-z]+)?$/.exec(hash||"")||/[?&]lang=(nb|en|pt|it|es|fr)(?![a-z])/.exec(search||"");
     if(o)return o[1];
-    var known=false,port=false,ital=false;
+    var known=false,port=false,ital=false,span=false,fren=false;
     for(var i=0;langs&&i<langs.length;i++){
       var m=/^([a-z]{2,3})(?:-[a-z]{4})?(?:-([a-z]{2}|\d{3}))?(?![a-z0-9])/i.exec(langs[i]||"");
       if(!m)continue;
@@ -90,15 +90,17 @@ html[data-lang]:not([data-lang="nb"]) #nb,html[data-lang]:not([data-lang="en"]) 
       if(/^(nb|nn|no)$/i.test(m[1])||/^(no|sj)$/i.test(m[2]||""))return "nb";
       if(/^pt$/i.test(m[1]))port=true;
       if(/^it$/i.test(m[1]))ital=true;
+      if(/^es$/i.test(m[1]))span=true;
+      if(/^fr$/i.test(m[1]))fren=true;
     }
-    return port?"pt":ital?"it":known?"en":"nb";
+    return port?"pt":ital?"it":span?"es":fren?"fr":known?"en":"nb";
   }
   /*end*/
   function lang(){
-    var h=location.hash.slice(1),m=/^(nb|en|pt|it)(-[a-z]+)?$/.exec(h);
+    var h=location.hash.slice(1),m=/^(nb|en|pt|it|es|fr)(-[a-z]+)?$/.exec(h);
     var l=pickLang(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language],location.search,location.hash);
     d.className="js";d.setAttribute("data-lang",l);d.lang=l==="pt"?"pt-BR":l;
-    document.title=l==="nb"?"Bli testtrener · Pitch Instincts":l==="pt"?"Seja testador · Pitch Instincts":l==="it"?"Diventa tester · Pitch Instincts":"Test coach · Pitch Instincts";
+    document.title=l==="nb"?"Bli testtrener · Pitch Instincts":l==="pt"?"Seja testador · Pitch Instincts":l==="it"?"Diventa tester · Pitch Instincts":l==="es"?"Hazte tester · Pitch Instincts":l==="fr"?"Deviens testeur · Pitch Instincts":"Test coach · Pitch Instincts";
     return m&&m[2]?h:"";
   }
   function reveal(){
@@ -114,7 +116,7 @@ html[data-lang]:not([data-lang="nb"]) #nb,html[data-lang]:not([data-lang="en"]) 
 <body><main>
 
 <div class="L" id="nb" lang="nb">
-<p class="top"><a class="brand" href="/"><img src="/logo.png" width="36" height="36" alt="">Pitch Instincts</a><span><a href="#en">English</a> · <a href="#pt">Português</a> · <a href="#it">Italiano</a></span></p>
+<p class="top"><a class="brand" href="/"><img src="/logo.png" width="36" height="36" alt="">Pitch Instincts</a><span><a href="#en">English</a> · <a href="#pt">Português</a> · <a href="#it">Italiano</a> · <a href="#es">Español</a> · <a href="#fr">Français</a></span></p>
 <h1>Bli testtrener på Android</h1>
 <p class="lead">Pitch Instincts kommer til Google Play. Før appen kan slippes ut, må minst 12 personer teste den i 14 dager. 12 har allerede meldt seg, men vi trenger flere for å være trygge, og testen kan tidligst være ferdig 4.–5. november. Det tar to minutter å bli med, og du trenger ikke være trener. Google kan bruke litt tid underveis, så vær litt tålmodig.</p>
 <ol class="steps">
@@ -135,7 +137,7 @@ html[data-lang]:not([data-lang="nb"]) #nb,html[data-lang]:not([data-lang="en"]) 
 </div>
 
 <div class="L" id="en" lang="en">
-<p class="top"><a class="brand" href="/"><img src="/logo.png" width="36" height="36" alt="">Pitch Instincts</a><span><a href="#nb">Norsk</a> · <a href="#pt">Português</a> · <a href="#it">Italiano</a></span></p>
+<p class="top"><a class="brand" href="/"><img src="/logo.png" width="36" height="36" alt="">Pitch Instincts</a><span><a href="#nb">Norsk</a> · <a href="#pt">Português</a> · <a href="#it">Italiano</a> · <a href="#es">Español</a> · <a href="#fr">Français</a></span></p>
 <h1>Become an Android test coach</h1>
 <p class="lead">Pitch Instincts is coming to Google Play. Before the app can be released, at least 12 people have to test it for 14 days. 12 have already signed up, but we need more to be safe, and the test can be finished on 4–5 November at the earliest. Joining takes two minutes, and you don't need to be a coach. Google can take a little while along the way, so please be patient.</p>
 <ol class="steps">
@@ -156,7 +158,7 @@ html[data-lang]:not([data-lang="nb"]) #nb,html[data-lang]:not([data-lang="en"]) 
 </div>
 
 <div class="L" id="pt" lang="pt-BR">
-<p class="top"><a class="brand" href="/"><img src="/logo.png" width="36" height="36" alt="">Pitch Instincts</a><span><a href="#nb">Norsk</a> · <a href="#en">English</a> · <a href="#it">Italiano</a></span></p>
+<p class="top"><a class="brand" href="/"><img src="/logo.png" width="36" height="36" alt="">Pitch Instincts</a><span><a href="#nb">Norsk</a> · <a href="#en">English</a> · <a href="#it">Italiano</a> · <a href="#es">Español</a> · <a href="#fr">Français</a></span></p>
 <h1>Seja testador no Android</h1>
 <p class="lead">O Pitch Instincts está chegando ao Google Play. Antes de o app ser liberado, pelo menos 12 pessoas precisam testá-lo por 14 dias. 12 já se inscreveram, mas precisamos de mais gente para ficar tranquilos, e o teste só pode terminar em 4–5 de novembro, no mínimo. Entrar leva dois minutos, e você não precisa ser treinador. O Google pode demorar um pouco no meio do caminho, então tenha um pouco de paciência.</p>
 <ol class="steps">
@@ -176,7 +178,7 @@ html[data-lang]:not([data-lang="nb"]) #nb,html[data-lang]:not([data-lang="en"]) 
 <footer><a href="/">Pitch Instincts</a> · <a href="/support/#pt">Suporte</a> · <a href="/privacy/">Privacidade</a><br><a href="https://www.instagram.com/pitch_instincts/">Instagram</a> · <a href="https://www.threads.com/@pitch_instincts">Threads</a> · <a href="https://www.facebook.com/PitchInstincts">Facebook</a></footer>
 </div>
 <div class="L" id="it" lang="it">
-<p class="top"><a class="brand" href="/"><img src="/logo.png" width="36" height="36" alt="">Pitch Instincts</a><span><a href="#nb">Norsk</a> · <a href="#en">English</a> · <a href="#pt">Português</a></span></p>
+<p class="top"><a class="brand" href="/"><img src="/logo.png" width="36" height="36" alt="">Pitch Instincts</a><span><a href="#nb">Norsk</a> · <a href="#en">English</a> · <a href="#pt">Português</a> · <a href="#es">Español</a> · <a href="#fr">Français</a></span></p>
 <h1>Diventa tester su Android</h1>
 <p class="lead">Pitch Instincts sta arrivando su Google Play. Prima che l'app possa uscire, almeno 12 persone devono testarla per 14 giorni. Se ne sono già iscritte 12, ma ne servono altre per stare tranquilli, e il test può finire al più presto il 4–5 novembre. Partecipare richiede due minuti, e non serve essere allenatori. Google può metterci un po' durante il percorso, quindi abbi pazienza.</p>
 <ol class="steps">
@@ -194,6 +196,46 @@ html[data-lang]:not([data-lang="nb"]) #nb,html[data-lang]:not([data-lang="en"]) 
 <a class="btn" href="/support/#it">Scrivimi</a>
 </section>
 <footer><a href="/">Pitch Instincts</a> · <a href="/support/#it">Supporto</a> · <a href="/privacy/">Privacy</a><br><a href="https://www.instagram.com/pitch_instincts/">Instagram</a> · <a href="https://www.threads.com/@pitch_instincts">Threads</a> · <a href="https://www.facebook.com/PitchInstincts">Facebook</a></footer>
+</div>
+<div class="L" id="es" lang="es">
+<p class="top"><a class="brand" href="/"><img src="/logo.png" width="36" height="36" alt="">Pitch Instincts</a><span><a href="#nb">Norsk</a> · <a href="#en">English</a> · <a href="#pt">Português</a> · <a href="#it">Italiano</a> · <a href="#fr">Français</a></span></p>
+<h1>Hazte tester en Android</h1>
+<p class="lead">Pitch Instincts llega a Google Play. Antes de que la app pueda publicarse, al menos 12 personas tienen que probarla durante 14 días. Ya se han inscrito 12, pero necesitamos más para ir sobre seguro, y la prueba no puede terminar antes del 4–5 de noviembre. Inscribirte lleva dos minutos, y no hace falta que seas entrenador. Google puede tardar un poco en algún paso, así que ten un poco de paciencia.</p>
+<ol class="steps">
+<li><h3>Únete al grupo de prueba</h3><p>Toca <span class="ui">Unirse al grupo</span>. Usa la misma cuenta de Google que en tu teléfono Android.</p><a class="btn" href="https://groups.google.com/g/pitch-instincts-testere">Abrir el grupo de prueba</a></li>
+<li><h3>Hazte tester</h3><p>Toca <span class="ui">Become a tester</span> en la página de Google Play.</p><a class="btn" href="https://play.google.com/apps/testing/no.hoff.treningsapp">Hazte tester</a></li>
+<li class="wait"><h3>Espera un poco</h3><p>Google puede tardar un poco en mostrar la app en Google Play después de que toques <span class="ui">Unirse al grupo</span> y <span class="ui">Become a tester</span>. A menudo son unos minutos, a veces más. Ten un poco de paciencia y descárgala un poco más tarde.</p><p>Si después de un rato sigues sin verla, comprueba que has iniciado sesión en Google Play con la misma cuenta de Google que usaste en el grupo.</p></li>
+<li><h3>Descarga la app</h3><p>Abre Google Play en el teléfono e instala Pitch Instincts. Si no ves la app enseguida, espera unos minutos y vuelve a intentarlo.</p><a class="btn" href="https://play.google.com/store/apps/details?id=no.hoff.treningsapp">Abrir en Google Play</a></li>
+<li><h3>Mantenla 14 días</h3><p>No desinstales la app ni salgas de la prueba hasta que hayan pasado 14 días. Abre algunos ejercicios de vez en cuando, así Google ve que la app se usa.</p></li>
+</ol>
+<p class="note">El grupo solo se usa para la prueba. Solo yo veo quién está en él, y la app no recoge nada sobre ti. Más información en <a href="/privacy/">privacidad</a>.</p>
+<p class="note">¿Tienes iPhone? <a href="/app">Descarga Pitch Instincts en el App Store</a>.</p>
+<section class="card">
+<h2>¿Has encontrado algo raro?</h2>
+<p>Escríbeme, o toca <span class="ui">Enviar comentarios</span> en la app. Todo ayuda.</p>
+<a class="btn" href="/support/#es">Escríbeme</a>
+</section>
+<footer><a href="/">Pitch Instincts</a> · <a href="/support/#es">Ayuda</a> · <a href="/privacy/">Privacidad</a><br><a href="https://www.instagram.com/pitch_instincts/">Instagram</a> · <a href="https://www.threads.com/@pitch_instincts">Threads</a> · <a href="https://www.facebook.com/PitchInstincts">Facebook</a></footer>
+</div>
+<div class="L" id="fr" lang="fr">
+<p class="top"><a class="brand" href="/"><img src="/logo.png" width="36" height="36" alt="">Pitch Instincts</a><span><a href="#nb">Norsk</a> · <a href="#en">English</a> · <a href="#pt">Português</a> · <a href="#it">Italiano</a> · <a href="#es">Español</a></span></p>
+<h1>Deviens testeur sur Android</h1>
+<p class="lead">Pitch Instincts arrive sur Google Play. Avant que l'app puisse sortir, au moins 12 personnes doivent la tester pendant 14 jours. 12 se sont déjà inscrites, mais il en faut plus par sécurité, et le test ne peut pas se terminer avant le 4–5 novembre. S'inscrire prend deux minutes, et pas besoin d'être entraîneur. Google peut mettre un peu de temps à certaines étapes, alors sois un peu patient.</p>
+<ol class="steps">
+<li><h3>Rejoins le groupe de test</h3><p>Touche <span class="ui">Rejoindre le groupe</span>. Utilise le même compte Google que sur ton téléphone Android.</p><a class="btn" href="https://groups.google.com/g/pitch-instincts-testere">Ouvrir le groupe de test</a></li>
+<li><h3>Deviens testeur</h3><p>Touche <span class="ui">Devenir testeur</span> sur la page Google Play.</p><a class="btn" href="https://play.google.com/apps/testing/no.hoff.treningsapp">Devenir testeur</a></li>
+<li class="wait"><h3>Patiente un peu</h3><p>Google peut mettre un peu de temps à afficher l'app dans Google Play après que tu as touché <span class="ui">Rejoindre le groupe</span> et <span class="ui">Devenir testeur</span>. Souvent quelques minutes, parfois plus. Sois un peu patient et télécharge-la un peu plus tard.</p><p>Si tu ne la vois toujours pas au bout d'un moment, vérifie que tu es connecté à Google Play avec le même compte Google que celui utilisé pour le groupe.</p></li>
+<li><h3>Télécharge l'app</h3><p>Ouvre Google Play sur ton téléphone et installe Pitch Instincts. Si tu ne vois pas l'app tout de suite, attends quelques minutes et réessaie.</p><a class="btn" href="https://play.google.com/store/apps/details?id=no.hoff.treningsapp">Ouvrir dans Google Play</a></li>
+<li><h3>Garde-la 14 jours</h3><p>Ne désinstalle pas l'app et ne quitte pas le test avant que 14 jours soient passés. Regarde quelques exercices de temps en temps, pour que Google voie que l'app est utilisée.</p></li>
+</ol>
+<p class="note">Le groupe sert uniquement au test. Je suis le seul à voir qui en fait partie, et l'app ne collecte rien sur toi. Plus d'infos dans la page <a href="/privacy/">confidentialité</a>.</p>
+<p class="note">Tu as un iPhone ? <a href="/app">Télécharge Pitch Instincts sur l'App Store</a>.</p>
+<section class="card">
+<h2>Tu as trouvé quelque chose de bizarre ?</h2>
+<p>Écris-moi, ou touche <span class="ui">Envoyer un avis</span> dans l'app. Tout aide.</p>
+<a class="btn" href="/support/#fr">Écris-moi</a>
+</section>
+<footer><a href="/">Pitch Instincts</a> · <a href="/support/#fr">Assistance</a> · <a href="/privacy/">Confidentialité</a><br><a href="https://www.instagram.com/pitch_instincts/">Instagram</a> · <a href="https://www.threads.com/@pitch_instincts">Threads</a> · <a href="https://www.facebook.com/PitchInstincts">Facebook</a></footer>
 </div>
 
 </main></body></html>

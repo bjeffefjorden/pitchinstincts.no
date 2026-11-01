@@ -60,19 +60,19 @@ details[open]>summary::after{transform:rotate(-135deg) translate(-2px,-2px)}
 footer{color:var(--muted);font-size:14px;margin-top:28px}
 footer a{color:var(--muted)}
 html:not(.js) .L+.L{margin-top:56px;padding-top:40px;border-top:1px solid var(--line)}
-html[data-lang]:not([data-lang="nb"]) #nb,html[data-lang]:not([data-lang="en"]) #en,html[data-lang]:not([data-lang="pt"]) #pt,html[data-lang]:not([data-lang="it"]) #it{display:none}
+html[data-lang]:not([data-lang="nb"]) #nb,html[data-lang]:not([data-lang="en"]) #en,html[data-lang]:not([data-lang="pt"]) #pt,html[data-lang]:not([data-lang="it"]) #it,html[data-lang]:not([data-lang="es"]) #es,html[data-lang]:not([data-lang="fr"]) #fr{display:none}
 @media (prefers-reduced-motion:no-preference){summary::after{transition:transform .15s}}
 </style>
 <script>
-// Språk: hvor besøkende er fra (norsk når noe i språklista er norsk eller har region Norge, ellers portugisisk når noe er portugisisk, ellers italiensk når noe er italiensk, ellers engelsk), eller #nb / #en / #pt / #it (?lang=nb / ?lang=en / ?lang=pt / ?lang=it) i lenka. #nb-share, #en-share, #pt-share osv. åpner det svaret.
+// Språk: hvor besøkende er fra (norsk når noe i språklista er norsk eller har region Norge, ellers portugisisk når noe er portugisisk, ellers italiensk, ellers spansk, ellers fransk, ellers engelsk), eller #nb / #en / #pt / #it / #es / #fr (?lang=nb / ?lang=en / ?lang=pt / ?lang=it / ?lang=es / ?lang=fr) i lenka. #nb-share, #en-share, #pt-share osv. åpner det svaret.
 // Uten JavaScript står alle språkene under hverandre.
 (function(){
   var d=document.documentElement;
   /*pickLang*/
   function pickLang(langs,search,hash){
-    var o=/^#(nb|en|pt|it)(?:-[a-z]+)?$/.exec(hash||"")||/[?&]lang=(nb|en|pt|it)(?![a-z])/.exec(search||"");
+    var o=/^#(nb|en|pt|it|es|fr)(?:-[a-z]+)?$/.exec(hash||"")||/[?&]lang=(nb|en|pt|it|es|fr)(?![a-z])/.exec(search||"");
     if(o)return o[1];
-    var known=false,port=false,ital=false;
+    var known=false,port=false,ital=false,span=false,fren=false;
     for(var i=0;langs&&i<langs.length;i++){
       var m=/^([a-z]{2,3})(?:-[a-z]{4})?(?:-([a-z]{2}|\d{3}))?(?![a-z0-9])/i.exec(langs[i]||"");
       if(!m)continue;
@@ -80,15 +80,17 @@ html[data-lang]:not([data-lang="nb"]) #nb,html[data-lang]:not([data-lang="en"]) 
       if(/^(nb|nn|no)$/i.test(m[1])||/^(no|sj)$/i.test(m[2]||""))return "nb";
       if(/^pt$/i.test(m[1]))port=true;
       if(/^it$/i.test(m[1]))ital=true;
+      if(/^es$/i.test(m[1]))span=true;
+      if(/^fr$/i.test(m[1]))fren=true;
     }
-    return port?"pt":ital?"it":known?"en":"nb";
+    return port?"pt":ital?"it":span?"es":fren?"fr":known?"en":"nb";
   }
   /*end*/
   function lang(){
-    var h=location.hash.slice(1),m=/^(nb|en|pt|it)(-[a-z]+)?$/.exec(h);
+    var h=location.hash.slice(1),m=/^(nb|en|pt|it|es|fr)(-[a-z]+)?$/.exec(h);
     var l=pickLang(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language],location.search,location.hash);
     d.className="js";d.setAttribute("data-lang",l);d.lang=l==="pt"?"pt-BR":l;
-    document.title=l==="nb"?"Støtte · Pitch Instincts":l==="pt"?"Suporte · Pitch Instincts":l==="it"?"Supporto · Pitch Instincts":"Support · Pitch Instincts";
+    document.title=l==="nb"?"Støtte · Pitch Instincts":l==="pt"?"Suporte · Pitch Instincts":l==="it"?"Supporto · Pitch Instincts":l==="es"?"Ayuda · Pitch Instincts":l==="fr"?"Assistance · Pitch Instincts":"Support · Pitch Instincts";
     return m&&m[2]?h:"";
   }
   function reveal(){
@@ -104,7 +106,7 @@ html[data-lang]:not([data-lang="nb"]) #nb,html[data-lang]:not([data-lang="en"]) 
 <body><main>
 
 <div class="L" id="nb" lang="nb">
-<p class="top"><a class="brand" href="/"><img src="/logo.png" width="36" height="36" alt="">Pitch Instincts</a><span><a href="#en">English</a> · <a href="#pt">Português</a> · <a href="#it">Italiano</a></span></p>
+<p class="top"><a class="brand" href="/"><img src="/logo.png" width="36" height="36" alt="">Pitch Instincts</a><span><a href="#en">English</a> · <a href="#pt">Português</a> · <a href="#it">Italiano</a> · <a href="#es">Español</a> · <a href="#fr">Français</a></span></p>
 <h1>Hjelp og støtte</h1>
 <p class="lead">Svar på det trenere spør mest om. Finner du ikke ditt, skriv til meg. Jeg svarer selv.</p>
 <a class="btn" href="mailto:pitchinstincts@gmail.com?subject=Pitch%20Instincts%3A%20sp%C3%B8rsm%C3%A5l&amp;body=Hei%21%0A%0A%0A%0A---%0ASkriv%20over%20streken.%20Det%20under%20hjelper%20meg%3A%0ATelefon%3A%20%0AVersjon%20av%20appen%20%28st%C3%A5r%20nederst%20under%20Mine%20treninger%29%3A%20%0A">Skriv til meg</a>
@@ -161,7 +163,7 @@ html[data-lang]:not([data-lang="nb"]) #nb,html[data-lang]:not([data-lang="en"]) 
 </div></details>
 
 <details id="nb-about"><summary>Pris, konto og nett</summary><div class="ans">
-<p>Appen er gratis. Du trenger ingen konto, og den virker uten nett. Alt innhold ligger i appen. Den finnes på norsk, engelsk, portugisisk (Brasil), italiensk og nordsamisk (de tre siste maskinoversatt) og følger språket på telefonen. Nordsamisk velger du i «Om appen».</p>
+<p>Appen er gratis. Du trenger ingen konto, og den virker uten nett. Alt innhold ligger i appen. Den finnes på norsk, engelsk, portugisisk (Brasil), italiensk, spansk, fransk og nordsamisk (de fem siste maskinoversatt) og følger språket på telefonen. Nordsamisk velger du i «Om appen».</p>
 <p>Appen er laget av en fotballtrener. Les mer under <a href="/privacy/">personvern</a>.</p>
 </div></details>
 
@@ -179,7 +181,7 @@ html[data-lang]:not([data-lang="nb"]) #nb,html[data-lang]:not([data-lang="en"]) 
 </div>
 
 <div class="L" id="en" lang="en">
-<p class="top"><a class="brand" href="/"><img src="/logo.png" width="36" height="36" alt="">Pitch Instincts</a><span><a href="#nb">Norsk</a> · <a href="#pt">Português</a> · <a href="#it">Italiano</a></span></p>
+<p class="top"><a class="brand" href="/"><img src="/logo.png" width="36" height="36" alt="">Pitch Instincts</a><span><a href="#nb">Norsk</a> · <a href="#pt">Português</a> · <a href="#it">Italiano</a> · <a href="#es">Español</a> · <a href="#fr">Français</a></span></p>
 <h1>Help and support</h1>
 <p class="lead">Answers to what coaches ask most. If you can't find yours, write to me. I answer myself.</p>
 <a class="btn" href="mailto:pitchinstincts@gmail.com?subject=Pitch%20Instincts%3A%20question&amp;body=Hi%21%0A%0A%0A%0A---%0AWrite%20above%20the%20line.%20What%20is%20below%20helps%20me%3A%0APhone%3A%20%0AApp%20version%20%28at%20the%20bottom%20of%20My%20sessions%29%3A%20%0A">Email me</a>
@@ -236,7 +238,7 @@ html[data-lang]:not([data-lang="nb"]) #nb,html[data-lang]:not([data-lang="en"]) 
 </div></details>
 
 <details id="en-about"><summary>Price, account and internet</summary><div class="ans">
-<p>The app is free. You don't need an account, and it works without internet. All content is in the app. It comes in Norwegian, English, Portuguese (Brazil), Italian and Northern Sami (the last three machine translated) and follows your phone's language. Northern Sami is chosen in «About the app».</p>
+<p>The app is free. You don't need an account, and it works without internet. All content is in the app. It comes in Norwegian, English, Portuguese (Brazil), Italian, Spanish, French and Northern Sami (the last five machine translated) and follows your phone's language. Northern Sami is chosen in «About the app».</p>
 <p>The app is made by a football coach. Read more under <a href="/privacy/">privacy</a>.</p>
 </div></details>
 
@@ -254,7 +256,7 @@ html[data-lang]:not([data-lang="nb"]) #nb,html[data-lang]:not([data-lang="en"]) 
 </div>
 
 <div class="L" id="pt" lang="pt-BR">
-<p class="top"><a class="brand" href="/"><img src="/logo.png" width="36" height="36" alt="">Pitch Instincts</a><span><a href="#nb">Norsk</a> · <a href="#en">English</a> · <a href="#it">Italiano</a></span></p>
+<p class="top"><a class="brand" href="/"><img src="/logo.png" width="36" height="36" alt="">Pitch Instincts</a><span><a href="#nb">Norsk</a> · <a href="#en">English</a> · <a href="#it">Italiano</a> · <a href="#es">Español</a> · <a href="#fr">Français</a></span></p>
 <h1>Ajuda e suporte</h1>
 <p class="lead">Respostas para o que os treinadores mais perguntam. Se você não encontrar a sua, escreva para mim. Eu mesmo respondo.</p>
 <a class="btn" href="mailto:pitchinstincts@gmail.com?subject=Pitch%20Instincts%3A%20pergunta&amp;body=Ol%C3%A1%21%0A%0A%0A%0A---%0AEscreva%20acima%20da%20linha.%20O%20que%20est%C3%A1%20abaixo%20me%20ajuda%3A%0ACelular%3A%20%0AVers%C3%A3o%20do%20app%20%28fica%20no%20final%20de%20Meus%20treinos%29%3A%20%0A">Me mande um e-mail</a>
@@ -311,7 +313,7 @@ html[data-lang]:not([data-lang="nb"]) #nb,html[data-lang]:not([data-lang="en"]) 
 </div></details>
 
 <details id="pt-about"><summary>Preço, conta e internet</summary><div class="ans">
-<p>O app é gratuito. Você não precisa de conta, e ele funciona sem internet. Todo o conteúdo está no app. Ele está disponível em norueguês, inglês, português (Brasil), italiano e sámi do norte (os três últimos com tradução automática) e segue o idioma do celular. O sámi do norte é escolhido em «Sobre o app».</p>
+<p>O app é gratuito. Você não precisa de conta, e ele funciona sem internet. Todo o conteúdo está no app. Ele está disponível em norueguês, inglês, português (Brasil), italiano, espanhol, francês e sámi do norte (os cinco últimos com tradução automática) e segue o idioma do celular. O sámi do norte é escolhido em «Sobre o app».</p>
 <p>O app é feito por um treinador de futebol. Leia mais em <a href="/privacy/">privacidade</a>.</p>
 </div></details>
 
@@ -328,7 +330,7 @@ html[data-lang]:not([data-lang="nb"]) #nb,html[data-lang]:not([data-lang="en"]) 
 <footer><a href="/">Pitch Instincts</a> · <a href="/privacy/">Privacidade</a><br><a href="https://www.instagram.com/pitch_instincts/">Instagram</a> · <a href="https://www.threads.com/@pitch_instincts">Threads</a> · <a href="https://www.facebook.com/PitchInstincts">Facebook</a></footer>
 </div>
 <div class="L" id="it" lang="it">
-<p class="top"><a class="brand" href="/"><img src="/logo.png" width="36" height="36" alt="">Pitch Instincts</a><span><a href="#nb">Norsk</a> · <a href="#en">English</a> · <a href="#pt">Português</a></span></p>
+<p class="top"><a class="brand" href="/"><img src="/logo.png" width="36" height="36" alt="">Pitch Instincts</a><span><a href="#nb">Norsk</a> · <a href="#en">English</a> · <a href="#pt">Português</a> · <a href="#es">Español</a> · <a href="#fr">Français</a></span></p>
 <h1>Aiuto e supporto</h1>
 <p class="lead">Le risposte a quello che gli allenatori chiedono più spesso. Se non trovi la tua, scrivimi. Rispondo io.</p>
 <a class="btn" href="mailto:pitchinstincts@gmail.com?subject=Pitch%20Instincts%3A%20domanda&amp;body=Ciao%21%0A%0A%0A%0A---%0AScrivi%20sopra%20la%20linea.%20Quello%20che%20c%27%C3%A8%20sotto%20mi%20aiuta%3A%0ATelefono%3A%20%0AVersione%20dell%27app%20%28in%20fondo%20a%20I%20miei%20allenamenti%29%3A%20%0A">Scrivimi</a>
@@ -385,7 +387,7 @@ html[data-lang]:not([data-lang="nb"]) #nb,html[data-lang]:not([data-lang="en"]) 
 </div></details>
 
 <details id="it-about"><summary>Prezzo, account e internet</summary><div class="ans">
-<p>L'app è gratuita. Non serve un account e funziona senza internet. Tutti i contenuti sono nell'app. È disponibile in norvegese, inglese, portoghese (Brasile), italiano e sami del nord (gli ultimi tre con traduzione automatica) e segue la lingua del telefono. Il sami del nord si sceglie in «Info sull'app».</p>
+<p>L'app è gratuita. Non serve un account e funziona senza internet. Tutti i contenuti sono nell'app. È disponibile in norvegese, inglese, portoghese (Brasile), italiano, spagnolo, francese e sami del nord (gli ultimi cinque con traduzione automatica) e segue la lingua del telefono. Il sami del nord si sceglie in «Info sull'app».</p>
 <p>L'app è fatta da un allenatore di calcio. Leggi di più nella pagina sulla <a href="/privacy/">privacy</a>.</p>
 </div></details>
 
@@ -400,6 +402,154 @@ html[data-lang]:not([data-lang="nb"]) #nb,html[data-lang]:not([data-lang="en"]) 
 </section>
 
 <footer><a href="/">Pitch Instincts</a> · <a href="/privacy/">Privacy</a><br><a href="https://www.instagram.com/pitch_instincts/">Instagram</a> · <a href="https://www.threads.com/@pitch_instincts">Threads</a> · <a href="https://www.facebook.com/PitchInstincts">Facebook</a></footer>
+</div>
+<div class="L" id="es" lang="es">
+<p class="top"><a class="brand" href="/"><img src="/logo.png" width="36" height="36" alt="">Pitch Instincts</a><span><a href="#nb">Norsk</a> · <a href="#en">English</a> · <a href="#pt">Português</a> · <a href="#it">Italiano</a> · <a href="#fr">Français</a></span></p>
+<h1>Ayuda y soporte</h1>
+<p class="lead">Respuestas a lo que más preguntan los entrenadores. Si no encuentras la tuya, escríbeme. Respondo yo mismo.</p>
+<a class="btn" href="mailto:pitchinstincts@gmail.com?subject=Pitch%20Instincts%3A%20pregunta&amp;body=%C2%A1Hola%21%0A%0A%0A%0A---%0AEscribe%20encima%20de%20la%20l%C3%ADnea.%20Lo%20de%20abajo%20me%20ayuda%3A%0ATel%C3%A9fono%3A%20%0AVersi%C3%B3n%20de%20la%20app%20%28al%20final%20de%20Guardados%29%3A%20%0A">Escríbeme</a>
+<p class="addr"><span>pitchinstincts@gmail.com</span></p>
+
+<h2>¿Qué quieres hacer?</h2>
+<div class="list">
+
+<details id="es-player"><summary>Ver lo que ve un jugador</summary><div class="ans">
+<ol>
+<li>Abre un ejercicio en <span class="ui">Ejercicios</span>.</li>
+<li>Gira el teléfono en horizontal.</li>
+<li>Toca a un jugador.</li>
+</ol>
+<p>Ves lo que ve ese jugador, cómo está orientado el cuerpo y qué desmarque le conviene. A la derecha activas y desactivas las vistas: <span class="ui">Mirada</span>, <span class="ui">Movimiento</span>, <span class="ui">Distancia a los rivales</span> y <span class="ui">Distancia al balón</span>.</p>
+<p>Arrastra a un jugador a otro sitio para ver qué cambia. <span class="ui">Restablecer</span> devuelve a todos adonde los pone el dibujo. ¿No sabes qué significa un color? Toca <span class="ui">Leyenda</span>.</p>
+</div></details>
+
+<details id="es-find"><summary>Buscar ejercicios que encajen</summary><div class="ans">
+<p>En <span class="ui">Ejercicios</span>, elige un tema arriba y después cuántos jugadores tienes y el tamaño de tu espacio. La lista muestra solo lo que encaja.</p>
+<p>En <span class="ui">Mostrar</span> puedes elegir <span class="ui">Solo juego con oposición</span>. También puedes buscar en los nombres y la organización, o abrir <span class="ui">Leer los principios</span> para empezar por la teoría.</p>
+</div></details>
+
+<details id="es-session"><summary>Preparar un entrenamiento</summary><div class="ans">
+<p><span class="ui">Entrenamiento listo</span>: elige un tema o un principio, cuántos minutos tienes, tus jugadores y tu espacio. Recibes 2–3 ejercicios que van de menos a más y juego libre en el último tercio. Toca <span class="ui">Otra propuesta</span> para ver otro.</p>
+<p>O prepáralo tú: toca + en los ejercicios que quieras (hasta seis). En <span class="ui">Borrador</span>, toca <span class="ui">Proponer orden</span> y arrastra los ejercicios adonde quieras. <span class="ui">Guardar entrenamiento</span> lo conserva en <span class="ui">Guardados</span>.</p>
+</div></details>
+
+<details id="es-share"><summary>Compartir un entrenamiento o un ejercicio</summary><div class="ans">
+<p><b>Con otros entrenadores:</b> toca <span class="ui">Compartir con entrenadores (enlace)</span> en Borrador o en Guardados. Ellos abren el entrenamiento en su app. Si no tienen la app, llegan a una página desde la que pueden descargarla gratis.</p>
+<p><b>Una ficha que cualquiera puede leer:</b> <span class="ui">Compartir ficha del entrenamiento (PDF)</span> crea una hoja A4 que puedes enviar por correo o por un chat de grupo, o imprimir.</p>
+<p><b>Un ejercicio en vídeo:</b> abre el ejercicio y toca <span class="ui">Compartir como vídeo</span> debajo del dibujo. La app crea un vídeo vertical corto. Toca <span class="ui">Compartir el vídeo</span> y elige <span class="ui">Guardar vídeo</span> para guardarlo en Fotos, o envíalo directamente a alguien.</p>
+</div></details>
+
+<details id="es-favourites"><summary>Favoritos y un teléfono nuevo</summary><div class="ans">
+<p>Abre un ejercicio y toca la estrella de arriba a la derecha para marcarlo como favorito. <span class="ui">Solo favoritos</span> muestra solo esos.</p>
+<p>Tus favoritos se guardan en tu propio iCloud si has iniciado sesión, así que vuelven cuando cambias de teléfono. Tus entrenamientos en <span class="ui">Guardados</span> están solo en el teléfono. Te siguen si restauras el teléfono nuevo desde una copia de seguridad del antiguo, pero no si lo configuras como nuevo.</p>
+</div></details>
+
+<details id="es-feedback"><summary>Opinar o proponer un ejercicio</summary><div class="ans">
+<p><b>Algo está mal, o bien:</b> abre el ejercicio y toca <span class="ui">Opinar sobre este ejercicio</span>. El correo se abre con el ejercicio y la versión de la app ya rellenados, así veo a cuál te refieres.</p>
+<p><b>Un ejercicio tuyo:</b> en Ejercicios, toca ⋯ arriba a la derecha (<span class="ui">Más</span>), luego <span class="ui">Proponer un ejercicio</span>, y rellena el formulario del correo. Si me dices que puedo usarlo, puede pasar a formar parte de la app.</p>
+<p><b>Una pregunta o una idea:</b> <span class="ui">Enviar comentarios</span>, en el mismo sitio.</p>
+</div></details>
+
+<details id="es-trouble"><summary>Cuando algo no funciona</summary><div class="ans">
+<ol>
+<li>Cierra la app del todo y vuelve a abrirla.</li>
+<li>Comprueba en el App Store que tienes la última versión. Los ejercicios nuevos y las correcciones llegan con las actualizaciones, porque la app no descarga nada de internet.</li>
+<li>La app está hecha para iPhone con iOS 17 o posterior.</li>
+</ol>
+<p>¿Te falta un ejercicio que otro entrenador ha compartido contigo? Entonces tu app es más antigua que la suya. Actualízala y el entrenamiento se abrirá tal como se compartió.</p>
+<p>¿Sigues atascado? Escríbeme y cuéntame qué tocaste y qué pasó.</p>
+</div></details>
+
+<details id="es-about"><summary>Precio, cuenta e internet</summary><div class="ans">
+<p>La app es gratuita. No necesitas cuenta y funciona sin internet. Todo el contenido está en la app. Está en noruego, inglés, portugués (Brasil), italiano, español, francés y sami septentrional (los cinco últimos con traducción automática) y sigue el idioma del teléfono. El sami septentrional se elige en <span class="ui">Más</span> (⋯ arriba a la derecha en Ejercicios).</p>
+<p>La app la ha hecho un entrenador de fútbol. Más información en <a href="/privacy/">privacidad</a>.</p>
+</div></details>
+
+</div>
+
+<section class="card">
+<h2>¿No has encontrado la respuesta?</h2>
+<p>Escríbeme y te responderé lo antes posible. Dime de qué ejercicio se trata y qué teléfono tienes.</p>
+<a class="btn" href="mailto:pitchinstincts@gmail.com?subject=Pitch%20Instincts%3A%20pregunta&amp;body=%C2%A1Hola%21%0A%0A%0A%0A---%0AEscribe%20encima%20de%20la%20l%C3%ADnea.%20Lo%20de%20abajo%20me%20ayuda%3A%0ATel%C3%A9fono%3A%20%0AVersi%C3%B3n%20de%20la%20app%20%28al%20final%20de%20Guardados%29%3A%20%0A">Escríbeme</a>
+<p class="addr"><span>pitchinstincts@gmail.com</span></p>
+<p class="who">Desarrollador: Ørjan Hoff</p>
+</section>
+
+<footer><a href="/">Pitch Instincts</a> · <a href="/privacy/">Privacidad</a><br><a href="https://www.instagram.com/pitch_instincts/">Instagram</a> · <a href="https://www.threads.com/@pitch_instincts">Threads</a> · <a href="https://www.facebook.com/PitchInstincts">Facebook</a></footer>
+</div>
+<div class="L" id="fr" lang="fr">
+<p class="top"><a class="brand" href="/"><img src="/logo.png" width="36" height="36" alt="">Pitch Instincts</a><span><a href="#nb">Norsk</a> · <a href="#en">English</a> · <a href="#pt">Português</a> · <a href="#it">Italiano</a> · <a href="#es">Español</a></span></p>
+<h1>Aide et assistance</h1>
+<p class="lead">Les réponses aux questions que les entraîneurs posent le plus. Si tu ne trouves pas la tienne, écris-moi. Je réponds moi-même.</p>
+<a class="btn" href="mailto:pitchinstincts@gmail.com?subject=Pitch%20Instincts%20%3A%20question&amp;body=Bonjour%20%21%0A%0A%0A%0A---%0A%C3%89cris%20au-dessus%20de%20la%20ligne.%20Ce%20qui%20est%20en%20dessous%20m%27aide%20%3A%0AT%C3%A9l%C3%A9phone%20%3A%20%0AVersion%20de%20l%27app%20%28en%20bas%20d%27Enregistr%C3%A9es%29%20%3A%20%0A">Écris-moi</a>
+<p class="addr"><span>pitchinstincts@gmail.com</span></p>
+
+<h2>Que veux-tu faire ?</h2>
+<div class="list">
+
+<details id="fr-player"><summary>Voir ce que voit un joueur</summary><div class="ans">
+<ol>
+<li>Ouvre un exercice dans <span class="ui">Exercices</span>.</li>
+<li>Tourne le téléphone en mode paysage.</li>
+<li>Touche un joueur.</li>
+</ol>
+<p>Tu vois ce que voit ce joueur, comment son corps est orienté et quel appel lui convient. À droite, tu actives et désactives les vues : <span class="ui">Regard</span>, <span class="ui">Déplacements</span>, <span class="ui">Distance aux adversaires</span> et <span class="ui">Distance au ballon</span>.</p>
+<p>Fais glisser un joueur ailleurs pour voir ce qui change. <span class="ui">Remettre</span> replace tout le monde là où le schéma les a mis. Tu ne sais pas ce que veut dire une couleur ? Touche <span class="ui">Légende</span>.</p>
+</div></details>
+
+<details id="fr-find"><summary>Trouver des exercices adaptés</summary><div class="ans">
+<p>Dans <span class="ui">Exercices</span>, choisis un thème en haut, puis combien de joueurs tu as et la taille de ton espace. La liste ne montre que ce qui convient.</p>
+<p>Dans <span class="ui">Afficher</span>, tu peux choisir <span class="ui">Jeu avec opposition uniquement</span>. Tu peux aussi chercher dans les noms et l'organisation, ou ouvrir <span class="ui">Lire les principes</span> pour partir de la théorie.</p>
+</div></details>
+
+<details id="fr-session"><summary>Préparer une séance</summary><div class="ans">
+<p><span class="ui">Séance prête</span> : choisis un thème ou un principe, combien de minutes tu as, tes joueurs et ton espace. Tu obtiens 2–3 exercices progressifs et du jeu libre pour le dernier tiers. Touche <span class="ui">Une autre proposition</span> pour en avoir une autre.</p>
+<p>Ou prépare-la toi-même : touche + sur les exercices que tu veux (jusqu'à six). Dans <span class="ui">Brouillon</span>, touche <span class="ui">Proposer un ordre</span> et fais glisser les exercices où tu veux. <span class="ui">Enregistrer la séance</span> la garde dans <span class="ui">Enregistrées</span>.</p>
+</div></details>
+
+<details id="fr-share"><summary>Partager une séance ou un exercice</summary><div class="ans">
+<p><b>Avec d'autres entraîneurs :</b> touche <span class="ui">Partager avec des entraîneurs (lien)</span> dans Brouillon ou Enregistrées. Ils ouvrent la séance dans leur app. S'ils n'ont pas l'app, ils arrivent sur une page où ils peuvent la télécharger gratuitement.</p>
+<p><b>Une fiche que tout le monde peut lire :</b> <span class="ui">Partager la fiche de séance (PDF)</span> crée une feuille A4 que tu peux envoyer par e-mail ou dans une discussion de groupe, ou imprimer.</p>
+<p><b>Un exercice en vidéo :</b> ouvre l'exercice et touche <span class="ui">Partager en vidéo</span> sous le schéma. L'app crée une courte vidéo verticale. Touche <span class="ui">Partager la vidéo</span>, puis choisis <span class="ui">Enregistrer la vidéo</span> pour la garder dans Photos, ou envoie-la directement à quelqu'un.</p>
+</div></details>
+
+<details id="fr-favourites"><summary>Favoris et nouveau téléphone</summary><div class="ans">
+<p>Ouvre un exercice et touche l'étoile en haut à droite pour l'ajouter aux favoris. <span class="ui">Favoris uniquement</span> n'affiche que ceux-là.</p>
+<p>Tes favoris sont gardés dans ton propre iCloud si tu y es connecté, donc ils reviennent quand tu changes de téléphone. Tes séances dans <span class="ui">Enregistrées</span> sont seulement sur le téléphone. Elles suivent si tu restaures le nouveau téléphone à partir d'une sauvegarde de l'ancien, mais pas si tu le configures comme neuf.</p>
+</div></details>
+
+<details id="fr-feedback"><summary>Donner un avis ou proposer un exercice</summary><div class="ans">
+<p><b>Quelque chose ne va pas, ou c'est bien :</b> ouvre l'exercice et touche <span class="ui">Donner un avis sur cet exercice</span>. L'e-mail s'ouvre avec l'exercice et la version de l'app déjà remplis, pour que je voie duquel tu parles.</p>
+<p><b>Un exercice à toi :</b> dans Exercices, touche ⋯ en haut à droite (<span class="ui">Plus</span>), puis <span class="ui">Proposer un exercice</span>, et remplis le formulaire dans l'e-mail. Si tu dis que je peux l'utiliser, il pourra entrer dans l'app.</p>
+<p><b>Une question ou une idée :</b> <span class="ui">Envoyer un avis</span>, au même endroit.</p>
+</div></details>
+
+<details id="fr-trouble"><summary>Quand quelque chose ne marche pas</summary><div class="ans">
+<ol>
+<li>Ferme complètement l'app et rouvre-la.</li>
+<li>Vérifie sur l'App Store que tu as la dernière version. Les nouveaux exercices et les corrections arrivent avec les mises à jour, car l'app ne télécharge rien sur internet.</li>
+<li>L'app est faite pour iPhone avec iOS 17 ou une version ultérieure.</li>
+</ol>
+<p>Il te manque un exercice qu'un autre entraîneur a partagé avec toi ? Alors ton app est plus ancienne que la sienne. Mets-la à jour et la séance s'ouvrira telle qu'elle a été partagée.</p>
+<p>Toujours bloqué ? Écris-moi et raconte-moi ce que tu as touché et ce qui s'est passé.</p>
+</div></details>
+
+<details id="fr-about"><summary>Prix, compte et internet</summary><div class="ans">
+<p>L'app est gratuite. Tu n'as pas besoin de compte, et elle fonctionne sans internet. Tout le contenu est dans l'app. Elle existe en norvégien, anglais, portugais (Brésil), italien, espagnol, français et same du Nord (les cinq derniers en traduction automatique) et suit la langue du téléphone. Le same du Nord se choisit dans <span class="ui">Plus</span> (⋯ en haut à droite dans Exercices).</p>
+<p>L'app est faite par un entraîneur de football. Plus d'infos dans la page <a href="/privacy/">confidentialité</a>.</p>
+</div></details>
+
+</div>
+
+<section class="card">
+<h2>Tu n'as pas trouvé ta réponse ?</h2>
+<p>Écris-moi et je te réponds dès que possible. Dis-moi de quel exercice il s'agit et quel téléphone tu as.</p>
+<a class="btn" href="mailto:pitchinstincts@gmail.com?subject=Pitch%20Instincts%20%3A%20question&amp;body=Bonjour%20%21%0A%0A%0A%0A---%0A%C3%89cris%20au-dessus%20de%20la%20ligne.%20Ce%20qui%20est%20en%20dessous%20m%27aide%20%3A%0AT%C3%A9l%C3%A9phone%20%3A%20%0AVersion%20de%20l%27app%20%28en%20bas%20d%27Enregistr%C3%A9es%29%20%3A%20%0A">Écris-moi</a>
+<p class="addr"><span>pitchinstincts@gmail.com</span></p>
+<p class="who">Développeur : Ørjan Hoff</p>
+</section>
+
+<footer><a href="/">Pitch Instincts</a> · <a href="/privacy/">Confidentialité</a><br><a href="https://www.instagram.com/pitch_instincts/">Instagram</a> · <a href="https://www.threads.com/@pitch_instincts">Threads</a> · <a href="https://www.facebook.com/PitchInstincts">Facebook</a></footer>
 </div>
 
 </main></body></html>

@@ -34,18 +34,18 @@ footer{color:var(--muted);font-size:14px;margin-top:28px}footer a{color:var(--mu
 .top{margin:0 0 16px}
 .top a.brand{display:inline-flex;align-items:center;gap:10px;color:var(--text);text-decoration:none;font-weight:700;font-size:17px}
 .top a.brand img{width:36px;height:auto;display:block}
-html[data-lang]:not([data-lang="nb"]) #nb,html[data-lang]:not([data-lang="en"]) #en,html[data-lang]:not([data-lang="pt"]) #pt,html[data-lang]:not([data-lang="it"]) #it{display:none}
+html[data-lang]:not([data-lang="nb"]) #nb,html[data-lang]:not([data-lang="en"]) #en,html[data-lang]:not([data-lang="pt"]) #pt,html[data-lang]:not([data-lang="it"]) #it,html[data-lang]:not([data-lang="es"]) #es,html[data-lang]:not([data-lang="fr"]) #fr{display:none}
 </style>
 <script>
-// Språk: hvor besøkende er fra (norsk når noe i språklista er norsk eller har region Norge, ellers portugisisk når noe er portugisisk, ellers italiensk når noe er italiensk, ellers engelsk), eller #nb / #en / #pt / #it (?lang=nb / ?lang=en / ?lang=pt / ?lang=it) i lenka.
+// Språk: hvor besøkende er fra (norsk når noe i språklista er norsk eller har region Norge, ellers portugisisk når noe er portugisisk, ellers italiensk, ellers spansk, ellers fransk, ellers engelsk), eller #nb / #en / #pt / #it / #es / #fr (?lang=nb / ?lang=en / ?lang=pt / ?lang=it / ?lang=es / ?lang=fr) i lenka.
 // Uten JavaScript står alle språkene under hverandre.
 (function(){
   var d=document.documentElement;
   /*pickLang*/
   function pickLang(langs,search,hash){
-    var o=/^#(nb|en|pt|it)(?:-[a-z]+)?$/.exec(hash||"")||/[?&]lang=(nb|en|pt|it)(?![a-z])/.exec(search||"");
+    var o=/^#(nb|en|pt|it|es|fr)(?:-[a-z]+)?$/.exec(hash||"")||/[?&]lang=(nb|en|pt|it|es|fr)(?![a-z])/.exec(search||"");
     if(o)return o[1];
-    var known=false,port=false,ital=false;
+    var known=false,port=false,ital=false,span=false,fren=false;
     for(var i=0;langs&&i<langs.length;i++){
       var m=/^([a-z]{2,3})(?:-[a-z]{4})?(?:-([a-z]{2}|\d{3}))?(?![a-z0-9])/i.exec(langs[i]||"");
       if(!m)continue;
@@ -53,14 +53,16 @@ html[data-lang]:not([data-lang="nb"]) #nb,html[data-lang]:not([data-lang="en"]) 
       if(/^(nb|nn|no)$/i.test(m[1])||/^(no|sj)$/i.test(m[2]||""))return "nb";
       if(/^pt$/i.test(m[1]))port=true;
       if(/^it$/i.test(m[1]))ital=true;
+      if(/^es$/i.test(m[1]))span=true;
+      if(/^fr$/i.test(m[1]))fren=true;
     }
-    return port?"pt":ital?"it":known?"en":"nb";
+    return port?"pt":ital?"it":span?"es":fren?"fr":known?"en":"nb";
   }
   /*end*/
   function lang(){
     var l=pickLang(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language],location.search,location.hash);
     d.className="js";d.setAttribute("data-lang",l);d.lang=l==="pt"?"pt-BR":l;
-    document.title=l==="nb"?"Personvern · Pitch Instincts":l==="pt"?"Privacidade · Pitch Instincts":"Privacy · Pitch Instincts";
+    document.title=l==="nb"?"Personvern · Pitch Instincts":l==="pt"?"Privacidade · Pitch Instincts":l==="es"?"Privacidad · Pitch Instincts":l==="fr"?"Confidentialité · Pitch Instincts":"Privacy · Pitch Instincts";
   }
   lang();
   window.addEventListener("hashchange",lang);
@@ -69,7 +71,7 @@ html[data-lang]:not([data-lang="nb"]) #nb,html[data-lang]:not([data-lang="en"]) 
 </head>
 <body><main>
 <p class="top"><a class="brand" href="/"><img src="/logo.png" width="36" height="36" alt="">Pitch Instincts</a></p>
-<p class="lang"><a href="#nb">Norsk</a> · <a href="#en">English</a> · <a href="#pt">Português</a> · <a href="#it">Italiano</a></p>
+<p class="lang"><a href="#nb">Norsk</a> · <a href="#en">English</a> · <a href="#pt">Português</a> · <a href="#it">Italiano</a> · <a href="#es">Español</a> · <a href="#fr">Français</a></p>
 
 <section class="card" id="nb" lang="nb">
 <h1>Personvern i Pitch Instincts</h1>
@@ -245,6 +247,94 @@ html[data-lang]:not([data-lang="nb"]) #nb,html[data-lang]:not([data-lang="en"]) 
 <p>Se qualcosa cambia, aggiornerò questa pagina e la data in alto.</p>
 
 <h2>Responsabile</h2>
+<p>Ørjan Hoff · <a href="mailto:pitchinstincts@gmail.com">pitchinstincts@gmail.com</a></p>
+</section>
+<section class="card" id="es" lang="es">
+<h1>Privacidad en Pitch Instincts</h1>
+<p class="updated">Última actualización: 19 de octubre de 2026.</p>
+<p class="updated">Traducción automática del texto en noruego e inglés. En caso de duda, prevalece la versión en noruego.</p>
+<p>En resumen: Pitch Instincts no recoge datos personales sobre ti. La app no tiene cuenta, ni anuncios, ni seguimiento, ni herramientas de análisis de terceros.</p>
+
+<h2>Qué se guarda y dónde</h2>
+<ul>
+<li>En tu teléfono: lo que eliges en la app (número de jugadores, espacio, filtros y qué botones están activados), tus favoritos y los entrenamientos que guardas, con las notas que escribes. La app también recuerda algunos contadores sencillos, como cuántos días y qué ejercicios has abierto, y cuántas veces has probado una función. Solo sirven para decidir cuándo la app muestra un consejo y, muy de vez en cuando y solo después de mucho uso, pide una valoración en el App Store. La app no envía nada de esto a ningún sitio.</li>
+<li>Tus favoritos se copian en tu propio iCloud si has iniciado sesión, para que te sigan a un teléfono nuevo. Esa es tu cuenta con Apple, y yo no tengo acceso a ella.</li>
+<li>El contenido (ejercicios, dibujos y textos) está en la app. La app no descarga nada de internet, no usa la ubicación, la cámara, el micrófono ni los contactos, y no lee tus fotos.</li>
+<li>Si compartes un ejercicio como vídeo, la app crea el vídeo en tu teléfono y no me lo envía. Si eliges «Guardar vídeo» en la hoja de compartir, iOS guarda el vídeo en Fotos. La app solo puede añadir y nunca puede ver tus fotos.</li>
+</ul>
+
+<h2>Cuando envías algo tú</h2>
+<ul>
+<li>Comentarios y propuestas de ejercicios: «Enviar comentarios», «Opinar sobre este ejercicio» y «Proponer un ejercicio» abren Mail con un correo ya dirigido a <a href="mailto:pitchinstincts@gmail.com">pitchinstincts@gmail.com</a>. Al final están el número del ejercicio, la versión de la app, la versión del contenido y el idioma, para que pueda encontrar el ejercicio al que te refieres. Ves el correo entero y decides si lo envías. Si lo envías, recibo tu dirección de correo y lo que escribas. Solo lo uso para responderte y para mejorar la app, y no lo comparto con nadie. Si reúno los comentarios en un resumen aparte, solo guardo el texto y un código corto calculado a partir de tu dirección, para poder ver que dos mensajes vienen del mismo remitente. La dirección en sí no está ahí. Si propones un ejercicio y dices que puedo usarlo, el ejercicio puede pasar a formar parte de la app. Lo que se usa es el ejercicio, no tu dirección de correo. Si respondes que sí a que aparezca tu nombre, el nombre que indiques aparece como «Propuesto por …» en ese ejercicio, en el vídeo que se puede compartir desde la app. Si respondes que no, no aparece ningún nombre.</li>
+<li>Compartir un entrenamiento: cuando compartes un entrenamiento (como enlace o PDF), eliges el destinatario en la hoja de compartir de iOS. La app no envía nada por sí sola. El enlace lleva a la web (ver más abajo).</li>
+</ul>
+
+<h2>La web pitchinstincts.no</h2>
+<p>Los enlaces compartidos, y el código QR de los vídeos y de las fichas en PDF, llevan a la web pitchinstincts.no. Te ayuda a abrir la app o a descargarla. El entrenamiento que compartes está en el enlace, después del signo #, y esa parte nunca se envía a la web: solo la lee la app o el navegador del teléfono del destinatario. La web no tiene cuenta, ni cookies, ni seguimiento, ni estadísticas, y no carga nada de otras webs. Está alojada en GitHub (GitHub Pages). Como en cualquier web, el proveedor de alojamiento puede tratar información técnica sobre una visita, como la dirección IP, según sus propias condiciones (<a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">declaración de privacidad de GitHub</a>).</p>
+
+<h2>Terceros</h2>
+<p>La app no contiene herramientas de terceros de análisis, seguimiento ni publicidad, y no comparte datos con nadie. La web se describe arriba. Los enlaces a Instagram, Threads y Facebook, en «Sobre la app» y al pie de la web, se abren fuera de Pitch Instincts (en la otra app o en el navegador), y allí se aplican las condiciones y la política de privacidad de esos servicios.</p>
+
+<h2>Android</h2>
+<p>Pitch Instincts para Android hace lo mismo que la app para iPhone: sin cuenta, sin anuncios, sin seguimiento, y la app no envía nada por sí sola. Si eliges «Guardar en la galería» en un vídeo, el vídeo se añade a la carpeta de fotos del teléfono (la app solo puede añadir, no leer tus fotos). Si la app te pide una valoración, es el propio cuadro de diálogo de Google Play, gestionado por Google Play según la política de privacidad de Google.</p>
+
+<h2>Niños</h2>
+<p>La app está hecha para entrenadores y no recoge información de nadie, tampoco de niños.</p>
+
+<h2>Tus derechos</h2>
+<p>Puedes pedir ver, corregir o borrar los correos que me has enviado y el nombre que diste como colaborador escribiendo a <a href="mailto:pitchinstincts@gmail.com">pitchinstincts@gmail.com</a>. Los borro cuando me lo pidas. También puedes presentar una reclamación ante la Autoridad Noruega de Protección de Datos (<a href="https://www.datatilsynet.no">datatilsynet.no</a>).</p>
+
+<h2>Cuánto tiempo y por qué</h2>
+<p>Uso tu correo porque fuiste tú quien se puso en contacto conmigo, y tu nombre solo si dijiste que sí a que apareciera. Guardo el correo mientras lo necesite para responderte y mejorar la app, y lo borro como máximo a los dos años.</p>
+
+<h2>Cambios</h2>
+<p>Si esto cambia, actualizaré esta página y la fecha de arriba.</p>
+
+<h2>Responsable</h2>
+<p>Ørjan Hoff · <a href="mailto:pitchinstincts@gmail.com">pitchinstincts@gmail.com</a></p>
+</section>
+<section class="card" id="fr" lang="fr">
+<h1>Confidentialité dans Pitch Instincts</h1>
+<p class="updated">Dernière mise à jour : 19 octobre 2026.</p>
+<p class="updated">Traduction automatique du texte en norvégien et en anglais. En cas de doute, la version norvégienne fait foi.</p>
+<p>En bref : Pitch Instincts ne collecte aucune donnée personnelle sur toi. L'app n'a ni compte, ni publicité, ni suivi, ni outils d'analyse de tiers.</p>
+
+<h2>Ce qui est enregistré, et où</h2>
+<ul>
+<li>Sur ton téléphone : les choix que tu fais dans l'app (nombre de joueurs, espace, filtres et boutons activés), tes favoris et les séances que tu enregistres, avec les notes que tu écris. L'app retient aussi quelques compteurs simples, comme combien de jours et quels exercices tu as ouverts, et combien de fois tu as essayé une fonction. Ils servent uniquement à décider quand l'app affiche un conseil et, très rarement et seulement après une longue utilisation, demande une note sur l'App Store. L'app n'envoie rien de tout cela nulle part.</li>
+<li>Tes favoris sont copiés dans ton propre iCloud si tu y es connecté, pour qu'ils te suivent sur un nouveau téléphone. C'est ton compte chez Apple, et je n'y ai pas accès.</li>
+<li>Le contenu (exercices, schémas et textes) est dans l'app. L'app ne télécharge rien sur internet, n'utilise ni la localisation, ni l'appareil photo, ni le micro, ni les contacts, et ne lit pas tes photos.</li>
+<li>Si tu partages un exercice en vidéo, l'app crée la vidéo sur ton téléphone et ne me l'envoie pas. Si tu choisis « Enregistrer la vidéo » dans la feuille de partage, iOS enregistre la vidéo dans Photos. L'app peut seulement ajouter et ne peut jamais voir tes photos.</li>
+</ul>
+
+<h2>Quand tu envoies quelque chose toi-même</h2>
+<ul>
+<li>Avis et propositions d'exercices : « Envoyer un avis », « Donner un avis sur cet exercice » et « Proposer un exercice » ouvrent Mail avec un e-mail déjà adressé à <a href="mailto:pitchinstincts@gmail.com">pitchinstincts@gmail.com</a>. En bas figurent le numéro de l'exercice, la version de l'app, la version du contenu et la langue, pour que je retrouve l'exercice dont tu parles. Tu vois tout l'e-mail et tu décides de l'envoyer ou non. Si tu l'envoies, je reçois ton adresse e-mail et ce que tu écris. Je l'utilise uniquement pour te répondre et pour améliorer l'app, et je ne le partage avec personne. Si je rassemble les avis dans un récapitulatif à part, je ne garde que le texte et un code court calculé à partir de ton adresse, pour voir que deux messages viennent du même expéditeur. L'adresse elle-même n'y figure pas. Si tu proposes un exercice et dis que je peux l'utiliser, l'exercice pourra entrer dans l'app. C'est l'exercice qui est utilisé, pas ton adresse e-mail. Si tu réponds oui à la question d'être nommé, le nom que tu indiques apparaît sous la forme « Proposé par … » sur cet exercice, dans la vidéo qu'on peut partager depuis l'app. Si tu réponds non, aucun nom n'apparaît.</li>
+<li>Partager une séance : quand tu partages une séance (en lien ou en PDF), tu choisis le destinataire dans la feuille de partage d'iOS. L'app n'envoie rien d'elle-même. Le lien mène au site (voir plus bas).</li>
+</ul>
+
+<h2>Le site pitchinstincts.no</h2>
+<p>Les liens partagés, et le QR code des vidéos et des fiches PDF, mènent au site pitchinstincts.no. Il t'aide à ouvrir l'app ou à la télécharger. La séance que tu partages se trouve dans le lien après le signe #, et cette partie n'est jamais envoyée au site : elle est lue uniquement par l'app ou par le navigateur du téléphone du destinataire. Le site n'a ni compte, ni cookies, ni suivi, ni statistiques, et ne charge rien depuis d'autres sites. Il est hébergé par GitHub (GitHub Pages). Comme pour tout site, l'hébergeur peut traiter des informations techniques sur une visite, comme l'adresse IP, selon ses propres conditions (<a href="https://docs.github.com/en/site-policy/privacy-policies/github-general-privacy-statement">la déclaration de confidentialité de GitHub</a>).</p>
+
+<h2>Tiers</h2>
+<p>L'app ne contient aucun outil de tiers pour l'analyse, le suivi ou la publicité, et ne partage de données avec personne. Le site est décrit ci-dessus. Les liens vers Instagram, Threads et Facebook, dans « À propos de l'app » et en bas du site, s'ouvrent en dehors de Pitch Instincts (dans l'autre app ou dans le navigateur), et ce sont alors les conditions et la politique de confidentialité de ces services qui s'appliquent.</p>
+
+<h2>Android</h2>
+<p>Pitch Instincts pour Android fait la même chose que l'app pour iPhone : pas de compte, pas de publicité, pas de suivi, et l'app n'envoie rien d'elle-même. Si tu choisis « Enregistrer dans la galerie » sur une vidéo, la vidéo est ajoutée au dossier photos du téléphone (l'app peut seulement ajouter, pas lire tes photos). Si l'app te demande une note, c'est la boîte de dialogue de Google Play elle-même, gérée par Google Play selon les règles de confidentialité de Google.</p>
+
+<h2>Enfants</h2>
+<p>L'app est faite pour les entraîneurs et ne collecte d'informations sur personne, enfants compris.</p>
+
+<h2>Tes droits</h2>
+<p>Tu peux demander à voir, corriger ou supprimer les e-mails que tu m'as envoyés et le nom que tu as donné comme contributeur en écrivant à <a href="mailto:pitchinstincts@gmail.com">pitchinstincts@gmail.com</a>. Je les supprime quand tu le demandes. Tu peux aussi déposer une plainte auprès de l'autorité norvégienne de protection des données (<a href="https://www.datatilsynet.no">datatilsynet.no</a>).</p>
+
+<h2>Combien de temps et pourquoi</h2>
+<p>J'utilise ton e-mail parce que c'est toi qui m'as contacté, et ton nom seulement si tu as accepté d'être nommé. Je garde l'e-mail tant que j'en ai besoin pour te répondre et améliorer l'app, et je le supprime au plus tard au bout de deux ans.</p>
+
+<h2>Modifications</h2>
+<p>Si cela change, je mettrai à jour cette page et la date ci-dessus.</p>
+
+<h2>Responsable</h2>
 <p>Ørjan Hoff · <a href="mailto:pitchinstincts@gmail.com">pitchinstincts@gmail.com</a></p>
 </section>
 
