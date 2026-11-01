@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="referrer" content="no-referrer">
 <title>Pitch Instincts</title>
-<meta name="description" content="Gratis app for fotballtrenere, laget av en trener. Se øvelsene animert. / A free app for football coaches, made by a coach. See the exercises animated. / App gratuito para treinadores de futebol, feito por um treinador. Veja os exercícios animados.">
+<meta name="description" content="Gratis app som viser spillerne hvor de skal se, hvordan de skal stå og hvor de skal flytte seg. Laget av en trener. / A free app that shows players where to look, how to stand and where to move. Made by a coach. / App gratuito que mostra aos jogadores para onde olhar, como posicionar o corpo e para onde se mover. Feito por um treinador.">
 <meta name="theme-color" content="#000000">
 <link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
@@ -13,7 +13,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Pitch Instincts">
 <meta property="og:title" content="Pitch Instincts">
-<meta property="og:description" content="Gratis app for fotballtrenere, laget av en trener. Se øvelsene animert. / A free app for football coaches, made by a coach. See the exercises animated. / App gratuito para treinadores de futebol, feito por um treinador. Veja os exercícios animados.">
+<meta property="og:description" content="Gratis app som viser spillerne hvor de skal se, hvordan de skal stå og hvor de skal flytte seg. Laget av en trener. / A free app that shows players where to look, how to stand and where to move. Made by a coach. / App gratuito que mostra aos jogadores para onde olhar, como posicionar o corpo e para onde se mover. Feito por um treinador.">
 <meta property="og:url" content="https://pitchinstincts.no/">
 <meta property="og:image" content="https://pitchinstincts.no/og.jpg">
 <meta property="og:image:width" content="1200">
@@ -24,15 +24,23 @@
 :root{--bg:#000000;--card:#151515;--text:#f5f5f5;--muted:#a8a8a8;--accent:#9be21c;--btn:#ffffff;--btntext:#000000}
 *{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--text);font:17px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
 main{max-width:520px;margin:0 auto;padding:40px 20px 56px}
-h1{font-size:30px;line-height:1.15;margin:0 0 6px}.tag{color:var(--muted);margin:0 0 28px}
-.card{background:var(--card);border-radius:16px;padding:20px;margin:0 0 18px}
-.card h2{font-size:20px;margin:0 0 8px}.note{white-space:pre-wrap;border-left:3px solid var(--accent);padding-left:12px;margin:12px 0 0}
-a.btn{display:block;text-align:center;text-decoration:none;font-weight:600;background:var(--btn);color:var(--btntext);border-radius:12px;padding:14px 16px;margin:10px 0 0}
-a.btn.ghost{background:transparent;color:var(--text);border:1.5px solid var(--muted)}
+h1{font-size:34px;line-height:1.1;margin:0 0 10px;text-wrap:balance}.tag{color:var(--muted);margin:0 0 18px}.tag b{font-weight:600}
 a.badge{display:flex;justify-content:center;margin:12px 0 0}a.badge img{display:block;height:48px;width:auto;max-width:100%}a.badge:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:10px}
-.soon{color:var(--muted);text-align:center;margin:14px 0 0;font-size:15px}
-.card.test{border:1.5px solid var(--accent)}.card.test p{color:var(--muted);margin:0 0 12px}.card.test .wait{font-size:14px;text-align:center;margin:12px 0 0}
-a.btn.primary{background:var(--accent);color:var(--btntext)}
+figure.loop{margin:0 0 18px}figure.loop video{display:block;width:100%;height:auto;border-radius:14px;background:#1d4d2c}
+figure.loop figcaption{color:var(--muted);font-size:15px;text-align:center;margin:8px 0 0}
+.store{margin:0 0 30px}.store a.badge{margin:0 0 10px}
+.facts{text-align:center;font-size:15px;margin:0 0 6px}.facts span{white-space:nowrap}
+.droid{text-align:center;font-size:15px;margin:0}.droid a{color:var(--accent);text-decoration:none;font-weight:600}.droid a:hover{text-decoration:underline}.droid a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+h2{font-size:21px;line-height:1.25;margin:0 0 8px}p{margin:0 0 14px}.lead{color:var(--muted)}.lead b{color:var(--text);font-weight:600}
+table.cmp{width:100%;border-collapse:separate;border-spacing:0;table-layout:fixed;margin:12px 0 30px;background:var(--card);border-radius:16px;overflow:hidden}
+table.cmp th,table.cmp td{text-align:left;vertical-align:top;padding:12px 14px;font-size:15px;line-height:1.35}
+table.cmp tbody td{border-top:1px solid #262626}table.cmp .yes{border-left:1px solid #262626}table.cmp td.no{color:var(--muted)}
+table.cmp th{font-size:12px;font-weight:700;letter-spacing:.04em;text-transform:uppercase}table.cmp th.no{color:#8a8a8a}table.cmp th.yes{color:var(--accent)}
+table.cmp td.yes::before{content:"\2713\00a0";color:var(--accent);font-weight:700}
+ol.steps{list-style:none;padding:0;margin:14px 0 24px;counter-reset:s}ol.steps li{counter-increment:s;position:relative;padding:0 0 14px 44px;min-height:44px}
+ol.steps li::before{content:counter(s);position:absolute;left:0;top:-2px;width:30px;height:30px;border-radius:50%;background:var(--accent);color:var(--btntext);font-weight:700;display:grid;place-items:center}
+.lead+h2{margin-top:26px}
+.fine{color:var(--muted);text-align:center;font-size:15px;margin:0}
 footer{color:var(--muted);font-size:14px;margin-top:28px}footer a{color:var(--muted)}
 .logo{display:block;width:120px;height:auto;margin:0 0 14px}
 .hero{display:flex;align-items:center;gap:16px;margin:0 0 14px}.hero .logo{margin:0;flex:none}
@@ -46,10 +54,29 @@ a.bubble:hover{background:#fff}a.bubble:focus-visible{outline:2px solid var(--ac
 </head>
 <body><main>
 <div class="hero"><img class="logo" src="/logo.png" width="120" height="120" alt=""><a class="bubble" id="bubble" href="https://www.instagram.com/reel/DfLaKy-ifTU/"><span id="bubbletext">Unpopular opinion: a man down, nobody should mark anyone.</span></a></div>
-<h1>Pitch <span class="lime">Instincts</span></h1>
-<p class="tag" id="tag">Gratis app for fotballtrenere, laget av en trener. Se øvelsene animert.</p>
-<div class="card" id="storecard"><a class="badge" id="appstore" href="https://apps.apple.com/app/id6818114354"><img src="/badges/app-store-no.png" width="144" height="48" alt="Last ned fra App Store"></a><a class="badge" id="play" hidden><img width="161" height="48" alt=""></a><p class="soon" id="soon">Android-utgaven kommer.</p></div>
-<div class="card test" id="testcard"><h2 id="testhead">Vi trenger flere Android-testere</h2><p id="testtext">Pitch Instincts kommer til Google Play. Google krever at minst 12 tester appen i 14 dager. 12 har meldt seg, men vi trenger flere for å være trygge. Testen kan tidligst være ferdig 4.–5. november. Det tar to minutter å bli med.</p><p id="testfriend" hidden></p><a class="btn primary" id="androidtest" href="/android/">Bli testtrener på Android</a><p class="wait" id="testwait">Google kan bruke litt tid før appen dukker opp. Vær tålmodig.</p></div>
+<h1 id="headline">Se spillet før ballen kommer.</h1>
+<p class="tag"><b class="lime" id="craft">Fotballen er faget.</b> <span id="tag">Pitch Instincts viser spillerne hvor de skal se, hvordan de skal stå og hvor de skal flytte seg, så det blir vaner de har resten av livet.</span></p>
+<figure class="loop"><video id="loop" src="/loop.mp4" poster="/loop-poster.jpg" autoplay muted loop playsinline preload="metadata" width="848" height="404" aria-label="Animasjon fra appen: en øvelse spilles av, og en spiller blir trykket på."></video>
+<figcaption id="cap">Trykk på en spiller. Se hva han ser.</figcaption></figure>
+<div class="store" id="storecard"><a class="badge" id="appstore" href="https://apps.apple.com/app/id6818114354"><img src="/badges/app-store-no.png" width="144" height="48" alt="Last ned fra App Store"></a><a class="badge" id="play" hidden><img width="161" height="48" alt=""></a>
+<p class="facts" id="facts"><span>Gratis</span> · <span>Ingen registrering</span> · <span>Ingen reklame</span> · <span>Virker uten nett</span></p>
+<p class="droid" id="soon"><span id="droidtext">Android kommer snart.</span> <a id="droidlink" href="/android/">Bli testtrener →</a></p></div>
+<h2 id="cmphead">Det du roper i dag, og det du kan vise ham</h2>
+<table class="cmp"><thead><tr><th class="no" id="colno" scope="col">Det du roper i dag</th><th class="yes" id="colyes" scope="col">Det du kan vise ham</th></tr></thead><tbody>
+<tr><td class="no" id="r1n">«Se opp!», uten at han vet hvor</td><td class="yes" id="r1y">Hvor han skal se før ballen kommer</td></tr>
+<tr><td class="no" id="r2n">«Åpne deg!»</td><td class="yes" id="r2y">Hvordan han står for å se neste pasning</td></tr>
+<tr><td class="no" id="r3n">«Vis deg!»</td><td class="yes" id="r3y">Hvor han blir spillbar når han ikke har ballen</td></tr>
+<tr><td class="no" id="r4n">«Hvorfor stod du der?»</td><td class="yes" id="r4y">Dra ham et annet sted og se hva som endrer seg</td></tr>
+</tbody></table>
+<h2 id="habithead">Vaner varer lenger enn øvelser</h2>
+<p class="lead" id="habittext">Vaner er tunge å endre, så de gode bør komme tidlig. Rom er tid, og tid gir gode beslutninger.</p>
+<h2 id="probhead">Øv på problemer, ikke på svar</h2>
+<p class="lead"><span id="proba">De fleste øvelsene er spill med med- og motspillere. Vil du trene avslutninger, trenger du ingen skuddkø: ta en øvelse som base og legg til én regel,</span> <b id="probb">lov å skyte etter tre pasninger.</b> <span id="probc">Da løser spillerne problemet selv, og ingen avslutning er lik.</span></p>
+<h2 id="howhead">Slik bruker du den</h2>
+<ol class="steps"><li><b id="s1b">Se øvelsen spilles av.</b> <span id="s1t">Rondoer, press, oppbygging og omstillinger, animert.</span></li>
+<li><b id="s2b">Trykk på en spiller.</b> <span id="s2t">Se hvor han ser, hvordan han står og hvor han flytter seg.</span></li>
+<li><b id="s3b">Del økta.</b> <span id="s3t">Andre trenere åpner den i appen, alle andre får en PDF. Send den til spillerne dagen før.</span></li></ol>
+<p class="fine" id="fine">Laget av en trener. Appen samler ikke inn noe om deg.</p>
 <footer><span id="by"></span><br><a id="support" href="/support/"></a> · <a id="privacy" href="/privacy/"></a> · <a id="androidfoot" href="/android/"></a> · <span id="langswitch"></span><br><a href="https://www.instagram.com/pitch_instincts/">Instagram</a> · <a href="https://www.threads.com/@pitch_instincts">Threads</a> · <a href="https://www.facebook.com/PitchInstincts">Facebook</a></footer>
 </main>
 <script>
@@ -83,6 +110,8 @@ const isIOS=/iPhone|iPad|iPod/.test(ua)||(/Macintosh/.test(ua)&&navigator.maxTou
 const isAndroid=/Android/.test(ua);
 function t(no,en,p,i,s,f){return nb?no:pt&&p!==undefined?p:it&&i!==undefined?i:es&&s!==undefined?s:fr&&f!==undefined?f:en}
 function setText(id,s){const e=document.getElementById(id);if(e)e.textContent=s}
+// Faktalinja brytes bare mellom punktene, aldri inni «Virker uten nett»
+function setFacts(id,s){const e=document.getElementById(id);if(!e)return;e.textContent="";s.split(" · ").forEach(function(x,i){if(i)e.appendChild(document.createTextNode(" · "));const sp=document.createElement("span");sp.textContent=x;e.appendChild(sp)})}
 function badge(a,file,alt){const i=a.firstElementChild;i.src="/badges/"+file+".png";i.alt=alt}
 function stores(){
   const a=document.getElementById("appstore"),p=document.getElementById("play"),s=document.getElementById("soon");
@@ -90,24 +119,49 @@ function stores(){
   const L=nb?"no":pt?"pt":it?"it":"en";
   a.href=APP_STORE;badge(a,"app-store-"+L,t("Last ned fra App Store","Download on the App Store","Baixar na App Store","Scarica su App Store","Descargar en el App Store","Télécharger dans l'App Store"));
   if(PLAY_LIVE){p.href=PLAY;badge(p,"google-play-"+L,t("Last ned på Google Play","Get it on Google Play","Disponível no Google Play","Disponibile su Google Play","Disponible en Google Play","Disponible sur Google Play"));p.hidden=false;s.hidden=true}
-  else{p.hidden=true;s.hidden=false;s.textContent=t("Android-utgaven kommer.","The Android version is coming.","A versão para Android está chegando.","La versione per Android sta arrivando.","La versión para Android está en camino.","La version Android arrive bientôt.")}
+  else{p.hidden=true;s.hidden=false;setText("droidtext",t("Android kommer snart.","Android is coming.","O Android vem aí.","Android in arrivo.","Android llega pronto.","Android arrive bientôt."));setText("droidlink",t("Bli testtrener →","Become a test coach →","Seja testador →","Diventa tester →","Hazte tester →","Deviens testeur →"))}
   if(isIOS)p.hidden=true; if(isAndroid&&PLAY_LIVE)a.hidden=true;
-  const tc=document.getElementById("testcard");
-  if(tc){
-    tc.hidden=PLAY_LIVE;
-    // Snakkeboblen ved logoen: kort som et Instagram-notat (høyst 60 tegn), og borte når appen er i Google Play
-    const bb=document.getElementById("bubble");if(bb){setText("bubbletext",t("Unpopular opinion: a man down, nobody should mark anyone.","Unpopular opinion: a man down, nobody should mark anyone.","Unpopular opinion: a man down, nobody should mark anyone.","Unpopular opinion: a man down, nobody should mark anyone.","Unpopular opinion: a man down, nobody should mark anyone.","Unpopular opinion: a man down, nobody should mark anyone."))}
-    setText("testhead",t("Vi trenger flere Android-testere","We need more Android testers","Precisamos de mais testadores no Android","Cerchiamo altri tester su Android","Necesitamos más testers en Android","Il nous faut plus de testeurs sur Android"));
-    setText("testtext",t("Pitch Instincts kommer til Google Play. Google krever at minst 12 tester appen i 14 dager. 12 har meldt seg, men vi trenger flere for å være trygge. Testen kan tidligst være ferdig 4.–5. november. Det tar to minutter å bli med.","Pitch Instincts is coming to Google Play. Google requires at least 12 people to test the app for 14 days. 12 have signed up, but we need more to be safe. The test can be finished on 4–5 November at the earliest. Joining takes two minutes.","O Pitch Instincts está chegando ao Google Play. O Google exige que pelo menos 12 pessoas testem o app por 14 dias. 12 já se inscreveram, mas precisamos de mais gente para ficar tranquilos. O teste só pode terminar em 4–5 de novembro, no mínimo. Entrar leva dois minutos.","Pitch Instincts sta arrivando su Google Play. Google richiede che almeno 12 persone testino l'app per 14 giorni. Se ne sono iscritte 12, ma ne servono altre per stare tranquilli. Il test può finire al più presto il 4–5 novembre. Partecipare richiede due minuti.","Pitch Instincts llega a Google Play. Google exige que al menos 12 personas prueben la app durante 14 días. Ya se han inscrito 12, pero necesitamos más para ir sobre seguro. La prueba no puede terminar antes del 4–5 de noviembre. Inscribirte lleva dos minutos.","Pitch Instincts arrive sur Google Play. Google exige qu'au moins 12 personnes testent l'app pendant 14 jours. 12 se sont inscrites, mais il en faut plus par sécurité. Le test ne peut pas se terminer avant le 4–5 novembre. S'inscrire prend deux minutes."));
-    setText("androidtest",t("Bli testtrener på Android","Become an Android test coach","Seja testador no Android","Diventa tester su Android","Hazte tester en Android","Deviens testeur sur Android"));
-    setText("testwait",t("Google kan bruke litt tid før appen dukker opp. Vær tålmodig.","Google can take a little while to show the app. Please be patient.","O Google pode demorar um pouco para mostrar o app. Tenha paciência.","Google può metterci un po' a mostrare l'app. Abbi pazienza.","Google puede tardar un poco en mostrar la app. Ten paciencia.","Google peut mettre un peu de temps à afficher l'app. Sois patient."));
-    const f=document.getElementById("testfriend");f.textContent=t("Kjenner du noen med Android? Send dem hit.","Know someone on Android? Send them here.","Conhece alguém que usa Android? Envie esta página.","Conosci qualcuno con Android? Mandalo qui.","¿Conoces a alguien con Android? Envíale esta página.","Tu connais quelqu'un sur Android ? Envoie-lui cette page.");f.hidden=isAndroid;
-    // Android-besøkende har ingen nytte av App Store: testingen står først for dem
-    if(isAndroid&&!PLAY_LIVE)tc.parentNode.insertBefore(tc,document.getElementById("storecard"));
-  }
 }
+// Snakkeboblen ved logoen: kroken fra siste innlegg, høyst 60 tegn, lik på alle språk (settes med verktøyet for boblen)
+const bb=document.getElementById("bubble");if(bb){setText("bubbletext",t("Unpopular opinion: a man down, nobody should mark anyone.","Unpopular opinion: a man down, nobody should mark anyone.","Unpopular opinion: a man down, nobody should mark anyone.","Unpopular opinion: a man down, nobody should mark anyone.","Unpopular opinion: a man down, nobody should mark anyone.","Unpopular opinion: a man down, nobody should mark anyone."))}
+
 document.documentElement.lang=nb?"nb":pt?"pt-BR":it?"it":es?"es":fr?"fr":"en";
-setText("tag",t("Gratis app for fotballtrenere, laget av en trener. Se øvelsene animert.","A free app for football coaches, made by a coach. See the exercises animated.","App gratuito para treinadores de futebol, feito por um treinador. Veja os exercícios animados.","App gratuita per allenatori di calcio, fatta da un allenatore. Guarda gli esercizi animati.","App gratuita para entrenadores de fútbol, hecha por un entrenador. Mira los ejercicios animados.","App gratuite pour les entraîneurs de football, faite par un entraîneur. Regarde les exercices animés."));
+// Forsiden (Ørjan 2026-11-01: «Se spillet før ballen kommer.»): én tekst per språk, norsk står i HTML-en uten JavaScript
+setText("headline",t("Se spillet før ballen kommer.","See the game before the ball arrives.","Veja o jogo antes da bola chegar.","Vedi il gioco prima che arrivi la palla.","Mira el juego antes de que llegue el balón.","Vois le jeu avant que le ballon arrive."));
+setText("craft",t("Fotballen er faget.","Football is the craft.","O futebol é o ofício.","Il calcio è il mestiere.","El fútbol es el oficio.","Le football est le métier."));
+setText("tag",t("Pitch Instincts viser spillerne hvor de skal se, hvordan de skal stå og hvor de skal flytte seg, så det blir vaner de har resten av livet.","Pitch Instincts shows players where to look, how to stand and where to move, so it becomes a habit they keep for life.","O Pitch Instincts mostra aos jogadores para onde olhar, como posicionar o corpo e para onde se mover, para que isso vire um hábito para a vida toda.","Pitch Instincts mostra ai giocatori dove guardare, come orientare il corpo e dove muoversi, così diventa un'abitudine che resta per tutta la vita.","Pitch Instincts muestra a los jugadores dónde mirar, cómo orientar el cuerpo y hacia dónde moverse, para que se convierta en un hábito para toda la vida.","Pitch Instincts montre aux joueurs où regarder, comment orienter leur corps et où se déplacer, pour que cela devienne une habitude qu'ils gardent toute leur vie."));
+setText("cap",t("Trykk på en spiller. Se hva han ser.","Tap a player. See what he sees.","Toque em um jogador. Veja o que ele vê.","Tocca un giocatore. Guarda quello che vede.","Toca a un jugador. Mira lo que ve.","Touche un joueur. Vois ce qu'il voit."));
+setFacts("facts",t("Gratis · Ingen registrering · Ingen reklame · Virker uten nett","Free · No sign-up · No ads · Works offline","Gratuito · Sem cadastro · Sem anúncios · Funciona sem internet","Gratis · Nessuna registrazione · Nessuna pubblicità · Funziona senza internet","Gratis · Sin registro · Sin anuncios · Funciona sin internet","Gratuit · Sans inscription · Sans publicité · Fonctionne sans internet"));
+setText("cmphead",t("Det du roper i dag, og det du kan vise ham","What you shout today, and what you can show him","O que você grita hoje, e o que você pode mostrar a ele","Quello che urli oggi, e quello che puoi fargli vedere","Lo que gritas hoy, y lo que puedes mostrarle","Ce que tu cries aujourd'hui, et ce que tu peux lui montrer"));
+setText("colno",t("Det du roper i dag","What you shout today","O que você grita hoje","Quello che urli oggi","Lo que gritas hoy","Ce que tu cries aujourd'hui"));
+setText("colyes",t("Det du kan vise ham","What you can show him","O que você pode mostrar a ele","Quello che puoi fargli vedere","Lo que puedes mostrarle","Ce que tu peux lui montrer"));
+setText("r1n",t("«Se opp!», uten at han vet hvor","“Look up!”, but he doesn't know where","“Levanta a cabeça!”, sem ele saber para onde","«Alza la testa!», ma lui non sa dove","«¡Levanta la cabeza!», pero él no sabe hacia dónde","« Lève la tête ! », mais il ne sait pas où"));
+setText("r1y",t("Hvor han skal se før ballen kommer","Where to look before the ball comes","Para onde olhar antes da bola chegar","Dove guardare prima che arrivi la palla","Hacia dónde mirar antes de que llegue el balón","Où regarder avant que le ballon arrive"));
+setText("r2n",t("«Åpne deg!»","“Open up!”","“Abre o corpo!”","«Apriti!»","«¡Ábrete!»","« Ouvre-toi ! »"));
+setText("r2y",t("Hvordan han står for å se neste pasning","How to stand to see the next pass","Como posicionar o corpo para ver o próximo passe","Come orientare il corpo per vedere il prossimo passaggio","Cómo orientar el cuerpo para ver el siguiente pase","Comment orienter son corps pour voir la passe suivante"));
+setText("r3n",t("«Vis deg!»","“Show for it!”","“Dá linha de passe!”","«Smarcati!»","«¡Ofrécete!»","« Rends-toi disponible ! »"));
+setText("r3y",t("Hvor han blir spillbar når han ikke har ballen","Where he can be found without the ball","Onde ele pode ser encontrado sem a bola","Dove può ricevere quando non ha la palla","Dónde se le puede encontrar sin balón","Où on peut le trouver quand il n'a pas le ballon"));
+setText("r4n",t("«Hvorfor stod du der?»","“Why were you standing there?”","“Por que você estava aí?”","«Perché eri lì?»","«¿Por qué estabas ahí?»","« Pourquoi tu étais là ? »"));
+setText("r4y",t("Dra ham et annet sted og se hva som endrer seg","Drag him somewhere else and see what changes","Arraste-o para outro lugar e veja o que muda","Trascinalo da un'altra parte e guarda cosa cambia","Arrástralo a otro sitio y mira qué cambia","Fais-le glisser ailleurs et regarde ce qui change"));
+setText("habithead",t("Vaner varer lenger enn øvelser","Habits outlast drills","Hábitos duram mais que exercícios","Le abitudini durano più degli esercizi","Los hábitos duran más que los ejercicios","Les habitudes durent plus longtemps que les exercices"));
+setText("habittext",t("Vaner er tunge å endre, så de gode bør komme tidlig. Rom er tid, og tid gir gode beslutninger.","Habits are hard to change, so the good ones should come early. Space is time, and time means good decisions.","Hábitos são difíceis de mudar, então os bons devem vir cedo. Espaço é tempo, e tempo significa boas decisões.","Le abitudini sono difficili da cambiare, quindi quelle buone devono arrivare presto. Lo spazio è tempo, e il tempo porta buone decisioni.","Los hábitos son difíciles de cambiar, así que los buenos deben llegar pronto. El espacio es tiempo, y el tiempo trae buenas decisiones.","Les habitudes sont difficiles à changer, alors les bonnes doivent venir tôt. L'espace, c'est du temps, et le temps donne de bonnes décisions."));
+setText("probhead",t("Øv på problemer, ikke på svar","Practise problems, not answers","Treine problemas, não respostas","Allena problemi, non risposte","Entrena problemas, no respuestas","Travaille des problèmes, pas des réponses"));
+setText("proba",t("De fleste øvelsene er spill med med- og motspillere. Vil du trene avslutninger, trenger du ingen skuddkø: ta en øvelse som base og legg til én regel,","Most drills are games with teammates and opponents. Want to work on finishing? Skip the shooting queue: take a drill as your base and add one rule,","A maioria dos exercícios são jogos com companheiros e adversários. Quer trabalhar a finalização? Esqueça a fila de chute: pegue um exercício como base e acrescente uma regra,","La maggior parte degli esercizi sono partite con compagni e avversari. Vuoi lavorare sulla finalizzazione? Lascia perdere la fila per il tiro: prendi un esercizio come base e aggiungi una regola,","La mayoría de los ejercicios son juegos con compañeros y rivales. ¿Quieres trabajar la finalización? Olvídate de la fila de tiro: toma un ejercicio como base y añade una regla,","La plupart des exercices sont des jeux avec partenaires et adversaires. Tu veux travailler la finition ? Oublie la file de tirs : prends un exercice comme base et ajoute une règle,"));
+setText("probb",t("lov å skyte etter tre pasninger.","you can shoot after three passes.","pode chutar depois de três passes.","si può tirare dopo tre passaggi.","se puede tirar después de tres pases.","on peut tirer après trois passes."));
+setText("probc",t("Da løser spillerne problemet selv, og ingen avslutning er lik.","Players solve the problem themselves, and no finish is the same.","Os jogadores resolvem o problema sozinhos, e nenhuma finalização é igual.","I giocatori risolvono il problema da soli, e nessuna finalizzazione è uguale.","Los jugadores resuelven el problema solos, y ninguna finalización es igual.","Les joueurs résolvent le problème eux-mêmes, et aucune finition ne se ressemble."));
+setText("howhead",t("Slik bruker du den","How it works","Como funciona","Come funziona","Cómo funciona","Comment ça marche"));
+setText("s1b",t("Se øvelsen spilles av.","Watch the drill play.","Veja o exercício em ação.","Guarda l'esercizio in azione.","Mira el ejercicio en marcha.","Regarde l'exercice se dérouler."));
+setText("s1t",t("Rondoer, press, oppbygging og omstillinger, animert.","Rondos, pressing, build-up and transitions, animated.","Rondos, pressão, saída de bola e transições, animados.","Rondo, pressing, costruzione dal basso e transizioni, animati.","Rondos, presión, salida de balón y transiciones, animados.","Rondos, pressing, construction et transitions, animés."));
+setText("s2b",t("Trykk på en spiller.","Tap a player.","Toque em um jogador.","Tocca un giocatore.","Toca a un jugador.","Touche un joueur."));
+setText("s2t",t("Se hvor han ser, hvordan han står og hvor han flytter seg.","See where he looks, how he stands and where he moves.","Veja para onde ele olha, como posiciona o corpo e para onde se move.","Vedi dove guarda, come orienta il corpo e dove si muove.","Observa hacia dónde mira, cómo orienta el cuerpo y hacia dónde se mueve.","Vois où il regarde, comment il oriente son corps et où il se déplace."));
+setText("s3b",t("Del økta.","Share the session.","Compartilhe o treino.","Condividi l'allenamento.","Comparte el entrenamiento.","Partage la séance."));
+setText("s3t",t("Andre trenere åpner den i appen, alle andre får en PDF. Send den til spillerne dagen før.","Other coaches open it in the app, everyone else gets a PDF. Send it to your players the day before.","Outros treinadores abrem no app, os demais recebem um PDF. Envie aos jogadores no dia anterior.","Gli altri allenatori lo aprono nell'app, tutti gli altri ricevono un PDF. Mandalo ai giocatori il giorno prima.","Otros entrenadores lo abren en la app; los demás reciben un PDF. Envíaselo a tus jugadores el día antes.","Les autres entraîneurs l'ouvrent dans l'app, tous les autres reçoivent un PDF. Envoie-la à tes joueurs la veille."));
+setText("fine",t("Laget av en trener. Appen samler ikke inn noe om deg.","Made by a coach. The app collects nothing about you.","Feito por um treinador. O app não coleta nada sobre você.","Fatta da un allenatore. L'app non raccoglie nulla su di te.","Hecha por un entrenador. La app no recoge nada sobre ti.","Faite par un entraîneur. L'app ne collecte rien sur toi."));
+(function(){const v=document.getElementById("loop");if(!v)return;v.setAttribute("aria-label",t("Animasjon fra appen: en øvelse spilles av, og en spiller blir trykket på.","Animation from the app: a drill plays and a player is tapped.","Animação do app: um exercício em ação, e um jogador é tocado.","Animazione dall'app: un esercizio in azione e un giocatore toccato.","Animación de la app: un ejercicio en marcha y un jugador tocado.","Animation de l'app : un exercice se déroule et on touche un joueur."));
+  // Redusert bevegelse: loopen står stille på første rute, og kan startes med knappene
+  const mq=window.matchMedia?window.matchMedia("(prefers-reduced-motion: reduce)"):null;
+  function still(){if(mq&&mq.matches){v.removeAttribute("autoplay");v.autoplay=false;v.pause();v.controls=true}else{v.controls=false;v.autoplay=true;v.play&&v.play().catch(function(){})}}
+  still();if(mq){if(mq.addEventListener)mq.addEventListener("change",still);else if(mq.addListener)mq.addListener(still)}})();
 stores();setText("by",t("Gratis app for fotballtrenere, laget av en trener.","A free app for football coaches, made by a coach.","App gratuito para treinadores de futebol, feito por um treinador.","App gratuita per allenatori di calcio, fatta da un allenatore.","App gratuita para entrenadores de fútbol, hecha por un entrenador.","App gratuite pour les entraîneurs de football, faite par un entraîneur."));setText("support",t("Støtte","Support","Suporte","Supporto","Ayuda","Assistance"));setText("privacy",t("Personvern","Privacy","Privacidade","Privacy","Privacidad","Confidentialité"));setText("androidfoot",t("Android-test","Android test","Teste no Android","Test Android","Prueba en Android","Test Android"));
 // Språkvalg i bunnlinja: det andre språket. Hashen følger med (en delt økt eller øvelse står der).
 (function(){const w=document.getElementById("langswitch");if(w){const names={nb:["Norsk","nb"],en:["English","en"],pt:["Português","pt-BR"],it:["Italiano","it"],es:["Español","es"],fr:["Français","fr"]};const cur=nb?"nb":pt?"pt":it?"it":es?"es":fr?"fr":"en";w.textContent="";["nb","en","pt","it","es","fr"].filter(function(x){return x!==cur}).forEach(function(x,i){if(i)w.appendChild(document.createTextNode(" · "));const a=document.createElement("a");a.textContent=names[x][0];a.lang=names[x][1];a.href=location.pathname+"?lang="+x+location.hash;w.appendChild(a)})}})();
