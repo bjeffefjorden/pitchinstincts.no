@@ -83,7 +83,7 @@ a.bubble:hover{background:#fff}.bubbleico{position:absolute;top:-10px;right:-10p
 </main>
 <script>
 const APP_STORE="https://apps.apple.com/app/id6818114354";
-const PLAY_LIVE=false; // settes til true når Android-appen er i Google Play
+const PLAY_LIVE=true; // settes til true når Android-appen er i Google Play (true siden 7. november 2026)
 const PLAY="https://play.google.com/store/apps/details?id=no.hoff.treningsapp";
 // Språket følger hvor besøkende er fra: norsk når noe i nettleserens språkliste er norsk (nb, nn, no) eller har region Norge
 // (en engelsk iPhone eller Mac satt til Norge melder «en-NO»), ellers portugisisk når noe er portugisisk (pt, pt-BR), ellers italiensk (it), ellers spansk (es), ellers fransk (fr), ellers engelsk.
@@ -167,7 +167,7 @@ setText("fine",t("Laget av en trener. Appen samler ikke inn noe om deg.","Made b
   const mq=window.matchMedia?window.matchMedia("(prefers-reduced-motion: reduce)"):null;
   function still(){if(mq&&mq.matches){v.removeAttribute("autoplay");v.autoplay=false;v.pause();v.controls=true}else{v.controls=false;v.autoplay=true;v.play&&v.play().catch(function(){})}}
   still();if(mq){if(mq.addEventListener)mq.addEventListener("change",still);else if(mq.addListener)mq.addListener(still)}})();
-stores();setText("by",t("Gratis app for fotballtrenere, laget av en trener.","A free app for football coaches, made by a coach.","App gratuito para treinadores de futebol, feito por um treinador.","App gratuita per allenatori di calcio, fatta da un allenatore.","App gratuita para entrenadores de fútbol, hecha por un entrenador.","App gratuite pour les entraîneurs de football, faite par un entraîneur."));setText("support",t("Støtte","Support","Suporte","Supporto","Ayuda","Assistance"));setText("privacy",t("Personvern","Privacy","Privacidade","Privacy","Privacidad","Confidentialité"));setText("androidfoot",t("Android-test","Android test","Teste no Android","Test Android","Prueba en Android","Test Android"));
+stores();setText("by",t("Gratis app for fotballtrenere, laget av en trener.","A free app for football coaches, made by a coach.","App gratuito para treinadores de futebol, feito por um treinador.","App gratuita per allenatori di calcio, fatta da un allenatore.","App gratuita para entrenadores de fútbol, hecha por un entrenador.","App gratuite pour les entraîneurs de football, faite par un entraîneur."));setText("support",t("Støtte","Support","Suporte","Supporto","Ayuda","Assistance"));setText("privacy",t("Personvern","Privacy","Privacidade","Privacy","Privacidad","Confidentialité"));setText("androidfoot",t("Android","Android","Android","Android","Android","Android"));
 // Språkvalg i bunnlinja: det andre språket. Hashen følger med (en delt økt eller øvelse står der).
 (function(){const w=document.getElementById("langswitch");if(w){const names={nb:["Norsk","nb"],en:["English","en"],pt:["Português","pt-BR"],it:["Italiano","it"],es:["Español","es"],fr:["Français","fr"]};const cur=nb?"nb":pt?"pt":it?"it":es?"es":fr?"fr":"en";w.textContent="";["nb","en","pt","it","es","fr"].filter(function(x){return x!==cur}).forEach(function(x,i){if(i)w.appendChild(document.createTextNode(" · "));const a=document.createElement("a");a.textContent=names[x][0];a.lang=names[x][1];a.href=location.pathname+"?lang="+x+location.hash;w.appendChild(a)})}})();
 </script></body></html>
