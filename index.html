@@ -122,7 +122,8 @@ function stores(){
   a.href=APP_STORE;badge(a,"app-store-"+L,t("Last ned fra App Store","Download on the App Store","Baixar na App Store","Scarica su App Store","Descargar en el App Store","Télécharger dans l'App Store"));
   if(PLAY_LIVE){p.href=PLAY;badge(p,"google-play-"+L,t("Last ned på Google Play","Get it on Google Play","Disponível no Google Play","Disponibile su Google Play","Disponible en Google Play","Disponible sur Google Play"));p.hidden=false;s.hidden=true}
   else{p.hidden=true;s.hidden=false;setText("droidtext",t("Android kommer snart.","Android is coming.","O Android vem aí.","Android in arrivo.","Android llega pronto.","Android arrive bientôt."));setText("droidlink",t("Bli testtrener →","Become a test coach →","Seja testador →","Diventa tester →","Hazte tester →","Deviens testeur →"))}
-  if(isIOS)p.hidden=true; if(isAndroid&&PLAY_LIVE)a.hidden=true;
+  // Begge butikkmerkene vises på alle enheter (Ørjan 7. nov); Android får Google Play først
+  if(isAndroid&&PLAY_LIVE)a.parentNode.insertBefore(p,a);
 }
 // Snakkeboblen ved logoen: kroken fra siste innlegg, høyst 60 tegn, lik på alle språk (settes med verktøyet for boblen)
 const bb=document.getElementById("bubble");if(bb){setText("bubbletext",t("You score. You leave. Now it's 4 v 3.","You score. You leave. Now it's 4 v 3.","You score. You leave. Now it's 4 v 3.","You score. You leave. Now it's 4 v 3.","You score. You leave. Now it's 4 v 3.","You score. You leave. Now it's 4 v 3."))}
