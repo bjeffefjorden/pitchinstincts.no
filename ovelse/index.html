@@ -41,13 +41,14 @@ footer{color:var(--muted);font-size:14px;margin-top:28px}footer a{color:var(--mu
 <h1 id="title">Delt øvelse</h1>
 <p class="tag" id="sub"></p>
 <div class="card" id="share"><a class="btn" id="open" href="#">Åpne i Pitch Instincts</a></div>
-<div class="card"><h2 id="noapp">Har du ikke appen?</h2><a class="badge" id="appstore" href="https://apps.apple.com/app/id6818114354"><img src="/badges/app-store-no.png" width="144" height="48" alt="Last ned fra App Store"></a><a class="badge" id="play" hidden><img width="161" height="48" alt=""></a><p class="soon" id="soon">Android-utgaven kommer.</p></div>
+<div class="card"><h2 id="noapp">Har du ikke appen?</h2><a class="badge" id="appstore" href="https://apps.apple.com/app/apple-store/id6818114354?pt=129520659&amp;ct=delt_ovelse&amp;mt=8"><img src="/badges/app-store-no.png" width="144" height="48" alt="Last ned fra App Store"></a><a class="badge" id="play" hidden><img width="161" height="48" alt=""></a><p class="soon" id="soon">Android-utgaven kommer.</p></div>
 <footer><span id="by"></span><br><a id="support" href="/support/"></a> · <a id="privacy" href="/privacy/"></a> · <span id="langswitch"></span><br><a href="https://www.instagram.com/pitch_instincts/">Instagram</a> · <a href="https://www.threads.com/@pitch_instincts">Threads</a> · <a href="https://www.facebook.com/PitchInstincts">Facebook</a></footer>
 </main>
 <script>
-const APP_STORE="https://apps.apple.com/app/id6818114354";
+// Kampanjenavn (Ørjan 2026-11-08): App Store Connect og Play Console viser nedlastinger som kom via en delt lenke.
+const APP_STORE="https://apps.apple.com/app/apple-store/id6818114354?pt=129520659&ct=delt_ovelse&mt=8";
 const PLAY_LIVE=true; // settes til true når Android-appen er i Google Play (true siden 7. november 2026)
-const PLAY="https://play.google.com/store/apps/details?id=no.hoff.treningsapp";
+const PLAY="https://play.google.com/store/apps/details?id=no.hoff.treningsapp&referrer=utm_source%3Dpitchinstincts.no%26utm_medium%3Dshare%26utm_campaign%3Ddelt_ovelse";
 // Språket følger hvor besøkende er fra: norsk når noe i nettleserens språkliste er norsk (nb, nn, no) eller har region Norge
 // (en engelsk iPhone eller Mac satt til Norge melder «en-NO»), ellers portugisisk når noe er portugisisk (pt, pt-BR), ellers italiensk (it), ellers spansk (es), ellers fransk (fr), ellers engelsk.
 // ?lang=nb, ?lang=en, ?lang=pt, ?lang=it, ?lang=es eller ?lang=fr (eller #nb / #en / #pt / #it / #es / #fr) i lenka velger selv.
