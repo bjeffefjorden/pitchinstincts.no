@@ -61,7 +61,8 @@ a.bubble:hover{background:#fff}.bubbleico{position:absolute;top:-10px;right:-10p
 const CT=(function(){var m=/[?&]ct=([a-z0-9_-]{1,40})(?=&|$)/i.exec(location.search||"");return m?m[1].toLowerCase():""})();
 const APP_STORE=CT?"https://apps.apple.com/app/apple-store/id6818114354?pt=129520659&ct="+CT+"&mt=8":"https://apps.apple.com/app/id6818114354";
 const PLAY_LIVE=true; // settes til true når Android-appen er i Google Play (true siden 7. november 2026)
-const PLAY="https://play.google.com/store/apps/details?id=no.hoff.treningsapp";
+// Samme kampanjenavn til Google Play (Ørjan 2026-11-08), så Play Console viser besøk og nedlastinger per kampanje.
+const PLAY="https://play.google.com/store/apps/details?id=no.hoff.treningsapp"+(CT?"&referrer=utm_source%3Dpitchinstincts.no%26utm_medium%3Dlink%26utm_campaign%3D"+CT:"");
 // Språket følger hvor besøkende er fra: norsk når noe i nettleserens språkliste er norsk (nb, nn, no) eller har region Norge
 // (en engelsk iPhone eller Mac satt til Norge melder «en-NO»), ellers portugisisk når noe er portugisisk (pt, pt-BR), ellers italiensk (it), ellers spansk (es), ellers fransk (fr), ellers engelsk.
 // ?lang=nb, ?lang=en, ?lang=pt, ?lang=it, ?lang=es eller ?lang=fr (eller #nb / #en / #pt / #it / #es / #fr) i lenka velger selv.
