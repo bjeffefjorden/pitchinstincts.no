@@ -1,3 +1,3 @@
 User-agent: *
-Disallow: /okt
-Disallow: /ovelse
+
+Sitemap: https://pitchinstincts.no/sitemap.xml
