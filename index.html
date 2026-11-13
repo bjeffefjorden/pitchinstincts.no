@@ -49,13 +49,13 @@ footer{color:var(--muted);font-size:14px;margin-top:28px}footer a{color:var(--mu
 a.bubble{position:relative;display:block;background:var(--text);color:var(--btntext);text-decoration:none;font-weight:600;font-size:16px;line-height:1.3;border-radius:18px;padding:12px 16px;max-width:17em;text-wrap:balance}
 a.bubble::before{content:"";position:absolute;left:-7px;top:calc(50% - 8px);width:16px;height:16px;background:inherit;transform:rotate(45deg);border-radius:3px}
 a.bubble:hover{background:#fff}.bubbleico{position:absolute;top:-10px;right:-10px;width:30px;height:30px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:radial-gradient(circle at 30% 107%,#fdf497 0%,#fdf497 5%,#fd5949 45%,#d6249f 60%,#285aeb 90%);box-shadow:0 0 0 2px var(--bg)}.bubbleico[hidden]{display:none}a.bubble:focus-visible{outline:2px solid var(--accent);outline-offset:3px}
-@media (max-width:359px){.hero{gap:12px}.hero .logo{width:96px}a.bubble{font-size:15px;padding:10px 14px}}
+@media (max-width:359px){.hero{gap:12px;min-height:100px}.hero .logo{width:96px}a.bubble{font-size:15px;padding:10px 14px}}
 .lime{color:var(--accent)}
 [hidden]{display:none!important}
 </style>
 </head>
 <body><main>
-<div class="hero"><a class="home" href="/" aria-label="Pitch Instincts"><img class="logo" src="/logo.png" width="120" height="120" alt=""></a><a class="bubble" id="bubble" href="/android/"><span id="bubbletext">Android coaches: we're on Google Play now 🤖</span><span class="bubbleico" id="bubbleico" hidden><svg role="img" aria-label="Instagram" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#fff" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.2" fill="#fff" stroke="none"/></svg></span></a></div>
+<div class="hero"><a class="home" href="/" aria-label="Pitch Instincts"><img class="logo" src="/logo.png" width="120" height="120" alt=""></a><a class="bubble" id="bubble" href="https://www.instagram.com/reel/DfsDYDiAQ2d/"><span id="bubbletext">The third man runs before the ball arrives.</span><span class="bubbleico" id="bubbleico"><svg role="img" aria-label="Instagram" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#fff" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.2" fill="#fff" stroke="none"/></svg></span></a></div>
 <h1 id="headline">Se spillet før ballen kommer.</h1>
 <p class="tag"><b class="lime" id="craft">Fotballen er faget.</b> <span id="tag">Pitch Instincts viser spillerne hvor de skal se, hvordan de skal stå og hvor de skal flytte seg, så det blir vaner de har resten av livet.</span></p>
 <figure class="loop"><video id="loop" src="/loop.mp4" poster="/loop-poster.jpg" autoplay muted loop playsinline preload="metadata" width="848" height="404" aria-label="Animasjon fra appen: en øvelse spilles av, og en spiller blir trykket på."></video>
@@ -78,7 +78,7 @@ a.bubble:hover{background:#fff}.bubbleico{position:absolute;top:-10px;right:-10p
 <h2 id="howhead">Slik bruker du den</h2>
 <ol class="steps"><li><b id="s1b">Se øvelsen spilles av.</b> <span id="s1t">Rondoer, press, oppbygging og omstillinger, animert.</span></li>
 <li><b id="s2b">Trykk på en spiller.</b> <span id="s2t">Se hvor han ser, hvordan han står og hvor han flytter seg.</span></li>
-<li><b id="s3b">Del økta.</b> <span id="s3t">Andre trenere åpner den i appen, alle andre får en PDF. Send den til spillerne dagen før.</span></li></ol>
+<li><b id="s3b">Del økta.</b> <span id="s3t">Send økta som lenke. Mottakeren åpner den i appen, og uten appen kan den lastes ned gratis.</span></li></ol>
 <p class="fine" id="fine">Laget av en trener. Appen samler ikke inn noe om deg.</p>
 <footer><span id="by"></span><br><a id="support" href="/support/"></a> · <a id="privacy" href="/privacy/"></a> · <a id="androidfoot" href="/android/"></a> · <span id="langswitch"></span><br><a href="https://www.instagram.com/pitch_instincts/">Instagram</a> · <a href="https://www.threads.com/@pitch_instincts">Threads</a> · <a href="https://www.facebook.com/PitchInstincts">Facebook</a></footer>
 </main>
@@ -126,8 +126,40 @@ function stores(){
   // Begge butikkmerkene vises på alle enheter (Ørjan 7. nov); Android får Google Play først
   if(isAndroid&&PLAY_LIVE)a.parentNode.insertBefore(p,a);
 }
-// Snakkeboblen ved logoen: kroken fra siste innlegg, høyst 60 tegn, lik på alle språk (settes med verktøyet for boblen)
-const bb=document.getElementById("bubble");if(bb){setText("bubbletext",t("Android coaches: we're on Google Play now 🤖","Android coaches: we're on Google Play now 🤖","Android coaches: we're on Google Play now 🤖","Android coaches: we're on Google Play now 🤖","Android coaches: we're on Google Play now 🤖","Android coaches: we're on Google Play now 🤖"))}
+// Snakkeboblen ved logoen: roterer mellom siste innlegg og de forrige, høyst 60 tegn per krok, lik på alle språk (settes med verktøyet for boblen)
+/*bubble*/
+const BUBBLES=[{"h":"The third man runs before the ball arrives.","u":"https://www.instagram.com/reel/DfsDYDiAQ2d/"},{"h":"Android coaches: we're on Google Play now 🤖","u":"/android/"},{"h":"Unpopular opinion: a man down, nobody should mark anyone.","u":"https://www.instagram.com/reel/DfLaKy-ifTU/"}];
+(function(){
+  // Snakkeboblen roterer mellom nyeste innlegg og de forrige (BUBBLES, nyeste først). Ren HTML/CSS/JS: lenkene er vanlige lenker, ingenting lastes fra Meta.
+  // Uten JavaScript og ved redusert bevegelse står den nyeste. Pause ved hover, fokus, trykk og når fanen er skjult.
+  var bb=document.getElementById("bubble"),tx=document.getElementById("bubbletext"),ic=document.getElementById("bubbleico");
+  if(!bb||!tx||BUBBLES.length<2)return;
+  var INTERVAL=7000,FADE=350,cur=0,tick=null,swap=null,hover=false,focus=false,press=false;
+  var mq=window.matchMedia?window.matchMedia("(prefers-reduced-motion: reduce)"):null;
+  bb.setAttribute("aria-live","off");
+  function reduced(){return !!(mq&&mq.matches)}
+  function held(){return hover||focus||press||document.hidden||reduced()}
+  function paint(k){var b=BUBBLES[k];tx.textContent=b.h;bb.setAttribute("href",b.u);if(ic)ic.hidden=b.u.indexOf("https://www.instagram.com/")!==0}
+  function stop(){clearTimeout(tick);tick=null;if(swap){clearTimeout(swap);swap=null;tx.style.opacity=""}}
+  function schedule(){stop();if(!held())tick=setTimeout(next,INTERVAL)}
+  function next(){
+    tick=null;if(held())return;
+    tx.style.transition="opacity "+FADE+"ms ease";tx.style.opacity="0";
+    swap=setTimeout(function(){swap=null;cur=(cur+1)%BUBBLES.length;paint(cur);tx.style.opacity="1";schedule()},FADE);
+  }
+  function mouse(e){return !e.pointerType||e.pointerType==="mouse"}
+  bb.addEventListener("pointerenter",function(e){if(mouse(e)){hover=true;stop()}});
+  bb.addEventListener("pointerleave",function(e){if(mouse(e)){hover=false;schedule()}});
+  bb.addEventListener("focus",function(){focus=true;stop()});
+  bb.addEventListener("blur",function(){focus=false;schedule()});
+  bb.addEventListener("pointerdown",function(){press=true;stop()});
+  ["pointerup","pointercancel"].forEach(function(n){bb.addEventListener(n,function(){press=false;schedule()})});
+  document.addEventListener("visibilitychange",schedule);
+  function motion(){if(reduced()&&cur!==0){stop();cur=0;paint(0)}schedule()}
+  if(mq){if(mq.addEventListener)mq.addEventListener("change",motion);else if(mq.addListener)mq.addListener(motion)}
+  schedule();
+})();
+/*end-bubble*/
 
 document.documentElement.lang=nb?"nb":pt?"pt-BR":it?"it":es?"es":fr?"fr":"en";
 // Forsiden (Ørjan 2026-11-01: «Se spillet før ballen kommer.»): én tekst per språk, norsk står i HTML-en uten JavaScript
@@ -162,7 +194,7 @@ setText("s1t",t("Rondoer, press, oppbygging og omstillinger, animert.","Rondos, 
 setText("s2b",t("Trykk på en spiller.","Tap a player.","Toque em um jogador.","Tocca un giocatore.","Toca a un jugador.","Touche un joueur."));
 setText("s2t",t("Se hvor han ser, hvordan han står og hvor han flytter seg.","See where he looks, how he stands and where he moves.","Veja para onde ele olha, como posiciona o corpo e para onde se move.","Vedi dove guarda, come orienta il corpo e dove si muove.","Observa hacia dónde mira, cómo orienta el cuerpo y hacia dónde se mueve.","Vois où il regarde, comment il oriente son corps et où il se déplace."));
 setText("s3b",t("Del økta.","Share the session.","Compartilhe o treino.","Condividi l'allenamento.","Comparte el entrenamiento.","Partage la séance."));
-setText("s3t",t("Andre trenere åpner den i appen, alle andre får en PDF. Send den til spillerne dagen før.","Other coaches open it in the app, everyone else gets a PDF. Send it to your players the day before.","Outros treinadores abrem no app, os demais recebem um PDF. Envie aos jogadores no dia anterior.","Gli altri allenatori lo aprono nell'app, tutti gli altri ricevono un PDF. Mandalo ai giocatori il giorno prima.","Otros entrenadores lo abren en la app; los demás reciben un PDF. Envíaselo a tus jugadores el día antes.","Les autres entraîneurs l'ouvrent dans l'app, tous les autres reçoivent un PDF. Envoie-la à tes joueurs la veille."));
+setText("s3t",t("Send økta som lenke. Mottakeren åpner den i appen, og uten appen kan den lastes ned gratis.","Send the session as a link. The recipient opens it in the app, and without the app it can be downloaded for free.","Envie o treino como link. O destinatário abre no app, e sem o app pode baixá-lo de graça.","Manda l'allenamento come link. Il destinatario lo apre nell'app, e senza l'app può scaricarla gratis.","Envía el entrenamiento como enlace. El destinatario lo abre en la app, y sin la app puede descargarla gratis.","Envoie la séance en lien. Le destinataire l'ouvre dans l'app, et sans l'app il peut la télécharger gratuitement."));
 setText("fine",t("Laget av en trener. Appen samler ikke inn noe om deg.","Made by a coach. The app collects nothing about you.","Feito por um treinador. O app não coleta nada sobre você.","Fatta da un allenatore. L'app non raccoglie nulla su di te.","Hecha por un entrenador. La app no recoge nada sobre ti.","Faite par un entraîneur. L'app ne collecte rien sur toi."));
 (function(){const v=document.getElementById("loop");if(!v)return;v.setAttribute("aria-label",t("Animasjon fra appen: en øvelse spilles av, og en spiller blir trykket på.","Animation from the app: a drill plays and a player is tapped.","Animação do app: um exercício em ação, e um jogador é tocado.","Animazione dall'app: un esercizio in azione e un giocatore toccato.","Animación de la app: un ejercicio en marcha y un jugador tocado.","Animation de l'app : un exercice se déroule et on touche un joueur."));
   // Redusert bevegelse: loopen står stille på første rute, og kan startes med knappene
