@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Tall · Pitch Instincts</title>
+<link rel="canonical" href="https://pitchinstincts.no/statistikk/">
+<meta name="description" content="Åpne tall fra Pitch Instincts: nedlastinger, Instagram og de mest sette Reels. / Open numbers from Pitch Instincts: downloads, Instagram and the most viewed Reels. / Números abertos do Pitch Instincts: downloads, Instagram e os Reels mais vistos.">
+<meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pitch Instincts">
+<meta property="og:title" content="Tall · Pitch Instincts">
+<meta property="og:description" content="Åpne tall fra Pitch Instincts: nedlastinger, Instagram og de mest sette Reels. / Open numbers from Pitch Instincts: downloads, Instagram and the most viewed Reels. / Números abertos do Pitch Instincts: downloads, Instagram e os Reels mais vistos.">
+<meta property="og:url" content="https://pitchinstincts.no/statistikk/">
+<meta property="og:image" content="https://pitchinstincts.no/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Pitch Instincts logo">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+:root{color-scheme:dark light;--bg:#000000;--card:#151515;--line:#2e2e2e;--text:#f5f5f5;--muted:#a8a8a8;--accent:#9be21c;--c1:#9be21c;--c2:#6cb7ff;--btn:#ffffff;--btntext:#000000;--warn:#ffd24a;--warnbg:#2a2300}
+@media (prefers-color-scheme:light){:root{--bg:#ffffff;--card:#f3f3ef;--line:#d4d4cc;--text:#111111;--muted:#505050;--accent:#3d6f00;--c1:#4f8a00;--c2:#1f6fb5;--btn:#111111;--btntext:#ffffff;--warn:#6b4a00;--warnbg:#fff3c4}}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--text);font:17px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+main{max-width:720px;margin:0 auto;padding:20px 16px 56px}
+a{color:var(--accent)}
+a:focus-visible,summary:focus-visible,button:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:8px}
+.top{display:flex;justify-content:space-between;align-items:center;gap:16px;margin:0 0 26px;font-size:15px}
+.top a{color:var(--muted);text-decoration:none}
+.top a.brand{display:inline-flex;align-items:center;gap:10px;color:var(--text);font-weight:700;font-size:17px}
+.top a.brand img{width:36px;height:auto;display:block}
+h1{font-size:32px;line-height:1.12;margin:0 0 8px;text-wrap:balance}
+h2{font-size:21px;line-height:1.25;margin:40px 0 6px}
+h3{font-size:16px;margin:22px 0 6px}
+.lead{color:var(--muted);margin:0 0 14px;max-width:36em}
+.upd{color:var(--muted);font-size:14px;margin:0}
+.sample{background:var(--warnbg);color:var(--warn);border:1.5px solid var(--warn);border-radius:12px;padding:10px 14px;margin:14px 0 0;font-size:15px}
+.sample b{display:block;font-size:16px;letter-spacing:.02em}
+.figs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:22px 0 0;padding:0}
+.fig{background:var(--card);border-radius:16px;padding:14px 16px;margin:0}
+.fig dt{color:var(--muted);font-size:14px;line-height:1.3;order:2}
+.fig dd{margin:0;font-size:32px;line-height:1.15;font-weight:700;font-variant-numeric:tabular-nums;color:var(--text)}
+.fig{display:flex;flex-direction:column}
+@media (min-width:640px){.figs{grid-template-columns:repeat(4,1fr)}}
+.range{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:26px 0 0}
+.range span{color:var(--muted);font-size:14px;margin-right:2px}
+.range button{font:inherit;font-size:15px;font-weight:600;min-height:44px;min-width:44px;padding:0 16px;border-radius:999px;border:1.5px solid var(--line);background:transparent;color:var(--text);cursor:pointer}
+.range button[aria-pressed="true"]{background:var(--btn);color:var(--btntext);border-color:var(--btn)}
+.sub{color:var(--muted);margin:0 0 10px;font-size:15px}
+figure.chart{margin:12px 0 0;background:var(--card);border-radius:16px;padding:14px 12px 10px}
+figure.chart figcaption{font-size:15px;font-weight:600;margin:0 4px 6px}
+.plot{width:100%;min-height:210px}
+.plot svg{display:block;width:100%;height:auto;overflow:visible}
+.plot text{font:12px -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;fill:var(--muted)}
+.plot .grid{stroke:var(--line);stroke-width:1}
+.plot .c1{fill:var(--c1);stroke:none}.plot .c2{fill:var(--c2);stroke:none}
+.plot .l1{fill:none;stroke:var(--c1);stroke-width:2.5;stroke-linejoin:round;stroke-linecap:round}.plot .d1{fill:var(--c1)}
+.plot .part{opacity:.5}
+.plot .sel{fill:var(--text);opacity:.12}
+.plot .hit{fill:transparent;cursor:crosshair}
+.legend{display:flex;gap:16px;flex-wrap:wrap;margin:2px 4px 0;font-size:14px;color:var(--muted)}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:6px;vertical-align:-1px}
+.legend .k1{background:var(--c1)}.legend .k2{background:var(--c2)}
+.read{min-height:1.5em;margin:6px 4px 0;font-size:14px;color:var(--text);font-variant-numeric:tabular-nums}
+details.tab{margin:6px 4px 0}
+details.tab summary{cursor:pointer;color:var(--accent);font-size:15px;font-weight:600;padding:8px 0;min-height:44px;display:flex;align-items:center}
+.tablewrap{overflow-x:auto;max-height:340px;overflow-y:auto}
+table{border-collapse:collapse;width:100%;font-size:15px;font-variant-numeric:tabular-nums}
+caption{text-align:left;color:var(--muted);font-size:14px;padding:0 0 6px}
+th,td{padding:7px 8px;border-top:1px solid var(--line);text-align:right;white-space:nowrap}
+th:first-child,td:first-child{text-align:left}
+thead th{color:var(--muted);font-weight:600;font-size:13px;position:sticky;top:0;background:var(--card)}
+tbody th{font-weight:400}
+.note{color:var(--muted);font-size:15px;background:var(--card);border-radius:16px;padding:14px 16px;margin:12px 0 0}
+ol.reels{list-style:none;margin:12px 0 0;padding:0;counter-reset:r}
+ol.reels li{counter-increment:r;position:relative;background:var(--card);border-radius:16px;padding:12px 14px 12px 54px;margin:0 0 8px;min-height:64px}
+ol.reels li::before{content:counter(r);position:absolute;left:14px;top:12px;width:30px;height:30px;border-radius:50%;background:var(--accent);color:var(--bg);font-weight:700;display:grid;place-items:center;font-size:15px}
+ol.reels a.hook{display:block;color:var(--text);font-weight:600;line-height:1.3;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:3px;overflow-wrap:anywhere}
+ol.reels a.hook::after{content:"";position:absolute;inset:0;border-radius:16px}ol.reels a.hook:hover{text-decoration-color:var(--accent)}ol.reels li:focus-within{outline:2px solid var(--accent);outline-offset:2px}ol.reels a.hook:focus-visible{outline:none}ol.reels li{min-height:72px}.chip{display:inline-block;border:1px solid var(--line);border-radius:999px;padding:0 8px;font-size:12px;font-weight:600;color:var(--text)}
+.rd{color:var(--muted);font-size:13px;margin:2px 0 6px}
+.nums{display:flex;flex-wrap:wrap;gap:4px 16px;margin:0;font-size:15px;font-variant-numeric:tabular-nums}
+.nums div{display:flex;gap:6px;align-items:baseline}.nums dt{color:var(--muted);font-size:13px;order:2}.nums dd{margin:0;font-weight:700}
+.bars{list-style:none;margin:10px 0 0;padding:0}
+.bars li{display:grid;grid-template-columns:7.5em 1fr 4em;align-items:center;gap:10px;margin:0 0 6px;font-size:15px}
+.bars .bar{height:12px;border-radius:6px;background:var(--line);position:relative;overflow:hidden}.bars .bar i{display:block;height:100%;background:var(--c1);border-radius:6px}
+.bars .n{text-align:right;font-variant-numeric:tabular-nums}
+@media (max-width:420px){.bars li{grid-template-columns:5.5em 1fr 3.4em;gap:8px}}
+ul.facts{margin:10px 0 0;padding:0;list-style:none}
+ul.facts li{background:var(--card);border-radius:16px;padding:12px 16px;margin:0 0 8px;font-size:16px}
+ul.facts b{font-variant-numeric:tabular-nums}
+ul.how{margin:10px 0 0;padding:0 0 0 20px}ul.how li{margin:0 0 8px}
+footer{color:var(--muted);font-size:14px;margin-top:40px}footer a{color:var(--muted)}
+.vh{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+[hidden]{display:none!important}
+@media (prefers-reduced-motion:no-preference){.plot svg .bar-in{animation:grow .4s ease-out backwards}@keyframes grow{from{opacity:0}}}
+</style>
+</head>
+<body data-src="/stats.json"><main>
+<p class="top"><a class="brand" href="/"><img src="/logo.png" width="36" height="36" alt=""><span>Pitch Instincts</span></a></p>
+<h1 id="title">Pitch Instincts i tall</h1>
+<p class="lead" id="lead">Så mange laster ned appen, og så mange ser Reelsene våre. Åpne tall, samlet, uten enkeltpersoner.</p>
+<p class="upd" id="upd">Oppdatert 14. november 2026</p>
+<p class="sample" id="sample" role="note" hidden><b id="sampleh">Eksempeldata</b><span id="samplep">Tallene på denne siden er oppdiktet, bare for å vise hvordan siden ser ut. De er ikke ekte.</span></p>
+
+<dl class="figs" id="figs"><div class="fig"><dt>Nedlastinger totalt</dt><dd>281</dd></div><div class="fig"><dt>Siste 30 dager</dt><dd>277</dd></div><div class="fig"><dt>Følgere totalt</dt><dd>314</dd></div><div class="fig"><dt>Øvelser i appen</dt><dd>158</dd></div></dl>
+
+<div class="range" id="range" role="group" aria-label="Periode" hidden><span id="rangel">Periode</span><button type="button" data-d="30" aria-pressed="false">30 dager</button><button type="button" data-d="90" aria-pressed="true">90 dager</button><button type="button" data-d="0" aria-pressed="false">Alt</button></div>
+
+<section id="app_store"><h2 id="app_store-h">App Store</h2><p class="sub" id="app_store-stat">Totalt 256 · siste 30 dager 252</p><figure class="chart"><div class="blk" id="app_store-downloads-blk"><h3 id="app_store-downloads-cap">Nedlastinger per uke</h3><div class="plot" id="app_store-downloads-plot" role="img" aria-label="App Store: Nedlastinger per uke"></div><p class="read" id="app_store-downloads-read" aria-live="off"></p></div><details class="tab" id="app_store-tab" open><summary id="app_store-sum">Vis som tabell</summary><div class="tablewrap"><table><caption id="app_store-capt">App Store</caption><thead><tr><th scope="col">Uke fra</th><th scope="col">Nedlastinger</th></tr></thead><tbody id="app_store-rows"><tr><th scope="row">9. november 2026 (pågår)</th><td>5</td></tr><tr><th scope="row">2. november 2026</th><td>10</td></tr><tr><th scope="row">26. oktober 2026</th><td>16</td></tr><tr><th scope="row">19. oktober 2026</th><td>23</td></tr><tr><th scope="row">12. oktober 2026</th><td>199</td></tr><tr><th scope="row">5. oktober 2026</th><td>3</td></tr></tbody></table></div></details></figure></section>
+<section id="google_play"><h2 id="google_play-h">Google Play</h2><p class="sub" id="google_play-stat">Totalt 25 · siste 30 dager 25</p><figure class="chart"><div class="blk" id="google_play-downloads-blk"><h3 id="google_play-downloads-cap">Nedlastinger per uke</h3><div class="plot" id="google_play-downloads-plot" role="img" aria-label="Google Play: Nedlastinger per uke"></div><p class="read" id="google_play-downloads-read" aria-live="off"></p></div><div class="blk" id="google_play-active-blk" hidden><h3 id="google_play-active-cap">Aktive Android-enheter per uke</h3><div class="plot" id="google_play-active-plot" role="img" aria-label="Google Play: Aktive Android-enheter per uke"></div><p class="read" id="google_play-active-read" aria-live="off"></p></div><details class="tab" id="google_play-tab" open><summary id="google_play-sum">Vis som tabell</summary><div class="tablewrap"><table><caption id="google_play-capt">Google Play</caption><thead><tr><th scope="col">Uke fra</th><th scope="col">Nedlastinger</th></tr></thead><tbody id="google_play-rows"><tr><th scope="row">2. november 2026</th><td>7</td></tr><tr><th scope="row">26. oktober 2026</th><td>4</td></tr><tr><th scope="row">19. oktober 2026</th><td>14</td></tr></tbody></table></div></details></figure></section>
+<section id="instagram"><h2 id="instagram-h">Instagram</h2><p class="sub" id="instagram-stat">292 følgere · 50 255 visninger totalt · 675 likes totalt · 81 innlegg</p><figure class="chart"><div class="blk" id="instagram-views-blk"><h3 id="instagram-views-cap">Visninger per uke</h3><div class="plot" id="instagram-views-plot" role="img" aria-label="Instagram: Visninger per uke"></div><p class="read" id="instagram-views-read" aria-live="off"></p></div><div class="blk" id="instagram-likes-blk"><h3 id="instagram-likes-cap">Likes per uke</h3><div class="plot" id="instagram-likes-plot" role="img" aria-label="Instagram: Likes per uke"></div><p class="read" id="instagram-likes-read" aria-live="off"></p></div><details class="tab" id="instagram-tab" open><summary id="instagram-sum">Vis som tabell</summary><div class="tablewrap"><table><caption id="instagram-capt">Instagram</caption><thead><tr><th scope="col">Uke fra</th><th scope="col">Visninger</th><th scope="col">Likes</th><th scope="col">Følgere</th></tr></thead><tbody id="instagram-rows"><tr><th scope="row">9. november 2026 (pågår)</th><td>7 955</td><td>76</td><td>292</td></tr><tr><th scope="row">2. november 2026</th><td>13 271</td><td>216</td><td>256</td></tr><tr><th scope="row">26. oktober 2026</th><td>10 889</td><td>134</td><td>182</td></tr></tbody></table></div></details></figure></section>
+<section id="facebook"><h2 id="facebook-h">Facebook</h2><p class="sub" id="facebook-stat">22 følgere · 24 289 visninger totalt · 56 likes totalt · 94 innlegg</p><figure class="chart"><div class="blk" id="facebook-views-blk"><h3 id="facebook-views-cap">Visninger per uke</h3><div class="plot" id="facebook-views-plot" role="img" aria-label="Facebook: Visninger per uke"></div><p class="read" id="facebook-views-read" aria-live="off"></p></div><div class="blk" id="facebook-likes-blk"><h3 id="facebook-likes-cap">Likes per uke</h3><div class="plot" id="facebook-likes-plot" role="img" aria-label="Facebook: Likes per uke"></div><p class="read" id="facebook-likes-read" aria-live="off"></p></div><details class="tab" id="facebook-tab" open><summary id="facebook-sum">Vis som tabell</summary><div class="tablewrap"><table><caption id="facebook-capt">Facebook</caption><thead><tr><th scope="col">Uke fra</th><th scope="col">Visninger</th><th scope="col">Likes</th><th scope="col">Følgere</th></tr></thead><tbody id="facebook-rows"><tr><th scope="row">9. november 2026 (pågår)</th><td>3 335</td><td>12</td><td>22</td></tr><tr><th scope="row">2. november 2026</th><td>5 219</td><td>13</td><td>18</td></tr><tr><th scope="row">26. oktober 2026</th><td>15 735</td><td>31</td><td>15</td></tr></tbody></table></div></details></figure></section>
+
+<h2 id="reelh">Ti mest sette innlegg</h2>
+<p class="sub" id="reelsub">Reels og innlegg fra Instagram og Facebook, sortert etter visninger. De vises først når de er en uke gamle. Tittelen er åpningssetningen. Lenken åpner innlegget i en ny fane.</p>
+<ol class="reels" id="reels"><li><a class="hook" href="https://www.instagram.com/reel/DfAp41ugm8M/" target="_blank" rel="noopener noreferrer">Up. Back. Through.<span class="vh"> (åpnes i ny fane på Instagram)</span></a><p class="rd"><span class="chip">Instagram</span> 27. oktober 2026</p><dl class="nums"><div><dt>Visninger</dt><dd>2 890</dd></div><div><dt>Likes</dt><dd>29</dd></div></dl></li><li><a class="hook" href="https://www.instagram.com/reel/DeyKT9hg64o/" target="_blank" rel="noopener noreferrer">Your back line is fine one by one. Together it leaks. Why? 👇<span class="vh"> (åpnes i ny fane på Instagram)</span></a><p class="rd"><span class="chip">Instagram</span> 22. oktober 2026</p><dl class="nums"><div><dt>Visninger</dt><dd>2 363</dd></div><div><dt>Likes</dt><dd>22</dd></div></dl></li><li><a class="hook" href="https://www.instagram.com/reel/DeqgmVFAux4/" target="_blank" rel="noopener noreferrer">Hiding is easy. Hit it long, blame the pitch, go home.<span class="vh"> (åpnes i ny fane på Instagram)</span></a><p class="rd"><span class="chip">Instagram</span> 19. oktober 2026</p><dl class="nums"><div><dt>Visninger</dt><dd>2 132</dd></div><div><dt>Likes</dt><dd>32</dd></div></dl></li><li><a class="hook" href="https://www.instagram.com/reel/DfJXqz0N4vZ/" target="_blank" rel="noopener noreferrer">Unpopular opinion: crossing is the laziest way to attack. 🐺<span class="vh"> (åpnes i ny fane på Instagram)</span></a><p class="rd"><span class="chip">Instagram</span> 31. oktober 2026</p><dl class="nums"><div><dt>Visninger</dt><dd>1 503</dd></div><div><dt>Likes</dt><dd>20</dd></div></dl></li><li><a class="hook" href="https://www.instagram.com/reel/DerfRdci7O4/" target="_blank" rel="noopener noreferrer">7v4. Two touches. Seven passes before you’re allowed to…<span class="vh"> (åpnes i ny fane på Instagram)</span></a><p class="rd"><span class="chip">Instagram</span> 19. oktober 2026</p><dl class="nums"><div><dt>Visninger</dt><dd>1 497</dd></div><div><dt>Likes</dt><dd>28</dd></div></dl></li><li><a class="hook" href="https://www.instagram.com/reel/DfVL2upAUyC/" target="_blank" rel="noopener noreferrer">Lose it. Win it back. Before they look up. 🔁<span class="vh"> (åpnes i ny fane på Instagram)</span></a><p class="rd"><span class="chip">Instagram</span> 4. november 2026</p><dl class="nums"><div><dt>Visninger</dt><dd>1 425</dd></div><div><dt>Likes</dt><dd>13</dd></div></dl></li><li><a class="hook" href="https://www.instagram.com/reel/DfOoJ1sAybT/" target="_blank" rel="noopener noreferrer">Horizontal compactness. The line shifts together, or the…<span class="vh"> (åpnes i ny fane på Instagram)</span></a><p class="rd"><span class="chip">Instagram</span> 2. november 2026</p><dl class="nums"><div><dt>Visninger</dt><dd>1 411</dd></div><div><dt>Likes</dt><dd>14</dd></div></dl></li><li><a class="hook" href="https://www.instagram.com/reel/DfQXpRyA7c_/" target="_blank" rel="noopener noreferrer">Apoyo. Descarga. Tercer hombre. 🐺<span class="vh"> (åpnes i ny fane på Instagram)</span></a><p class="rd"><span class="chip">Instagram</span> 2. november 2026</p><dl class="nums"><div><dt>Visninger</dt><dd>1 409</dd></div><div><dt>Likes</dt><dd>25</dd></div></dl></li><li><a class="hook" href="https://www.instagram.com/reel/DfF1z2KA-RO/" target="_blank" rel="noopener noreferrer">Transition game: score, and you’re a man down.<span class="vh"> (åpnes i ny fane på Instagram)</span></a><p class="rd"><span class="chip">Instagram</span> 29. oktober 2026</p><dl class="nums"><div><dt>Visninger</dt><dd>1 320</dd></div><div><dt>Likes</dt><dd>11</dd></div></dl></li><li><a class="hook" href="https://www.facebook.com/reel/2822304534833022/" target="_blank" rel="noopener noreferrer">7v4. Two touches. Seven passes before you’re allowed to…<span class="vh"> (åpnes i ny fane på Facebook)</span></a><p class="rd"><span class="chip">Facebook</span> 19. oktober 2026</p><dl class="nums"><div><dt>Visninger</dt><dd>1 147</dd></div><div><dt>Likes</dt><dd>1</dd></div></dl></li></ol>
+
+<h2 id="cth">Hvor lastes den ned</h2>
+<p class="sub" id="ctsub">Bare land med minst 10 nedlastinger vises, resten samles under «Andre».</p>
+<ul class="bars" id="countries"><li><span>NO</span><span class="bar" aria-hidden="true"><i style="width:100%"></i></span><span class="n">243</span></li><li><span>Andre</span><span class="bar" aria-hidden="true"><i style="width:5%"></i></span><span class="n">13</span></li></ul>
+
+<h2 id="fh">Annet</h2>
+<ul class="facts" id="facts"><li>Siste versjon av appen: <b>1.22</b></li><li><b>250</b> nedlastinger passert 28. oktober 2026</li><li><b>100</b> nedlastinger passert 16. oktober 2026</li></ul>
+
+<h2 id="howh">Slik tar vi tallene</h2>
+<ul class="how" id="how">
+<li>Nedlastinger er førstegangsnedlastinger slik App Store og Google Play teller dem. Oppdateringer og ominstallasjoner teller ikke.</li>
+<li>Appen har ingen konto og måler ikke bruk, så det finnes ikke et tall for hvor mange som bruker den. Det nærmeste vi kan vise er aktive Android-enheter fra Google Play, når de finnes.</li>
+<li>Tallene fra Instagram og Facebook er visninger og likes slik de to tjenestene selv viser dem.</li>
+<li>Tallene oppdateres av og til, ikke i sanntid. Den siste uka er ikke ferdig og er merket «pågår». Land med færre enn 10 nedlastinger vises ikke.</li>
+<li>Alt er samlede tall. Ingen enkeltpersoner, ingen sporing og ingen informasjonskapsler på denne siden, og den henter ingenting fra andre nettsteder.</li>
+</ul>
+
+<footer><a href="/">Pitch Instincts</a> · <a id="support" href="/support/">Støtte</a> · <a id="privacy" href="/privacy/">Personvern</a> · <span id="langswitch"></span><br><a href="https://www.instagram.com/pitch_instincts/">Instagram</a> · <a href="https://www.threads.com/@pitch_instincts">Threads</a> · <a href="https://www.facebook.com/PitchInstincts">Facebook</a></footer>
+</main>
+<script>
+// Siden leser én fil, stats.json (aggregerte tall), og tegner alt selv: ingen eksterne skript, ingen sporing.
+// Uten JavaScript står tallene og tabellene fra siste bygg i HTML-en.
+/*pickLang*/
+function pickLang(langs,search,hash){
+  var o=/^#(nb|en|pt|it|es|fr)(?:-[a-z]+)?$/.exec(hash||"")||/[?&]lang=(nb|en|pt|it|es|fr)(?![a-z])/.exec(search||"");
+  if(o)return o[1];
+  var known=false,port=false,ital=false,span=false,fren=false;
+  for(var i=0;langs&&i<langs.length;i++){
+    var m=/^([a-z]{2,3})(?:-[a-z]{4})?(?:-([a-z]{2}|\d{3}))?(?![a-z0-9])/i.exec(langs[i]||"");
+    if(!m)continue;
+    known=true;
+    if(/^(nb|nn|no)$/i.test(m[1])||/^(no|sj)$/i.test(m[2]||""))return "nb";
+    if(/^pt$/i.test(m[1]))port=true;
+    if(/^it$/i.test(m[1]))ital=true;
+    if(/^es$/i.test(m[1]))span=true;
+    if(/^fr$/i.test(m[1]))fren=true;
+  }
+  return port?"pt":ital?"it":span?"es":fren?"fr":known?"en":"nb";
+}
+/*end*/
+const LANG=pickLang(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language],location.search,location.hash);const nb=LANG==="nb",pt=LANG==="pt",it=LANG==="it",es=LANG==="es",fr=LANG==="fr";
+function t(no,en,p,i,s,f){return nb?no:pt&&p!==undefined?p:it&&i!==undefined?i:es&&s!==undefined?s:fr&&f!==undefined?f:en}
+function setText(id,s){const e=document.getElementById(id);if(e)e.textContent=s}
+document.documentElement.lang=nb?"nb":pt?"pt-BR":it?"it":es?"es":fr?"fr":"en";
+const LOC=nb?"nb-NO":pt?"pt-BR":it?"it-IT":es?"es-ES":fr?"fr-FR":"en";
+const NF=new Intl.NumberFormat(LOC),CF=new Intl.NumberFormat(LOC,{notation:"compact",maximumFractionDigits:1});
+function num(n){return n==null?"–":NF.format(n)}
+function dfmt(s,o){return new Date(s+"T00:00:00Z").toLocaleDateString(LOC,Object.assign({timeZone:"UTC"},o))}
+const DAY={day:"numeric",month:"short"},FULL={day:"numeric",month:"long",year:"numeric"};
+const X={
+title:t("Pitch Instincts i tall","Pitch Instincts in numbers","Pitch Instincts em números","Pitch Instincts in numeri","Pitch Instincts en cifras","Pitch Instincts en chiffres"),
+lead:t("Så mange laster ned appen, og så mange ser Reelsene våre. Åpne tall, samlet, uten enkeltpersoner.","How many download the app, and how many watch our Reels. Open numbers, totals only, no individuals.","Quantas pessoas baixam o app e quantas assistem aos nossos Reels. Números abertos, só totais, sem pessoas individuais.","Quante persone scaricano l'app e quante guardano i nostri Reel. Numeri aperti, solo totali, nessuna persona.","Cuántas personas descargan la app y cuántas ven nuestros Reels. Cifras abiertas, solo totales, sin personas concretas.","Combien de personnes téléchargent l'app et regardent nos Reels. Des chiffres ouverts, en totaux, sans personnes."),
+upd:t("Oppdatert ","Updated ","Atualizado em ","Aggiornato il ","Actualizado el ","Mis à jour le "),
+sampleh:t("Eksempeldata","Sample data","Dados de exemplo","Dati di esempio","Datos de ejemplo","Données d'exemple"),
+samplep:t("Tallene på denne siden er oppdiktet, bare for å vise hvordan siden ser ut. De er ikke ekte.","The numbers on this page are made up, only to show what the page looks like. They are not real.","Os números desta página são inventados, só para mostrar como a página fica. Não são reais.","I numeri di questa pagina sono inventati, solo per mostrare come appare la pagina. Non sono reali.","Las cifras de esta página son inventadas, solo para mostrar cómo se ve la página. No son reales.","Les chiffres de cette page sont inventés, juste pour montrer son aspect. Ils ne sont pas réels."),
+f1:t("Nedlastinger totalt","Downloads in total","Downloads no total","Download totali","Descargas en total","Téléchargements au total"),
+f2:t("Siste 30 dager","Last 30 days","Últimos 30 dias","Ultimi 30 giorni","Últimos 30 días","30 derniers jours"),
+f3:t("Øvelser i appen","Exercises in the app","Exercícios no app","Esercizi nell'app","Ejercicios en la app","Exercices dans l'app"),
+range:t("Periode","Period","Período","Periodo","Período","Période"),
+r30:t("30 dager","30 days","30 dias","30 giorni","30 días","30 jours"),
+r90:t("90 dager","90 days","90 dias","90 giorni","90 días","90 jours"),
+rall:t("Alt","All","Tudo","Tutto","Todo","Tout"),
+f4:t("Følgere totalt","Followers in total","Seguidores no total","Follower totali","Seguidores en total","Abonnés au total"),
+dlh0:t("Nedlastinger","Downloads","Downloads","Download","Descargas","Téléchargements"),
+dlcap:t("Nedlastinger per uke","Downloads per week","Downloads por semana","Download a settimana","Descargas por semana","Téléchargements par semaine"),
+androidtest:t("Google Play er i lukket test.","Google Play is in closed testing.","O Google Play está em teste fechado.","Google Play è in test chiuso.","Google Play está en prueba cerrada.","Google Play est en test fermé."),
+follcol:t("Følgere","Followers","Seguidores","Follower","Seguidores","Abonnés"),
+posts:t("innlegg","posts","publicações","post","publicaciones","publications"),
+ttl:t("Totalt ","In total ","No total ","Totale ","En total ","Au total "),
+vtot:t(" visninger totalt"," views in total"," visualizações no total"," visualizzazioni totali"," reproducciones en total"," vues au total"),
+ltot:t(" likes totalt"," likes in total"," curtidas no total"," Mi piace totali"," me gusta en total"," J'aime au total"),
+reelh:t("Ti mest sette innlegg","Ten most viewed posts","Os dez posts mais vistos","I dieci post più visti","Las diez publicaciones más vistas","Les dix publications les plus vues"),
+reelsub:t("Reels og innlegg fra Instagram og Facebook, sortert etter visninger. De vises først når de er en uke gamle. Tittelen er åpningssetningen. Lenken åpner innlegget i en ny fane.","Reels and posts from Instagram and Facebook, sorted by views. They appear only once they are a week old. The title is the opening line. The link opens the post in a new tab.","Reels e posts do Instagram e do Facebook, ordenados por visualizações. Só aparecem depois de uma semana. O título é a frase de abertura. O link abre o post em uma nova aba.","Reel e post di Instagram e Facebook, in ordine di visualizzazioni. Compaiono solo dopo una settimana. Il titolo è la frase di apertura. Il link apre il post in una nuova scheda.","Reels y publicaciones de Instagram y Facebook, ordenados por reproducciones. Aparecen solo cuando tienen una semana. El título es la frase de apertura. El enlace abre la publicación en una pestaña nueva.","Reels et publications d'Instagram et de Facebook, classés par vues. Ils n'apparaissent qu'après une semaine. Le titre est la phrase d'ouverture. Le lien ouvre la publication dans un nouvel onglet."),
+openin:t("åpnes i ny fane på ","opens in a new tab on ","abre em nova aba no ","si apre in una nuova scheda su ","se abre en una pestaña nueva en ","s'ouvre dans un nouvel onglet sur "),
+wk:t("Uke fra","Week of","Semana de","Settimana del","Semana del","Semaine du"),
+tot:t("Totalt","Total","Total","Totale","Total","Total"),
+ongoing:t("pågår","in progress","em andamento","in corso","en curso","en cours"),
+showtab:t("Vis som tabell","Show as table","Mostrar como tabela","Mostra come tabella","Mostrar como tabla","Afficher en tableau"),
+actcap:t("Aktive Android-enheter per uke","Active Android devices per week","Dispositivos Android ativos por semana","Dispositivi Android attivi a settimana","Dispositivos Android activos por semana","Appareils Android actifs par semaine"),
+dev:t("Enheter","Devices","Dispositivos","Dispositivi","Dispositivos","Appareils"),
+igv:t("Visninger per uke","Views per week","Visualizações por semana","Visualizzazioni a settimana","Reproducciones por semana","Vues par semaine"),
+igl:t("Likes per uke","Likes per week","Curtidas por semana","Mi piace a settimana","Me gusta por semana","J'aime par semaine"),
+views:t("Visninger","Views","Visualizações","Visualizzazioni","Reproducciones","Vues"),
+likes:t("Likes","Likes","Curtidas","Mi piace","Me gusta","J'aime"),
+saves:t("Lagringer","Saves","Salvamentos","Salvataggi","Guardados","Enregistrements"),
+shares:t("Delinger","Shares","Compartilhamentos","Condivisioni","Veces compartido","Partages"),
+cth:t("Hvor lastes den ned","Where it is downloaded","De onde é baixado","Dove viene scaricata","Dónde se descarga","Où elle est téléchargée"),
+ctsub:t("Bare land med minst 10 nedlastinger vises, resten samles under «Andre».","Only countries with at least 10 downloads are shown; the rest are grouped as “Other”.","Só aparecem países com pelo menos 10 downloads; o resto fica em «Outros».","Sono mostrati solo i paesi con almeno 10 download; gli altri sono raggruppati in «Altri».","Solo se muestran países con al menos 10 descargas; el resto va en «Otros».","Seuls les pays avec au moins 10 téléchargements sont affichés ; les autres sont regroupés sous « Autres »."),
+other:t("Andre","Other","Outros","Altri","Otros","Autres"),
+fh:t("Annet","More","Mais","Altro","Más","Autres chiffres"),
+ver:t("Siste versjon av appen: ","Latest version of the app: ","Última versão do app: ","Ultima versione dell'app: ","Última versión de la app: ","Dernière version de l'app : "),
+released:t("ute fra ","out since ","lançada em ","uscita il ","disponible desde el ","disponible depuis le "),
+mile:t(" nedlastinger passert ",
+" downloads passed on "," downloads ultrapassados em "," download superati il "," descargas superadas el "," téléchargements dépassés le "),
+howh:t("Slik tar vi tallene","How we count","Como contamos","Come contiamo","Cómo contamos","Comment nous comptons"),
+how:[
+t("Nedlastinger er førstegangsnedlastinger slik App Store og Google Play teller dem. Oppdateringer og ominstallasjoner teller ikke.","Downloads are first-time downloads as the App Store and Google Play count them. Updates and reinstalls do not count.","Downloads são primeiros downloads, como a App Store e o Google Play os contam. Atualizações e reinstalações não contam.","I download sono i primi download, come li contano App Store e Google Play. Aggiornamenti e reinstallazioni non contano.","Las descargas son primeras descargas, tal como las cuentan App Store y Google Play. Las actualizaciones y reinstalaciones no cuentan.","Les téléchargements sont des premiers téléchargements, tels que l'App Store et Google Play les comptent. Les mises à jour et réinstallations ne comptent pas."),
+t("Appen har ingen konto og måler ikke bruk, så det finnes ikke et tall for hvor mange som bruker den. Det nærmeste vi kan vise er aktive Android-enheter fra Google Play, når de finnes.","The app has no accounts and does not measure use, so there is no figure for how many people use it. The closest we can show is active Android devices from Google Play, when there are any.","O app não tem conta e não mede o uso, então não existe um número de quantas pessoas o usam. O mais próximo que podemos mostrar são os dispositivos Android ativos do Google Play, quando houver.","L'app non ha account e non misura l'uso, quindi non esiste un dato su quante persone la usano. Il più vicino che possiamo mostrare sono i dispositivi Android attivi di Google Play, quando ci sono.","La app no tiene cuentas y no mide el uso, así que no existe una cifra de cuántas personas la usan. Lo más cercano que podemos mostrar son los dispositivos Android activos de Google Play, cuando los haya.","L'app n'a pas de compte et ne mesure pas l'utilisation, donc il n'existe pas de chiffre sur le nombre d'utilisateurs. Le plus proche que nous puissions montrer, ce sont les appareils Android actifs de Google Play, quand il y en a."),
+t("Tallene fra Instagram og Facebook er visninger og likes slik de to tjenestene selv viser dem.","The Instagram and Facebook numbers are views and likes as those two services themselves show them.","Os números do Instagram e do Facebook são visualizações e curtidas como os dois serviços as mostram.","I numeri di Instagram e Facebook sono visualizzazioni e Mi piace come li mostrano i due servizi stessi.","Las cifras de Instagram y Facebook son reproducciones y me gusta tal como las muestran los propios servicios.","Les chiffres d'Instagram et de Facebook sont les vues et les J'aime tels que les deux services les affichent eux-mêmes."),
+t("Tallene oppdateres av og til, ikke i sanntid. Den siste uka er ikke ferdig og er merket «pågår». Land med færre enn 10 nedlastinger vises ikke.","The numbers are updated now and then, not in real time. The latest week is not finished and is marked “in progress”. Countries with fewer than 10 downloads are not shown.","Os números são atualizados de vez em quando, não em tempo real. A última semana não terminou e está marcada como «em andamento». Países com menos de 10 downloads não aparecem.","I numeri sono aggiornati ogni tanto, non in tempo reale. L'ultima settimana non è finita ed è segnata come «in corso». I paesi con meno di 10 download non compaiono.","Las cifras se actualizan de vez en cuando, no en tiempo real. La última semana no ha terminado y está marcada como «en curso». Los países con menos de 10 descargas no aparecen.","Les chiffres sont mis à jour de temps en temps, pas en temps réel. La dernière semaine n'est pas terminée et est marquée « en cours ». Les pays avec moins de 10 téléchargements ne sont pas affichés."),
+t("Alt er samlede tall. Ingen enkeltpersoner, ingen sporing og ingen informasjonskapsler på denne siden, og den henter ingenting fra andre nettsteder.","Everything is a total. No individuals, no tracking and no cookies on this page, and it loads nothing from other websites.","Tudo são totais. Nenhuma pessoa individual, nenhum rastreamento e nenhum cookie nesta página, e ela não carrega nada de outros sites.","Tutto sono totali. Nessuna persona, nessun tracciamento e nessun cookie su questa pagina, e non carica nulla da altri siti.","Todo son totales. Ninguna persona concreta, ningún rastreo y ninguna cookie en esta página, y no carga nada de otros sitios.","Tout est en totaux. Aucune personne, aucun suivi et aucun cookie sur cette page, et elle ne charge rien d'autres sites.")]
+};
+setText("title",X.title);document.title=t("Tall","Numbers","Números","Numeri","Cifras","Chiffres")+" · Pitch Instincts";
+setText("lead",X.lead);setText("sampleh",X.sampleh);setText("samplep",X.samplep);setText("rangel",X.range);
+document.getElementById("range").setAttribute("aria-label",X.range);
+setText("reelh",X.reelh);setText("reelsub",X.reelsub);setText("cth",X.cth);setText("ctsub",X.ctsub);setText("fh",X.fh);setText("howh",X.howh);
+setText("support",t("Støtte","Support","Suporte","Supporto","Ayuda","Assistance"));setText("privacy",t("Personvern","Privacy","Privacidade","Privacy","Privacidad","Confidentialité"));
+(function(){const ul=document.getElementById("how");ul.textContent="";X.how.forEach(function(s){const li=document.createElement("li");li.textContent=s;ul.appendChild(li)})})();
+(function(){const b=document.querySelectorAll("#range button");b[0].textContent=X.r30;b[1].textContent=X.r90;b[2].textContent=X.rall})();
+// Språkvalg i bunnlinja: de andre språkene.
+(function(){const w=document.getElementById("langswitch");if(w){const names={nb:["Norsk","nb"],en:["English","en"],pt:["Português","pt-BR"],it:["Italiano","it"],es:["Español","es"],fr:["Français","fr"]};const cur=nb?"nb":pt?"pt":it?"it":es?"es":fr?"fr":"en";w.textContent="";["nb","en","pt","it","es","fr"].filter(function(x){return x!==cur}).forEach(function(x,i){if(i)w.appendChild(document.createTextNode(" · "));const a=document.createElement("a");a.textContent=names[x][0];a.lang=names[x][1];a.href=location.pathname+"?lang="+x+location.hash;w.appendChild(a)})}})();
+
+// ---------- tegning ----------
+const SVGNS="http://www.w3.org/2000/svg";
+function el(tag,attrs,kids){const e=document.createElement(tag);for(const k in attrs||{})e.setAttribute(k,attrs[k]);(kids||[]).forEach(function(c){e.appendChild(typeof c==="string"?document.createTextNode(c):c)});return e}
+function sv(tag,attrs){const e=document.createElementNS(SVGNS,tag);for(const k in attrs||{})e.setAttribute(k,attrs[k]);return e}
+function niceMax(v){const p=Math.pow(10,Math.floor(Math.log10(Math.max(v,1)))),m=v/p;return(m<=1?1:m<=2?2:m<=5?5:10)*p}
+let DATA=null,DAYS=90;
+const PLOTS=[];
+// rows: [{date, v:{k:n}, partial}], series: [{k, cls, name}], type: "stack" | "line"
+function plot(hostId,readId,rows,series,type,label){
+  const host=document.getElementById(hostId),read=document.getElementById(readId);
+  const tot=rows.map(function(r){return series.reduce(function(s,x){return s+(r.v[x.k]||0)},0)});
+  function summary(i){const r=rows[i];return dfmt(r.date,DAY)+(r.partial?" ("+X.ongoing+")":"")+": "+(series.length>1?series.map(function(x){return x.name+" "+num(r.v[x.k]||0)}).join(", ")+" · "+X.tot+" "+num(tot[i]):num(tot[i]))}
+  function draw(){
+    host.textContent="";
+    if(!rows.length){read.textContent="";return}
+    const W=Math.max(host.clientWidth,240),H=210,L=38,R=6,T=8,B=26,w=W-L-R,h=H-T-B,n=rows.length;
+    const max=niceMax(Math.max.apply(null,tot.concat([1]))),svg=sv("svg",{viewBox:"0 0 "+W+" "+H,width:W,height:H,"aria-hidden":"true",focusable:"false"});
+    [0,.5,1].forEach(function(f){const y=T+h-h*f;svg.appendChild(sv("line",{x1:L,x2:W-R,y1:y,y2:y,class:"grid"}));const tx=sv("text",{x:L-6,y:y+4,"text-anchor":"end"});tx.textContent=CF.format(max*f);svg.appendChild(tx)});
+    const step=w/n,bw=Math.max(2,Math.min(30,step*.72));
+    const sel=sv("rect",{class:"sel",y:T,height:h,width:Math.max(step,4),visibility:"hidden"});svg.appendChild(sel);
+    function cx(i){return L+step*(i+.5)}
+    if(type==="line"){
+      const pts=rows.map(function(r,i){return[cx(i),T+h-h*tot[i]/max]});
+      svg.appendChild(sv("polyline",{class:"l1",points:pts.map(function(p){return p.join(",")}).join(" ")}));
+      if(n<=40)pts.forEach(function(p,i){svg.appendChild(sv("circle",{class:"d1"+(rows[i].partial?" part":""),cx:p[0],cy:p[1],r:3}))});
+    }else rows.forEach(function(r,i){
+      let y=T+h;series.forEach(function(x){const v=r.v[x.k]||0,bh=h*v/max;if(!v)return;y-=bh;svg.appendChild(sv("rect",{class:x.cls+(r.partial?" part":"")+" bar-in",x:cx(i)-bw/2,y:y,width:bw,height:bh,rx:Math.min(3,bw/2)}))});
+    });
+    const per=Math.max(1,Math.ceil(n/Math.max(1,Math.floor(w/70))));
+    for(let i=n-1;i>=0;i-=per){const tx=sv("text",{x:cx(i),y:H-8,"text-anchor":i===n-1&&n>1?"end":"middle"});tx.textContent=dfmt(rows[i].date,DAY);svg.appendChild(tx)}
+    const hit=sv("rect",{class:"hit",x:L,y:T,width:w,height:h});svg.appendChild(hit);
+    function at(i){i=Math.max(0,Math.min(n-1,i));sel.setAttribute("x",L+step*i);sel.setAttribute("visibility","visible");read.textContent=summary(i)}
+    function ev(e){const r=svg.getBoundingClientRect();at(Math.floor(((e.clientX-r.left)*(W/r.width)-L)/step))}
+    hit.addEventListener("pointermove",function(e){ev(e)});hit.addEventListener("pointerdown",function(e){ev(e)});
+    hit.addEventListener("pointerleave",function(){sel.setAttribute("visibility","hidden");read.textContent=summary(n-1)});
+    host.appendChild(svg);read.textContent=summary(n-1);
+  }
+  draw();PLOTS.push({host:host,draw:draw,w:host.clientWidth});
+  host.setAttribute("aria-label",label+": "+dfmt(rows[0].date,DAY)+" – "+dfmt(rows[rows.length-1].date,DAY)+". "+summary(rows.length-1));
+}
+function tableRows(id,rows,cols){
+  const tb=document.getElementById(id);tb.textContent="";
+  rows.slice().reverse().forEach(function(r){const tr=el("tr");tr.appendChild(el("th",{scope:"row"},[dfmt(r.date,FULL)+(r.partial?" ("+X.ongoing+")":"")]));cols.forEach(function(c){tr.appendChild(el("td",{},[num(c(r))]))});tb.appendChild(tr)});
+}
+function inRange(list,key){
+  if(!DAYS)return list;
+  const end=new Date(DATA.updated+"T00:00:00Z").getTime()-DAYS*864e5;
+  return list.filter(function(r){return new Date(r[key]+"T00:00:00Z").getTime()+6*864e5>=end});
+}
+const CH={
+app_store:{title:"App Store",kind:"store"},google_play:{title:"Google Play",kind:"store"},
+instagram:{title:"Instagram",kind:"social"},facebook:{title:"Facebook",kind:"social"}};
+function byWeek(list,key){const m={};(list||[]).forEach(function(r){m[r.week_start]=r[key]});return m}
+function chan(k,c){
+  const def=CH[k];let table=[],cols=[];
+  setText(k+"-h",def.title);
+  if(def.kind==="store"){
+    const wk=inRange(c.weekly||[],"week_start");
+    const rd=wk.map(function(r){return{date:r.week_start,v:{n:r.downloads},partial:!!r.partial}});
+    setText(k+"-stat",X.ttl+num(c.downloads_total)+" · "+X.f2.toLowerCase()+" "+num(c.last_30d)+(c.stage==="test"?" · "+X.androidtest:""));
+    setText(k+"-downloads-cap",X.dlcap);plot(k+"-downloads-plot",k+"-downloads-read",rd,[{k:"n",cls:"c1",name:X.dlh0}],"stack",def.title+": "+X.dlcap);
+    const act=inRange(c.active_weekly||[],"week_start").map(function(r){return{date:r.week_start,v:{n:r.active}}});
+    const blk=document.getElementById(k+"-active-blk");
+    if(blk){blk.hidden=!act.length;if(act.length){setText(k+"-active-cap",X.actcap);plot(k+"-active-plot",k+"-active-read",act,[{k:"n",cls:"c2",name:X.dev}],"line",def.title+": "+X.actcap)}}
+    const am=byWeek(c.active_weekly,"active");
+    table=wk.map(function(r){return{date:r.week_start,partial:!!r.partial,c:[r.downloads].concat(act.length?[am[r.week_start]]:[])}});
+    cols=[X.dlh0].concat(act.length?[X.dev]:[]);
+  }else{
+    const wk=inRange(c.weekly||[],"week_start"),fm=byWeek(c.followers_weekly,"followers");
+    const rw=wk.map(function(r){return{date:r.week_start,v:{views:r.views,likes:r.likes},partial:!!r.partial}});
+    setText(k+"-stat",num(c.followers)+" "+X.follcol.toLowerCase()+" · "+num(c.views_total)+X.vtot+" · "+num(c.likes_total)+X.ltot+(c.posts_published?" · "+num(c.posts_published)+" "+X.posts:""));
+    setText(k+"-views-cap",X.igv);setText(k+"-likes-cap",X.igl);
+    plot(k+"-views-plot",k+"-views-read",rw,[{k:"views",cls:"c1",name:X.views}],"stack",def.title+": "+X.igv);
+    plot(k+"-likes-plot",k+"-likes-read",rw,[{k:"likes",cls:"c2",name:X.likes}],"stack",def.title+": "+X.igl);
+    table=wk.map(function(r){return{date:r.week_start,partial:!!r.partial,c:[r.views,r.likes,fm[r.week_start]]}});
+    cols=[X.views,X.likes,X.follcol];
+  }
+  setText(k+"-sum",X.showtab);setText(k+"-capt",def.title);
+  const th=document.querySelectorAll("#"+k+"-tab thead th");th[0].textContent=X.wk;
+  for(let i=th.length-1;i>cols.length;i--)th[i].remove();
+  cols.forEach(function(n,i){const h=document.querySelectorAll("#"+k+"-tab thead th")[i+1];if(h)h.textContent=n});
+  const body=document.getElementById(k+"-rows");body.textContent="";
+  table.slice().reverse().forEach(function(r){const tr=el("tr");tr.appendChild(el("th",{scope:"row"},[dfmt(r.date,FULL)+(r.partial?" ("+X.ongoing+")":"")]));
+    for(let i=0;i<cols.length;i++)tr.appendChild(el("td",{},[num(r.c[i])]));body.appendChild(tr)});
+}
+function render(){
+  PLOTS.length=0;
+  const d=DATA,ch=d.channels,ap=ch.app_store,gp=ch.google_play;
+  document.getElementById("sample").hidden=!d.sample;
+  setText("upd",X.upd+dfmt(d.updated,FULL));
+  const figs=document.getElementById("figs");figs.textContent="";
+  [[X.f1,ap.downloads_total+gp.downloads_total],[X.f2,ap.last_30d+gp.last_30d],[X.f4,ch.instagram.followers+ch.facebook.followers],[X.f3,d.app.exercises]].forEach(function(f){figs.appendChild(el("div",{class:"fig"},[el("dt",{},[f[0]]),el("dd",{},[num(f[1])])]))});
+  Object.keys(CH).forEach(function(k){chan(k,ch[k])});
+  // topp 10 innlegg, på tvers av Instagram og Facebook
+  const rl=document.getElementById("reels");rl.textContent="";
+  (d.top_posts||[]).forEach(function(r){
+    const title=CH[r.channel].title;
+    const nums=el("dl",{class:"nums"});[["views",X.views],["likes",X.likes],["saves",X.saves],["shares",X.shares]].forEach(function(p){if(r[p[0]]!=null)nums.appendChild(el("div",{},[el("dt",{},[p[1]]),el("dd",{},[num(r[p[0]])])]))});
+    const a=el("a",{class:"hook",href:r.url,target:"_blank",rel:"noopener noreferrer"},[r.hook,el("span",{class:"vh"},[" ("+X.openin+title+")"])]);
+    rl.appendChild(el("li",{},[a,el("p",{class:"rd"},[el("span",{class:"chip"},[title])," "+dfmt(r.date,FULL)]),nums]));
+  });
+  const cl=document.getElementById("countries");cl.textContent="";
+  const c=d.countries;document.getElementById("cth").hidden=document.getElementById("ctsub").hidden=cl.hidden=!c;
+  if(c){let dn=null;try{dn=new Intl.DisplayNames([LOC],{type:"region"})}catch(e){}
+    const rows=c.rows.map(function(r){return[dn?(dn.of(r.code)||r.code):r.code,r.downloads]});if(c.other)rows.push([X.other,c.other]);
+    const mx=Math.max.apply(null,rows.map(function(r){return r[1]}));
+    rows.forEach(function(r){cl.appendChild(el("li",{},[el("span",{},[r[0]]),el("span",{class:"bar","aria-hidden":"true"},[el("i",{style:"width:"+Math.round(100*r[1]/mx)+"%"})]),el("span",{class:"n"},[num(r[1])])]))})}
+  const fl=document.getElementById("facts");fl.textContent="";
+  if(d.app.latest_version)fl.appendChild(el("li",{},[X.ver,el("b",{},[d.app.latest_version]),d.app.released?", "+X.released+dfmt(d.app.released,FULL):""]));
+  (d.milestones||[]).slice().reverse().forEach(function(m){fl.appendChild(el("li",{},[el("b",{},[m.label]),X.mile+dfmt(m.date,FULL)]))});
+  document.getElementById("range").hidden=false;
+  document.querySelectorAll("details.tab").forEach(function(x){x.open=false});
+}
+document.querySelectorAll("#range button").forEach(function(b){b.addEventListener("click",function(){
+  DAYS=+b.getAttribute("data-d");document.querySelectorAll("#range button").forEach(function(o){o.setAttribute("aria-pressed",o===b?"true":"false")});if(DATA)render();
+})});
+(function(){let last=0;function again(){PLOTS.forEach(function(p){const w=p.host.clientWidth;if(w&&Math.abs(w-p.w)>2){p.w=w;p.draw()}})}
+  if(window.ResizeObserver)new ResizeObserver(function(){cancelAnimationFrame(last);last=requestAnimationFrame(again)}).observe(document.querySelector("main"));else window.addEventListener("resize",again)})();
+const src=document.body.getAttribute("data-src");
+fetch(src,{cache:"no-cache"}).then(function(r){if(!r.ok)throw 0;return r.json()}).then(function(j){if(!j||j.schema!==1||!j.channels||!j.app||!j.top_posts)throw 0;DATA=j;render()}).catch(function(){/* beholder tallene fra HTML-en */});
+</script></body></html>

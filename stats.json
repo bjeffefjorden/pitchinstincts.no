@@ -1,0 +1,261 @@
+{
+ "schema": 1,
+ "sample": false,
+ "updated": "2026-11-14",
+ "data_through": "2026-11-13",
+ "channels": {
+  "instagram": {
+   "followers": 292,
+   "followers_weekly": [
+    {
+     "week_start": "2026-10-19",
+     "followers": 116
+    },
+    {
+     "week_start": "2026-10-26",
+     "followers": 182
+    },
+    {
+     "week_start": "2026-11-02",
+     "followers": 256
+    },
+    {
+     "week_start": "2026-11-09",
+     "followers": 292
+    }
+   ],
+   "views_total": 50255,
+   "likes_total": 675,
+   "posts_published": 81,
+   "weekly": [
+    {
+     "week_start": "2026-10-26",
+     "views": 10889,
+     "likes": 134
+    },
+    {
+     "week_start": "2026-11-02",
+     "views": 13271,
+     "likes": 216
+    },
+    {
+     "week_start": "2026-11-09",
+     "views": 7955,
+     "likes": 76,
+     "partial": true
+    }
+   ]
+  },
+  "facebook": {
+   "followers": 22,
+   "followers_weekly": [
+    {
+     "week_start": "2026-10-19",
+     "followers": 12
+    },
+    {
+     "week_start": "2026-10-26",
+     "followers": 15
+    },
+    {
+     "week_start": "2026-11-02",
+     "followers": 18
+    },
+    {
+     "week_start": "2026-11-09",
+     "followers": 22
+    }
+   ],
+   "views_total": 24289,
+   "likes_total": 56,
+   "posts_published": 94,
+   "weekly": [
+    {
+     "week_start": "2026-10-26",
+     "views": 15735,
+     "likes": 31
+    },
+    {
+     "week_start": "2026-11-02",
+     "views": 5219,
+     "likes": 13
+    },
+    {
+     "week_start": "2026-11-09",
+     "views": 3335,
+     "likes": 12,
+     "partial": true
+    }
+   ]
+  },
+  "app_store": {
+   "downloads_total": 256,
+   "last_7d": 8,
+   "last_30d": 252,
+   "weekly": [
+    {
+     "week_start": "2026-10-05",
+     "downloads": 3
+    },
+    {
+     "week_start": "2026-10-12",
+     "downloads": 199
+    },
+    {
+     "week_start": "2026-10-19",
+     "downloads": 23
+    },
+    {
+     "week_start": "2026-10-26",
+     "downloads": 16
+    },
+    {
+     "week_start": "2026-11-02",
+     "downloads": 10
+    },
+    {
+     "week_start": "2026-11-09",
+     "downloads": 5,
+     "partial": true
+    }
+   ]
+  },
+  "google_play": {
+   "downloads_total": 25,
+   "last_7d": 7,
+   "last_30d": 25,
+   "weekly": [
+    {
+     "week_start": "2026-10-19",
+     "downloads": 14
+    },
+    {
+     "week_start": "2026-10-26",
+     "downloads": 4
+    },
+    {
+     "week_start": "2026-11-02",
+     "downloads": 7
+    }
+   ],
+   "stage": "live",
+   "active_installs": null
+  }
+ },
+ "top_posts": [
+  {
+   "rank": 1,
+   "channel": "instagram",
+   "hook": "Up. Back. Through.",
+   "url": "https://www.instagram.com/reel/DfAp41ugm8M/",
+   "date": "2026-10-27",
+   "views": 2890,
+   "likes": 29
+  },
+  {
+   "rank": 2,
+   "channel": "instagram",
+   "hook": "Your back line is fine one by one. Together it leaks. Why? 👇",
+   "url": "https://www.instagram.com/reel/DeyKT9hg64o/",
+   "date": "2026-10-22",
+   "views": 2363,
+   "likes": 22
+  },
+  {
+   "rank": 3,
+   "channel": "instagram",
+   "hook": "Hiding is easy. Hit it long, blame the pitch, go home.",
+   "url": "https://www.instagram.com/reel/DeqgmVFAux4/",
+   "date": "2026-10-19",
+   "views": 2132,
+   "likes": 32
+  },
+  {
+   "rank": 4,
+   "channel": "instagram",
+   "hook": "Unpopular opinion: crossing is the laziest way to attack. 🐺",
+   "url": "https://www.instagram.com/reel/DfJXqz0N4vZ/",
+   "date": "2026-10-31",
+   "views": 1503,
+   "likes": 20
+  },
+  {
+   "rank": 5,
+   "channel": "instagram",
+   "hook": "7v4. Two touches. Seven passes before you’re allowed to…",
+   "url": "https://www.instagram.com/reel/DerfRdci7O4/",
+   "date": "2026-10-19",
+   "views": 1497,
+   "likes": 28
+  },
+  {
+   "rank": 6,
+   "channel": "instagram",
+   "hook": "Lose it. Win it back. Before they look up. 🔁",
+   "url": "https://www.instagram.com/reel/DfVL2upAUyC/",
+   "date": "2026-11-04",
+   "views": 1425,
+   "likes": 13
+  },
+  {
+   "rank": 7,
+   "channel": "instagram",
+   "hook": "Horizontal compactness. The line shifts together, or the…",
+   "url": "https://www.instagram.com/reel/DfOoJ1sAybT/",
+   "date": "2026-11-02",
+   "views": 1411,
+   "likes": 14
+  },
+  {
+   "rank": 8,
+   "channel": "instagram",
+   "hook": "Apoyo. Descarga. Tercer hombre. 🐺",
+   "url": "https://www.instagram.com/reel/DfQXpRyA7c_/",
+   "date": "2026-11-02",
+   "views": 1409,
+   "likes": 25
+  },
+  {
+   "rank": 9,
+   "channel": "instagram",
+   "hook": "Transition game: score, and you’re a man down.",
+   "url": "https://www.instagram.com/reel/DfF1z2KA-RO/",
+   "date": "2026-10-29",
+   "views": 1320,
+   "likes": 11
+  },
+  {
+   "rank": 10,
+   "channel": "facebook",
+   "hook": "7v4. Two touches. Seven passes before you’re allowed to…",
+   "url": "https://www.facebook.com/reel/2822304534833022/",
+   "date": "2026-10-19",
+   "views": 1147,
+   "likes": 1
+  }
+ ],
+ "countries": {
+  "min_count": 10,
+  "rows": [
+   {
+    "code": "NO",
+    "downloads": 243
+   }
+  ],
+  "other": 13
+ },
+ "milestones": [
+  {
+   "label": "100",
+   "date": "2026-10-16"
+  },
+  {
+   "label": "250",
+   "date": "2026-10-28"
+  }
+ ],
+ "app": {
+  "latest_version": "1.22",
+  "exercises": 158
+ }
+}
