@@ -55,7 +55,7 @@ a.bubble:hover{background:#fff}.bubbleico{position:absolute;top:-10px;right:-10p
 </style>
 </head>
 <body><main>
-<div class="hero"><a class="home" href="/" aria-label="Pitch Instincts"><img class="logo" src="/logo.png" width="120" height="120" alt=""></a><a class="bubble" id="bubble" href="https://www.instagram.com/reel/DfsQPVuAtLA/"><span id="bubbletext">A man down? The block shifts together, not forward.</span><span class="bubbleico" id="bubbleico"><svg role="img" aria-label="Instagram" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#fff" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.2" fill="#fff" stroke="none"/></svg></span></a></div>
+<div class="hero"><a class="home" href="/" aria-label="Pitch Instincts"><img class="logo" src="/logo.png" width="120" height="120" alt=""></a><a class="bubble" id="bubble" href="https://www.instagram.com/reel/DflqPOygjHQ/"><span id="bubbletext">Lost it? You have eight seconds to win it back.</span><span class="bubbleico" id="bubbleico"><svg role="img" aria-label="Instagram" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#fff" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.2" fill="#fff" stroke="none"/></svg></span></a></div>
 <h1 id="headline">Se spillet før ballen kommer.</h1>
 <p class="tag"><b class="lime" id="craft">Fotballen er faget.</b> <span id="tag">Pitch Instincts viser spillerne hvor de skal se, hvordan de skal stå og hvor de skal flytte seg, så det blir vaner de har resten av livet.</span></p>
 <figure class="loop"><video id="loop" src="/loop.mp4" poster="/loop-poster.jpg" autoplay muted loop playsinline preload="metadata" width="848" height="404" aria-label="Animasjon fra appen: en øvelse spilles av, og en spiller blir trykket på."></video>
@@ -128,7 +128,7 @@ function stores(){
 }
 // Snakkeboblen ved logoen: roterer mellom siste innlegg og de forrige, høyst 60 tegn per krok, lik på alle språk (settes med verktøyet for boblen)
 /*bubble*/
-const BUBBLES=[{"h":"A man down? The block shifts together, not forward.","u":"https://www.instagram.com/reel/DfsQPVuAtLA/"},{"h":"The third man runs before the ball arrives.","u":"https://www.instagram.com/reel/DfsDYDiAQ2d/"},{"h":"Android coaches: we're on Google Play now 🤖","u":"/android/"},{"h":"Unpopular opinion: a man down, nobody should mark anyone.","u":"https://www.instagram.com/reel/DfLaKy-ifTU/"}];
+const BUBBLES=[{"h":"Lost it? You have eight seconds to win it back.","u":"https://www.instagram.com/reel/DflqPOygjHQ/"},{"h":"Four balls on four cones. Guard all four.","u":"https://www.instagram.com/reel/Dftg3ochG9u/"},{"h":"A man down? The block shifts together, not forward.","u":"https://www.instagram.com/reel/DfsQPVuAtLA/"},{"h":"The third man runs before the ball arrives.","u":"https://www.instagram.com/reel/DfsDYDiAQ2d/"},{"h":"Android coaches: we're on Google Play now 🤖","u":"/android/"},{"h":"Unpopular opinion: a man down, nobody should mark anyone.","u":"https://www.instagram.com/reel/DfLaKy-ifTU/"}];
 (function(){
   // Snakkeboblen roterer mellom nyeste innlegg og de forrige (BUBBLES, nyeste først). Ren HTML/CSS/JS: lenkene er vanlige lenker, ingenting lastes fra Meta.
   // Uten JavaScript og ved redusert bevegelse står den nyeste. Pause ved hover, fokus, trykk og når fanen er skjult.
