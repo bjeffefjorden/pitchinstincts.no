@@ -32,7 +32,7 @@ figure.loop figcaption{color:var(--muted);font-size:15px;text-align:center;margi
 .store{margin:0 0 30px}.store a.badge{margin:0 0 10px}
 .facts{text-align:center;font-size:15px;margin:0 0 6px}.facts span{white-space:nowrap}
 .noacc{text-align:center;margin:6px 0 8px;line-height:1.3}.noacc b{display:block;font-size:19px}.noacc span{display:block;color:var(--accent);font-weight:600;font-size:16px;margin-top:2px}
-.droid{text-align:center;font-size:15px;margin:0}.droid a{color:var(--accent);text-decoration:none;font-weight:600}.droid a:hover{text-decoration:underline}.droid a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+.soon3d{text-align:center;font-weight:700;font-size:16px;margin:6px 0 0;color:var(--accent)}.droid{text-align:center;font-size:15px;margin:0}.droid a{color:var(--accent);text-decoration:none;font-weight:600}.droid a:hover{text-decoration:underline}.droid a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
 h2{font-size:21px;line-height:1.25;margin:0 0 8px}p{margin:0 0 14px}.lead{color:var(--muted)}.lead b{color:var(--text);font-weight:600}
 table.cmp{width:100%;border-collapse:separate;border-spacing:0;table-layout:fixed;margin:12px 0 30px;background:var(--card);border-radius:16px;overflow:hidden}
 table.cmp th,table.cmp td{text-align:left;vertical-align:top;padding:12px 14px;font-size:15px;line-height:1.35}
@@ -63,6 +63,7 @@ a.bubble:hover{background:#fff}.bubbleico{position:absolute;top:-10px;right:-10p
 <div class="store" id="storecard"><a class="badge" id="appstore" href="https://apps.apple.com/app/id6818114354"><img src="/badges/app-store-no.png" width="144" height="48" alt="Last ned fra App Store"></a><a class="badge" id="play" hidden><img width="161" height="48" alt=""></a>
 <p class="noacc"><b id="noacc1">Ingen innlogging. Ingen registrering.</b><span id="noacc2">Bare en app for fotballtrenere.</span></p>
 <p class="facts" id="facts"><span>Gratis</span> · <span>Ingen reklame</span> · <span>Virker uten nett</span></p>
+<p class="soon3d" id="soon3d"><b>3D kommer.</b></p>
 <p class="droid" id="soon"><span id="droidtext">Android kommer snart.</span> <a id="droidlink" href="/android/">Bli testtrener →</a></p></div>
 <h2 id="cmphead">Det du roper i dag, og det du kan vise ham</h2>
 <table class="cmp"><thead><tr><th class="no" id="colno" scope="col">Det du roper i dag</th><th class="yes" id="colyes" scope="col">Det du kan vise ham</th></tr></thead><tbody>
@@ -164,6 +165,7 @@ const BUBBLES=[{"h":"Score and you're out. Four v three until you're back.","u":
 document.documentElement.lang=nb?"nb":pt?"pt-BR":it?"it":es?"es":fr?"fr":"en";
 // Forsiden (Ørjan 2026-11-01: «Se spillet før ballen kommer.»): én tekst per språk, norsk står i HTML-en uten JavaScript
 setText("headline",t("Se spillet før ballen kommer.","See the game before the ball arrives.","Veja o jogo antes da bola chegar.","Vedi il gioco prima che arrivi la palla.","Mira el juego antes de que llegue el balón.","Vois le jeu avant que le ballon arrive."));
+setText("soon3d",t("3D kommer.","3D is coming.","O 3D vem aí.","Il 3D sta arrivando.","El 3D llega pronto.","La 3D arrive bientôt."));
 setText("craft",t("Fotballen er faget.","Football is the craft.","O futebol é o ofício.","Il calcio è il mestiere.","El fútbol es el oficio.","Le football est le métier."));
 setText("tag",t("Pitch Instincts viser spillerne hvor de skal se, hvordan de skal stå og hvor de skal flytte seg, så det blir vaner de har resten av livet.","Pitch Instincts shows players where to look, how to stand and where to move, so it becomes a habit they keep for life.","O Pitch Instincts mostra aos jogadores para onde olhar, como posicionar o corpo e para onde se mover, para que isso vire um hábito para a vida toda.","Pitch Instincts mostra ai giocatori dove guardare, come orientare il corpo e dove muoversi, così diventa un'abitudine che resta per tutta la vita.","Pitch Instincts muestra a los jugadores dónde mirar, cómo orientar el cuerpo y hacia dónde moverse, para que se convierta en un hábito para toda la vida.","Pitch Instincts montre aux joueurs où regarder, comment orienter leur corps et où se déplacer, pour que cela devienne une habitude qu'ils gardent toute leur vie."));
 setText("cap",t("Trykk på en spiller. Se hva han ser.","Tap a player. See what he sees.","Toque em um jogador. Veja o que ele vê.","Tocca un giocatore. Guarda quello che vede.","Toca a un jugador. Mira lo que ve.","Touche un joueur. Vois ce qu'il voit."));
