@@ -1,0 +1,344 @@
+<!doctype html>
+<html lang="nb">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="referrer" content="no-referrer">
+<title>Delt tavle · Pitch Instincts</title>
+<meta name="robots" content="noindex">
+<link rel="canonical" href="https://pitchinstincts.no/tavle/">
+<meta name="description" content="En taktikktavle delt fra Pitch Instincts, appen for fotballtrenere. / A board shared from Pitch Instincts, the app for football coaches. / Uma prancheta tática compartilhada do Pitch Instincts, o app para treinadores de futebol.">
+<meta name="theme-color" content="#000000">
+<link rel="icon" href="/favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Pitch Instincts">
+<meta property="og:title" content="Delt tavle · Pitch Instincts">
+<meta property="og:description" content="En taktikktavle delt fra Pitch Instincts, appen for fotballtrenere. / A board shared from Pitch Instincts, the app for football coaches. / Uma prancheta tática compartilhada do Pitch Instincts, o app para treinadores de futebol.">
+<meta property="og:image" content="https://pitchinstincts.no/og.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="The Pitch Instincts logo">
+<meta name="twitter:card" content="summary_large_image">
+<style>
+:root{--bg:#000000;--card:#151515;--text:#f5f5f5;--muted:#a8a8a8;--accent:#9be21c;--btn:#ffffff;--btntext:#000000}
+*{box-sizing:border-box}html,body{margin:0;background:var(--bg);color:var(--text);font:17px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif}
+main{max-width:520px;margin:0 auto;padding:40px 20px 56px}
+h1{font-size:30px;line-height:1.15;margin:0 0 6px;overflow-wrap:anywhere}.tag{color:var(--muted);margin:0 0 28px}
+.card{background:var(--card);border-radius:16px;padding:20px;margin:0 0 18px}
+.card h2{font-size:20px;margin:0 0 8px}
+.meta{color:var(--muted);margin:12px 0 0}.by{color:var(--muted);margin:2px 0 0;overflow-wrap:anywhere}
+svg.pitch{display:block;width:100%;height:auto;border-radius:10px}
+a.btn{display:block;text-align:center;text-decoration:none;font-weight:600;background:var(--btn);color:var(--btntext);border-radius:12px;padding:14px 16px;margin:14px 0 0}
+a.badge{display:flex;justify-content:center;margin:12px 0 0}a.badge img{display:block;height:48px;width:auto;max-width:100%}a.badge:focus-visible{outline:2px solid var(--accent);outline-offset:4px;border-radius:10px}
+ol.steps{margin:8px 0 0;padding-left:22px}ol.steps li{margin:4px 0}
+.soon{color:var(--muted);text-align:center;margin:14px 0 0;font-size:15px}
+.report{display:inline-block;margin-top:16px;color:var(--muted);font-size:15px}
+footer{color:var(--muted);font-size:14px;margin-top:28px}footer a{color:var(--muted)}
+.brand{display:inline-flex;align-items:center;gap:10px;margin:0 0 18px;color:var(--text);text-decoration:none;font-weight:700}
+.brand img{width:44px;height:auto;display:block}
+[hidden]{display:none!important}
+</style>
+</head>
+<body><main>
+<a class="brand" href="/"><img src="/logo.png" width="44" height="44" alt=""><span>Pitch Instincts</span></a>
+<h1 id="title">Delt tavle</h1>
+<p class="tag" id="sub">En trener har delt en taktikktavle fra Pitch Instincts med deg.</p>
+<div class="card" id="board" hidden>
+<svg class="pitch" id="pitch" role="img" aria-labelledby="pitchlabel" viewBox="0 0 10 10"><title id="pitchlabel">Startoppstillingen</title></svg>
+<p class="meta" id="meta"></p>
+<p class="by" id="by" hidden></p>
+<a class="btn" id="open" href="#" hidden>Åpne i Pitch Instincts</a>
+</div>
+<div class="card" id="problem" hidden><h2 id="problemtitle"></h2><p id="problemtext"></p></div>
+<div class="card"><h2 id="noapp">Har du ikke appen?</h2>
+<ol class="steps"><li id="step1">Last ned Pitch Instincts (gratis).</li><li id="step2">Åpne appen én gang.</li><li id="step3">Trykk på lenka igjen: tavla åpnes i appen, og du kan se den spilles og lagre en kopi.</li></ol>
+<a class="badge" id="appstore" href="https://apps.apple.com/app/apple-store/id6818114354?pt=129520659&amp;ct=delt_tavle&amp;mt=8"><img src="/badges/app-store-no.png" width="144" height="48" alt="Last ned fra App Store"></a><a class="badge" id="play" hidden><img width="161" height="48" alt=""></a><p class="soon" id="soon">Android-utgaven kommer.</p>
+<a class="report" id="report" href="#" hidden></a>
+</div>
+<footer><span id="by2"></span><br><a id="support" href="/support/"></a> · <a id="privacy" href="/privacy/"></a> · <span id="langswitch"></span><br><a href="https://www.instagram.com/pitch_instincts/">Instagram</a> · <a href="https://www.threads.com/@pitch_instincts">Threads</a> · <a href="https://www.facebook.com/PitchInstincts">Facebook</a></footer>
+</main>
+<script>
+"use strict";
+// Delt tavle (appen 1.26): hele tavla står etter # i lenka (f=<format>&d=<base64url av rå deflate av den kompakte teksten>) og sendes aldri til serveren. Siden pakker den ut lokalt med
+// DecompressionStream og viser tittel, format, antall trinn, «Delt av» (bare når den som delte slo det på) og startoppstillingen som stillbilde. Aldri piler, trinn etter det første, notater
+// eller poeng: de er bare i appen. Formatene f=1, f=2 og f=3 (tre lag) leses; over 3 ber siden om å oppdatere appen. Ingen sporing, ingenting hentes utenfra, all tekst fra lenka settes
+// med textContent, og hvert tall sjekkes med Number.isInteger og grensene.
+// Kampanjenavn (som /ovelse, Ørjan 2026-11-08): App Store Connect og Play Console viser nedlastinger som kom via en delt tavle.
+const APP_STORE="https://apps.apple.com/app/apple-store/id6818114354?pt=129520659&ct=delt_tavle&mt=8";
+const PLAY_LIVE=true; // Google Play er live (siden 7. november 2026)
+const PLAY="https://play.google.com/store/apps/details?id=no.hoff.treningsapp&referrer=utm_source%3Dpitchinstincts.no%26utm_medium%3Dshare%26utm_campaign%3Ddelt_tavle";
+// Språket følger hvor besøkende er fra: norsk når noe i nettleserens språkliste er norsk (nb, nn, no) eller har region Norge
+// (en engelsk iPhone eller Mac satt til Norge melder «en-NO»), ellers portugisisk når noe er portugisisk (pt, pt-BR), ellers italiensk (it), ellers spansk (es), ellers fransk (fr), ellers engelsk.
+// ?lang=nb, ?lang=en, ?lang=pt, ?lang=it, ?lang=es eller ?lang=fr i lenka velger selv (hashen er tavla, ikke et språk).
+/*pickLang*/
+function pickLang(langs,search,hash){
+  var o=/^#(nb|en|pt|it|es|fr)(?:-[a-z]+)?$/.exec(hash||"")||/[?&]lang=(nb|en|pt|it|es|fr)(?![a-z])/.exec(search||"");
+  if(o)return o[1];
+  var known=false,port=false,ital=false,span=false,fren=false;
+  for(var i=0;langs&&i<langs.length;i++){
+    var m=/^([a-z]{2,3})(?:-[a-z]{4})?(?:-([a-z]{2}|\d{3}))?(?![a-z0-9])/i.exec(langs[i]||"");
+    if(!m)continue;
+    known=true;
+    if(/^(nb|nn|no)$/i.test(m[1])||/^(no|sj)$/i.test(m[2]||""))return "nb";
+    if(/^pt$/i.test(m[1]))port=true;
+    if(/^it$/i.test(m[1]))ital=true;
+    if(/^es$/i.test(m[1]))span=true;
+    if(/^fr$/i.test(m[1]))fren=true;
+  }
+  return port?"pt":ital?"it":span?"es":fren?"fr":known?"en":"nb";
+}
+/*end*/
+const LANG=pickLang(navigator.languages&&navigator.languages.length?navigator.languages:[navigator.language],location.search,location.hash);const nb=LANG==="nb",pt=LANG==="pt",it=LANG==="it",es=LANG==="es",fr=LANG==="fr";
+const ua=navigator.userAgent||"";
+const isAndroid=/Android/.test(ua);
+function t(no,en,p,i,s,f){return nb?no:pt&&p!==undefined?p:it&&i!==undefined?i:es&&s!==undefined?s:fr&&f!==undefined?f:en}
+function setText(id,s){const e=document.getElementById(id);if(e)e.textContent=s}
+function badge(a,file,alt){const i=a.firstElementChild;i.src="/badges/"+file+".png";i.alt=alt}
+function stores(){
+  const a=document.getElementById("appstore"),p=document.getElementById("play"),s=document.getElementById("soon");
+  // Spansk og fransk får de engelske merkene til de offisielle spanske og franske merkene er godkjent og lastet ned.
+  const L=nb?"no":pt?"pt":it?"it":"en";
+  a.href=APP_STORE;badge(a,"app-store-"+L,t("Last ned fra App Store","Download on the App Store","Baixar na App Store","Scarica su App Store","Descargar en el App Store","Télécharger dans l'App Store"));
+  if(PLAY_LIVE){p.href=PLAY;badge(p,"google-play-"+L,t("Last ned på Google Play","Get it on Google Play","Disponível no Google Play","Disponibile su Google Play","Disponible en Google Play","Disponible sur Google Play"));p.hidden=false;s.hidden=true}
+  else{p.hidden=true;s.hidden=false;s.textContent=t("Android-utgaven kommer.","The Android version is coming.","A versão para Android está chegando.","La versione per Android sta arrivando.","La versión para Android está en camino.","La version Android arrive bientôt.")}
+  // Begge butikkmerkene vises på alle enheter (Ørjan 7. nov); Android får Google Play først
+  if(isAndroid&&PLAY_LIVE)a.parentNode.insertBefore(p,a);
+}
+document.documentElement.lang=nb?"nb":pt?"pt-BR":it?"it":es?"es":fr?"fr":"en";
+
+// ---- Grensene (appens fasit: Contract/tavle/tavle-deling-v2-fasit.json og -v3-fasit.json, «limits») ----
+const LIM={maxData:4000,maxInput:6000,maxUnpacked:262144,steps:16,players:24,outfield:22,keepers:2,jokers:4,title:80,sharedBy:40,equipment:80,zones:12,zoneCorners:8,zoneName:20,margin:200,
+  pitchW:[500,10000],pitchL:[500,13000],goalW:[50,1500],goalH:[50,400],number:[0,999]};
+const KIT=["blue","red","yellow","orange","white","black","purple","pink","sky"];
+const CONE=["orange","yellow","red","blue","white"],ZONE=["yellow","sky","pink","white","orange"],MINI=[150,200,250,300];
+const FORMAT={0:"custom",7:"seven",9:"nine",11:"eleven"};
+const NEWEST=3;
+
+function isInt(v,lo,hi){return Number.isInteger(v)&&(lo===undefined||v>=lo)&&(hi===undefined||v<=hi)}
+function isId(v){return typeof v==="string"&&/^[A-Za-z0-9_]{1,8}$/.test(v)}
+// Samme forbudte tegn som appen (TavleDelingKompakt.erForbudt): kontrolltegn, linjeskift, retningsoverstyringer, BOM og U+FFF9-U+FFFF
+function cleanText(s,max){
+  if(typeof s!=="string")return null;
+  const cps=Array.from(s);if(cps.length>max)return null;
+  for(const c of cps){const v=c.codePointAt(0);if(v<=0x1F||(v>=0x7F&&v<=0x9F)||v===0x2028||v===0x2029||(v>=0x202A&&v<=0x202E)||(v>=0x2066&&v<=0x2069)||v===0xFEFF||(v>=0xFFF9&&v<=0xFFFF))return null}
+  return s;
+}
+function fail(code){const e=new Error(code);e.code=code;throw e}
+
+// ---- Lenka: #f=<1-3>&d=<base64url>. Andre parametre tåles; f og d bare én gang ----
+function params(hash){
+  const raw=String(hash||"").replace(/^#/,"");
+  if(raw.length>LIM.maxInput)fail("tooLong");
+  let f=null,d=null;
+  for(const part of raw.split("&")){
+    const i=part.indexOf("=");if(i<0)continue;
+    const k=part.slice(0,i),v=part.slice(i+1);
+    if(k==="f"){if(f!==null||!/^[0-9]{1,6}$/.test(v)||+v<1)fail("version");f=+v}
+    else if(k==="d"){if(d!==null)fail("empty");d=v}
+  }
+  if(f===null)fail("version");
+  if(f>NEWEST)return {newer:f};
+  if(!d)fail("empty");
+  if(d.length>LIM.maxData)fail("tooLong");
+  if(!/^[A-Za-z0-9_-]+$/.test(d)||d.length%4===1)fail("characters");
+  return {f:f,d:d};
+}
+function fromBase64url(d){
+  let b;try{b=atob(d.replace(/-/g,"+").replace(/_/g,"/")+"===".slice((d.length+3)%4))}catch(e){fail("characters")}
+  const out=new Uint8Array(b.length);for(let i=0;i<b.length;i++)out[i]=b.charCodeAt(i);return out;
+}
+async function inflate(bytes){
+  if(typeof DecompressionStream!=="function")fail("noDecompression");
+  const ds=new DecompressionStream("deflate-raw");
+  const w=ds.writable.getWriter();w.write(bytes).catch(function(){});w.close().catch(function(){});
+  const r=ds.readable.getReader();const parts=[];let n=0;
+  for(;;){
+    let step;try{step=await r.read()}catch(e){fail("packing")}
+    if(step.done)break;
+    n+=step.value.length;if(n>LIM.maxUnpacked){r.cancel().catch(function(){});fail("tooLarge")}
+    parts.push(step.value);
+  }
+  const out=new Uint8Array(n);let o=0;for(const p of parts){out.set(p,o);o+=p.length}return out;
+}
+
+// ---- Uttrekket (det appen kaller TavleDelingsinfo; fasitens «info») ----
+// Siden sjekker alt den viser og de grunnleggende formene; appen er vakten for resten (piler, trinn, regler) når lenka åpnes der.
+function extract(root,f){
+  const v2=f>=2,v3=f>=3;
+  if(!root||typeof root!=="object"||Array.isArray(root))fail("root");
+  if(!Object.prototype.hasOwnProperty.call(FORMAT,String(root.k))||!isInt(root.k))fail("k");
+  const b=root.b,g=root.g;
+  if(!Array.isArray(b)||b.length!==2||!isInt(b[0],LIM.pitchW[0],LIM.pitchW[1])||!isInt(b[1],LIM.pitchL[0],LIM.pitchL[1]))fail("b");
+  if(!Array.isArray(g)||g.length!==2||!isInt(g[0],LIM.goalW[0],LIM.goalW[1])||!isInt(g[1],LIM.goalH[0],LIM.goalH[1])||g[0]>b[0])fail("g");
+  let goals=2;
+  if(v2&&root.c!==undefined){if(!(root.c===0||root.c===1)||root.k!==0)fail("c");goals=root.c}
+  const title=root.t===undefined?"":cleanText(root.t,LIM.title);if(title===null)fail("t");
+  let sharedBy="";if(v2&&root.a!==undefined){sharedBy=cleanText(root.a,LIM.sharedBy);if(sharedBy===null)fail("a")}
+  // Lagene: to (blått og rødt, hver sin vei) i f=1 og f=2; tre (blått, rødt og oransje, hvert ±1) i f=3. Samme tavle har én lenke: tre lag bare i f=3, og f=3 bare med tre lag
+  const n=v3?3:2,colours=v3?["blue","red","orange"]:["blue","red"];
+  const teams=root.l;
+  if(!Array.isArray(teams)||teams.length!==n)fail("l");
+  const seen={};
+  const tm=teams.map(function(x){
+    if(!Array.isArray(x)||!(x.length===2||(v2&&x.length===3))||colours.indexOf(x[0])<0||seen[x[0]]||!(x[1]===1||x[1]===-1))fail("l");
+    if(x.length===3&&KIT.indexOf(x[2])<0)fail("l");
+    seen[x[0]]=true;return {colour:x[0],direction:x[1]};
+  });
+  if(n===2&&tm[0].direction!==-tm[1].direction)fail("l");
+  if(v3&&root.y!==undefined){
+    // «Spiller sammen»: grupper av lag (plassene i l), minst to og færre enn alle, stigende, et lag i høyst én gruppe
+    if(!Array.isArray(root.y)||root.y.length===0)fail("y");
+    const used={};
+    for(const grp of root.y){
+      if(!Array.isArray(grp)||grp.length<2||grp.length>=n)fail("y");
+      for(let i=0;i<grp.length;i++){if(!isInt(grp[i],0,n-1)||(i>0&&grp[i]<=grp[i-1])||used[grp[i]])fail("y");used[grp[i]]=true}
+    }
+  }
+  const scorerMax=v3?7:3;
+  const s=root.s;
+  if(!Array.isArray(s)||(!v2&&s.length===0)||s.length>LIM.players)fail("s");
+  const ids={};let keepers=0,jokers=0;
+  const players=s.map(function(p){
+    if(!Array.isArray(p)||(p.length!==3&&p.length!==4)||!isId(p[0])||ids[p[0]]||!isInt(p[1],0,n-1)||!isInt(p[2],0,v2?2:1))fail("s");
+    if(p.length===4&&!isInt(p[3],LIM.number[0],LIM.number[1]))fail("s");
+    ids[p[0]]=true;if(p[2]===1)keepers++;if(p[2]===2)jokers++;
+    return {team:p[1],keeper:p[2]===1,joker:p[2]===2,x:0,y:0};
+  });
+  if(keepers>LIM.keepers||players.length-keepers>LIM.outfield||jokers>LIM.jokers)fail("s");
+  const mx=(b[1]+2*LIM.margin)/2,my=(b[0]+2*LIM.margin)/2;
+  function inside(x,y){return isInt(x)&&isInt(y)&&Math.abs(x)<=mx&&Math.abs(y)<=my}
+  const steps=root.x;
+  if(!Array.isArray(steps)||steps.length===0||steps.length>LIM.steps)fail("x");
+  const first=steps[0];
+  if(!first||typeof first!=="object"||Array.isArray(first)||!Array.isArray(first.p)||first.p.length!==2*players.length)fail("p");
+  if(v3&&first.y!==undefined)fail("y");
+  players.forEach(function(p,k){const x=first.p[2*k],y=first.p[2*k+1];if(!inside(x,y))fail("p");p.x=x/100;p.y=y/100});
+  let ball;
+  if(isInt(first.b)){if(first.b<0||first.b>=players.length)fail("ball");ball={x:players[first.b].x,y:players[first.b].y}}
+  else if(Array.isArray(first.b)&&first.b.length===2&&v2&&players.length===0&&inside(first.b[0],first.b[1]))ball={x:first.b[0]/100,y:first.b[1]/100};
+  else fail("ball");
+  const equipment=[],byId={};
+  if(v2&&root.u!==undefined){
+    if(!Array.isArray(root.u)||root.u.length>LIM.equipment)fail("u");
+    for(const u of root.u){
+      if(!Array.isArray(u)||u.length<4||!isId(u[1])||byId[u[1]]||!inside(u[2],u[3]))fail("u");
+      let e;
+      if(u[0]===0&&u.length===5&&isInt(u[4],0,4))e={kind:"cone",x:u[2]/100,y:u[3]/100,colour:CONE[u[4]]};
+      else if(u[0]===1&&u.length===7&&MINI.indexOf(u[4])>=0&&isInt(u[5],0,3)&&isInt(u[6],0,scorerMax))e={kind:"mini_goal",x:u[2]/100,y:u[3]/100,width:u[4]/100,rotation:u[5]*90};
+      else if(u[0]===2&&u.length===6&&isInt(u[4],0,3)&&isInt(u[5],0,scorerMax))e={kind:"big_goal",x:u[2]/100,y:u[3]/100,width:g[0]/100,rotation:u[4]*90};
+      else if((u[0]===3||u[0]===4)&&u.length===4)e={kind:u[0]===3?"pole":"mannequin",x:u[2]/100,y:u[3]/100};
+      else fail("u");
+      byId[u[1]]=e;equipment.push(e);
+    }
+  }
+  const zones=[];
+  if(v2&&root.z!==undefined){
+    if(!Array.isArray(root.z)||root.z.length>LIM.zones)fail("z");
+    for(const z of root.z){
+      if(!Array.isArray(z)||z.length!==6||!isId(z[0])||byId[z[0]]||!(z[1]===0||z[1]===1)||!isInt(z[2],0,4)||!Array.isArray(z[4])||!isInt(z[5],0,scorerMax))fail("z");
+      const name=cleanText(z[3],LIM.zoneName);if(name===null)fail("z");
+      const c=z[4].length;if(z[1]===0?c!==2:(c<3||c>LIM.zoneCorners))fail("z");
+      let pts=z[4].map(function(h){
+        if(typeof h==="string"){const e=byId[h];if(!e||e.kind==="mini_goal"||e.kind==="big_goal")fail("z");return {x:e.x,y:e.y}}
+        if(!Array.isArray(h)||h.length!==2||!inside(h[0],h[1]))fail("z");return {x:h[0]/100,y:h[1]/100};
+      });
+      if(z[1]===0){const x0=Math.min(pts[0].x,pts[1].x),x1=Math.max(pts[0].x,pts[1].x),y0=Math.min(pts[0].y,pts[1].y),y1=Math.max(pts[0].y,pts[1].y);pts=[{x:x0,y:y1},{x:x1,y:y1},{x:x1,y:y0},{x:x0,y:y0}]}
+      else{
+        const cx=pts.reduce(function(a,p){return a+p.x},0)/pts.length,cy=pts.reduce(function(a,p){return a+p.y},0)/pts.length;
+        pts=pts.map(function(p,i){return {p:p,i:i,a:Math.atan2(p.y-cy,p.x-cx)}}).sort(function(a,q){return a.a===q.a?a.i-q.i:a.a-q.a}).map(function(o){return o.p});
+      }
+      zones.push({colour:ZONE[z[2]],name:name,corners:pts});
+    }
+  }
+  if(v2&&root.e!==undefined){if(!Array.isArray(root.e)||root.e.length!==2||!isInt(root.e[0],-1,scorerMax)||!isInt(root.e[1],-1,scorerMax))fail("e")}
+  return {title:title,format:FORMAT[root.k],pitch:{width:b[0]/100,length:b[1]/100},goal:{width:g[0]/100,height:g[1]/100},goalCount:goals,steps:steps.length,teams:tm,
+          players:players,ball:ball,equipment:equipment,zones:zones,sharedBy:sharedBy};
+}
+
+// ---- Stillbildet: SVG, banen liggende (x langs banen, y opp) ----
+function draw(info){
+  const NS="http://www.w3.org/2000/svg",svg=document.getElementById("pitch");
+  const L=info.pitch.length,B=info.pitch.width,m=2.5,W=L+2*m,H=B+2*m;
+  svg.setAttribute("viewBox",(-W/2)+" "+(-H/2)+" "+W+" "+H);
+  function el(name,attrs){const e=document.createElementNS(NS,name);for(const k in attrs)e.setAttribute(k,String(attrs[k]));svg.appendChild(e);return e}
+  el("rect",{x:-W/2,y:-H/2,width:W,height:H,fill:"#2f7a4b"});
+  const line={stroke:"#ffffff","stroke-opacity":0.85,"stroke-width":0.15,fill:"none"};
+  el("rect",Object.assign({x:-L/2,y:-B/2,width:L,height:B},line));
+  el("line",Object.assign({x1:0,y1:-B/2,x2:0,y2:B/2},line));
+  const zc={yellow:"#f5d33c",sky:"#66bfff",pink:"#ff6fae",white:"#ffffff",orange:"#ff9a2e"};
+  for(const z of info.zones)el("polygon",{points:z.corners.map(function(p){return p.x+","+(-p.y)}).join(" "),fill:zc[z.colour],"fill-opacity":0.22,stroke:zc[z.colour],"stroke-width":0.12,"stroke-dasharray":"0.6 0.4"});
+  const gw=info.goal.width/2,sides=info.goalCount>=2?[-1,1]:info.goalCount===1?[1]:[];
+  for(const s of sides){const x=s*L/2;el("polyline",{points:[x,-gw,x+s*1.2,-gw,x+s*1.2,gw,x,gw].join(" "),fill:"none",stroke:"#ffffff","stroke-width":0.3})}
+  const cc={orange:"#ff8c1a",yellow:"#f5d33c",red:"#e33333",blue:"#2f6bdc",white:"#ffffff"};
+  for(const e of info.equipment){
+    if(e.kind==="cone")el("polygon",{points:[e.x,-e.y-0.7,e.x+0.55,-e.y+0.4,e.x-0.55,-e.y+0.4].join(" "),fill:cc[e.colour]});
+    else if(e.kind==="mini_goal"||e.kind==="big_goal"){const r=e.rotation*Math.PI/180,lx=Math.cos(r),ly=-Math.sin(r),h=e.width/2;el("line",{x1:e.x-lx*h,y1:-(e.y-ly*h),x2:e.x+lx*h,y2:-(e.y+ly*h),stroke:"#ffffff","stroke-width":0.35,"stroke-linecap":"round"})}
+    else el("circle",{cx:e.x,cy:-e.y,r:0.3,fill:e.kind==="pole"?"#f5d33c":"#9a9a9a"});
+  }
+  // Lagene: blått, rødt og det tredje laget oransje; keepere gule, jokere grønne
+  const team=["#2a6bdc","#dc3333","#ff8c1a"];
+  const R=Math.min(1.1,Math.max(0.5,L/70));
+  for(const p of info.players)el("circle",{cx:p.x,cy:-p.y,r:R,fill:p.joker?"#2fbf5a":p.keeper?"#f5d33c":team[p.team],stroke:"#ffffff","stroke-width":0.15});
+  el("circle",{cx:info.ball.x+R*0.6,cy:-info.ball.y-R*0.6,r:R*0.45,fill:"#ffffff"});
+}
+
+function formatName(f){
+  return f==="seven"?t("7er","7-a-side","Futebol 7","Calcio a 7","Fútbol 7","Football à 7"):f==="nine"?t("9er","9-a-side","Futebol 9","Calcio a 9","Fútbol 9","Football à 9"):
+    f==="eleven"?t("11er","11-a-side","Futebol 11","Calcio a 11","Fútbol 11","Football à 11"):t("Tilpasset","Custom","Personalizado","Personalizzato","Personalizado","Personnalisé");
+}
+function stepsText(n){return n===1?t("1 trinn","1 step","1 passo","1 passo","1 paso","1 étape"):n+" "+t("trinn","steps","passos","passi","pasos","étapes")}
+function teamsText(n){return n===3?" · "+t("3 lag","3 teams","3 equipes","3 squadre","3 equipos","3 équipes"):""}
+function problem(title,text){document.getElementById("board").hidden=true;const p=document.getElementById("problem");p.hidden=false;setText("problemtitle",title);setText("problemtext",text)}
+
+document.title=t("Delt tavle","Shared board","Prancheta compartilhada","Lavagna condivisa","Pizarra compartida","Tableau partagé")+" · Pitch Instincts";
+setText("title",t("Delt tavle","Shared board","Prancheta compartilhada","Lavagna condivisa","Pizarra compartida","Tableau partagé"));
+setText("sub",t("En trener har delt en taktikktavle fra Pitch Instincts med deg.","A coach has shared a board from Pitch Instincts with you.","Um treinador compartilhou com você uma prancheta tática do Pitch Instincts.","Un allenatore ha condiviso con te una lavagna tattica di Pitch Instincts.","Un entrenador ha compartido contigo una pizarra táctica de Pitch Instincts.","Un entraîneur a partagé avec toi un tableau tactique de Pitch Instincts."));
+setText("noapp",t("Har du ikke appen?","Don't have the app?","Ainda não tem o app?","Non hai l'app?","¿No tienes la app?","Tu n'as pas l'app ?"));
+setText("step1",t("Last ned Pitch Instincts (gratis).","Download Pitch Instincts (free).","Baixe o Pitch Instincts (grátis).","Scarica Pitch Instincts (gratis).","Descarga Pitch Instincts (gratis).","Télécharge Pitch Instincts (gratuit)."));
+setText("step2",t("Åpne appen én gang.","Open the app once.","Abra o app uma vez.","Apri l'app una volta.","Abre la app una vez.","Ouvre l'app une fois."));
+setText("step3",t("Trykk på lenka igjen: tavla åpnes i appen, og du kan se den spilles og lagre en kopi.","Tap the link again: the board opens in the app, where you can watch it play and save a copy.","Toque no link de novo: a prancheta abre no app, onde você pode vê-la em ação e salvar uma cópia.","Tocca di nuovo il link: la lavagna si apre nell'app, dove puoi vederla in movimento e salvarne una copia.","Toca el enlace otra vez: la pizarra se abre en la app, donde puedes verla en movimiento y guardar una copia.","Touche à nouveau le lien : le tableau s'ouvre dans l'app, où tu peux le voir s'animer et en enregistrer une copie."));
+stores();
+setText("by2",t("Gratis app for fotballtrenere, laget av en trener.","A free app for football coaches, made by a coach.","App gratuito para treinadores de futebol, feito por um treinador.","App gratuita per allenatori di calcio, fatta da un allenatore.","App gratuita para entrenadores de fútbol, hecha por un entrenador.","App gratuite pour les entraîneurs de football, faite par un entraîneur."));
+setText("support",t("Støtte","Support","Suporte","Supporto","Ayuda","Assistance"));setText("privacy",t("Personvern","Privacy","Privacidade","Privacy","Privacidad","Confidentialité"));
+
+async function show(){
+  let q,info;
+  try{
+    q=params(location.hash);
+    if(q.newer){problem(t("Laget i en nyere versjon","Made in a newer version","Criada em uma versão mais nova","Creata con una versione più recente","Creada en una versión más nueva","Créé dans une version plus récente"),
+      t("Oppdater appen for å åpne tavla.","Update the app to open the board.","Atualize o app para abrir a prancheta.","Aggiorna l'app per aprire la lavagna.","Actualiza la app para abrir la pizarra.","Mets l'app à jour pour ouvrir le tableau."));document.body.dataset.result="newer";return}
+    const bytes=await inflate(fromBase64url(q.d));
+    let text;try{text=new TextDecoder("utf-8",{fatal:true}).decode(bytes)}catch(e){fail("utf8")}
+    let root;try{root=JSON.parse(text)}catch(e){fail("json")}
+    info=extract(root,q.f);
+  }catch(e){
+    if(e&&e.code==="noDecompression"){problem(t("En tavle delt fra Pitch Instincts","A board shared from Pitch Instincts","Uma prancheta compartilhada do Pitch Instincts","Una lavagna condivisa da Pitch Instincts","Una pizarra compartida desde Pitch Instincts","Un tableau partagé depuis Pitch Instincts"),
+      t("Nettleseren kan ikke vise tavla. Åpne lenka i appen.","This browser can't show the board. Open the link in the app.","Este navegador não consegue mostrar a prancheta. Abra o link no app.","Questo browser non può mostrare la lavagna. Apri il link nell'app.","Este navegador no puede mostrar la pizarra. Abre el enlace en la app.","Ce navigateur ne peut pas afficher le tableau. Ouvre le lien dans l'app."));document.body.dataset.result="nodecompression";return}
+    problem(t("Ugyldig lenke","Invalid link","Link inválido","Link non valido","Enlace no válido","Lien non valide"),
+      t("Lenka kan være kuttet eller endret. Be om en ny lenke.","The link may be cut off or changed. Ask for a new link.","O link pode estar cortado ou alterado. Peça um novo link.","Il link potrebbe essere tagliato o modificato. Chiedine uno nuovo.","Puede que el enlace esté cortado o cambiado. Pide un enlace nuevo.","Le lien est peut-être coupé ou modifié. Demande un nouveau lien."));
+    document.body.dataset.result="invalid";document.body.dataset.error=e&&e.code?String(e.code):"error";return;
+  }
+  document.getElementById("board").hidden=false;
+  const title=info.title||t("Taktikktavle","Shared board","Prancheta tática","Lavagna tattica","Pizarra táctica","Tableau tactique");
+  setText("title",title);document.title=title+" · Pitch Instincts";
+  setText("meta",formatName(info.format)+" · "+stepsText(info.steps)+teamsText(info.teams.length));
+  setText("pitchlabel",t("Startoppstillingen","The starting line-up","A escalação inicial","Lo schieramento iniziale","La alineación inicial","La composition de départ"));
+  if(info.sharedBy){const by=document.getElementById("by");by.hidden=false;by.textContent=t("Delt av: ","Shared by: ","Compartilhada por: ","Condivisa da: ","Compartida por: ","Partagé par : ")+info.sharedBy}
+  const o=document.getElementById("open");o.hidden=false;
+  o.textContent=t("Åpne i Pitch Instincts","Open in Pitch Instincts","Abrir no Pitch Instincts","Apri in Pitch Instincts","Abrir en Pitch Instincts","Ouvrir dans Pitch Instincts");
+  // Bare de sjekkede verdiene går videre til appen, aldri resten av hashen
+  o.href="treningsapp://tavle?f="+q.f+"&d="+q.d;
+  const rep=document.getElementById("report");rep.hidden=false;
+  rep.textContent=t("Rapporter tavla","Report the board","Denunciar a prancheta","Segnala la lavagna","Denunciar la pizarra","Signaler le tableau");
+  // Rapporter: til støttesida, der adressen står (e-postadressen står bare på støtte- og personvernsida)
+  rep.href="/support/#"+(nb?"nb":pt?"pt":it?"it":es?"es":fr?"fr":"en");
+  draw(info);
+  // Til prøving mot appens fasit (verdien blir på siden; ingenting sendes)
+  document.body.dataset.result="ok";document.body.dataset.info=JSON.stringify(info);
+}
+show();
+// Språkvalg i bunnlinja: de andre språkene. Hashen (tavla) følger med.
+(function(){const w=document.getElementById("langswitch");if(w){const names={nb:["Norsk","nb"],en:["English","en"],pt:["Português","pt-BR"],it:["Italiano","it"],es:["Español","es"],fr:["Français","fr"]};const cur=nb?"nb":pt?"pt":it?"it":es?"es":fr?"fr":"en";w.textContent="";["nb","en","pt","it","es","fr"].filter(function(x){return x!==cur}).forEach(function(x,i){if(i)w.appendChild(document.createTextNode(" · "));const a=document.createElement("a");a.textContent=names[x][0];a.lang=names[x][1];a.href=location.pathname+"?lang="+x+location.hash;w.appendChild(a)})}})();
+</script></body></html>
