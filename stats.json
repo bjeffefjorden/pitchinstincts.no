@@ -5,7 +5,7 @@
  "data_through": "2026-11-19",
  "channels": {
   "instagram": {
-   "followers": 304,
+   "followers": 305,
    "followers_weekly": [
     {
      "week_start": "2026-10-19",
@@ -25,12 +25,12 @@
     },
     {
      "week_start": "2026-11-16",
-     "followers": 304
+     "followers": 305
     }
    ],
-   "views_total": 53229,
-   "likes_total": 694,
-   "posts_published": 86,
+   "views_total": 53502,
+   "likes_total": 696,
+   "posts_published": 88,
    "weekly": [
     {
      "week_start": "2026-10-26",
@@ -49,8 +49,8 @@
     },
     {
      "week_start": "2026-11-16",
-     "views": 1289,
-     "likes": 10,
+     "views": 1562,
+     "likes": 12,
      "partial": true
     }
    ]
@@ -79,9 +79,9 @@
      "followers": 22
     }
    ],
-   "views_total": 26757,
+   "views_total": 26967,
    "likes_total": 61,
-   "posts_published": 101,
+   "posts_published": 103,
    "weekly": [
     {
      "week_start": "2026-10-26",
@@ -100,7 +100,7 @@
     },
     {
      "week_start": "2026-11-16",
-     "views": 1001,
+     "views": 1211,
      "likes": 2,
      "partial": true
     }
@@ -143,9 +143,9 @@
    ]
   },
   "google_play": {
-   "downloads_total": 34,
+   "downloads_total": 35,
    "last_7d": 9,
-   "last_30d": 34,
+   "last_30d": 35,
    "weekly": [
     {
      "week_start": "2026-10-19",
@@ -162,6 +162,11 @@
     {
      "week_start": "2026-11-09",
      "downloads": 9
+    },
+    {
+     "week_start": "2026-11-16",
+     "downloads": 1,
+     "partial": true
     }
    ],
    "stage": "live",
@@ -175,7 +180,7 @@
    "hook": "Up. Back. Through.",
    "url": "https://www.instagram.com/reel/DfAp41ugm8M/",
    "date": "2026-10-27",
-   "views": 2913,
+   "views": 2917,
    "likes": 30
   },
   {
@@ -220,7 +225,7 @@
    "hook": "7v4. Two touches. Seven passes before you’re allowed to…",
    "url": "https://www.instagram.com/reel/DerfRdci7O4/",
    "date": "2026-10-19",
-   "views": 1498,
+   "views": 1499,
    "likes": 28
   },
   {
@@ -229,7 +234,7 @@
    "hook": "Lose it. Win it back. Before they look up. 🔁",
    "url": "https://www.instagram.com/reel/DfVL2upAUyC/",
    "date": "2026-11-04",
-   "views": 1452,
+   "views": 1453,
    "likes": 14
   },
   {
@@ -247,7 +252,7 @@
    "hook": "Apoyo. Descarga. Tercer hombre. 🐺",
    "url": "https://www.instagram.com/reel/DfQXpRyA7c_/",
    "date": "2026-11-02",
-   "views": 1429,
+   "views": 1430,
    "likes": 25
   },
   {
