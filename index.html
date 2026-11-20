@@ -6,7 +6,7 @@
 <meta name="referrer" content="no-referrer">
 <title>Pitch Instincts</title>
 <link rel="canonical" href="https://pitchinstincts.no/">
-<meta name="description" content="Gratis app som viser spillerne hvor de skal se, hvordan de skal stå og hvor de skal flytte seg. Laget av en trener. / A free app that shows players where to look, how to stand and where to move. Made by a coach. / App gratuito que mostra aos jogadores para onde olhar, como posicionar o corpo e para onde se mover. Feito por um treinador.">
+<meta name="description" content="Gratis taktikktavle for fotballtrenere: lag øvelser selv, se dem i 3D og vis dem til spillerne. Laget av en trener. / A free tactics app for football coaches: make your own drills, see them in 3D and show your players. Made by a coach. / Prancheta tática gratuita para treinadores de futebol: crie exercícios, veja em 3D e mostre aos jogadores. Feito por um treinador.">
 <meta name="theme-color" content="#000000">
 <link rel="icon" href="/favicon.ico" sizes="48x48">
 <link rel="icon" type="image/png" sizes="192x192" href="/icon-192.png">
@@ -14,7 +14,7 @@
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Pitch Instincts">
 <meta property="og:title" content="Pitch Instincts">
-<meta property="og:description" content="Gratis app som viser spillerne hvor de skal se, hvordan de skal stå og hvor de skal flytte seg. Laget av en trener. / A free app that shows players where to look, how to stand and where to move. Made by a coach. / App gratuito que mostra aos jogadores para onde olhar, como posicionar o corpo e para onde se mover. Feito por um treinador.">
+<meta property="og:description" content="Gratis taktikktavle for fotballtrenere: lag øvelser selv, se dem i 3D og vis dem til spillerne. Laget av en trener. / A free tactics app for football coaches: make your own drills, see them in 3D and show your players. Made by a coach. / Prancheta tática gratuita para treinadores de futebol: crie exercícios, veja em 3D e mostre aos jogadores. Feito por um treinador.">
 <meta property="og:url" content="https://pitchinstincts.no/">
 <meta property="og:image" content="https://pitchinstincts.no/og.jpg">
 <meta property="og:image:width" content="1200">
@@ -56,14 +56,14 @@ a.bubble:hover{background:#fff}.bubbleico{position:absolute;top:-10px;right:-10p
 </head>
 <body><main>
 <div class="hero"><a class="home" href="/" aria-label="Pitch Instincts"><img class="logo" src="/logo.png" width="120" height="120" alt=""></a><a class="bubble" id="bubble" href="https://www.instagram.com/p/DfbsqWkgXgo/"><span id="bubbletext">Score and you're out. Four v three until you're back.</span><span class="bubbleico" id="bubbleico"><svg role="img" aria-label="Instagram" viewBox="0 0 24 24" width="17" height="17" fill="none" stroke="#fff" stroke-width="2.2"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="1.2" fill="#fff" stroke="none"/></svg></span></a></div>
-<h1 id="headline">Se spillet før ballen kommer.</h1>
-<p class="tag"><b class="lime" id="craft">Fotballen er faget.</b> <span id="tag">Pitch Instincts viser spillerne hvor de skal se, hvordan de skal stå og hvor de skal flytte seg, så det blir vaner de har resten av livet.</span></p>
+<h1 id="headline">Lag øvelsen. Se den i 3D. Vis den til spillerne.</h1>
+<p class="tag"><b class="lime" id="craft">Fotballen er faget.</b> <span id="tag">Pitch Instincts er taktikktavla for fotballtrenere: lag øvelser og taktikker selv, se dem spilles av i 3D og vis dem til spillerne på telefonen. Eller velg blant over 160 ferdige øvelser.</span></p>
 <figure class="loop"><video id="loop" src="/loop.mp4" poster="/loop-poster.jpg" autoplay muted loop playsinline preload="metadata" width="848" height="404" aria-label="Demo fra appen: en øvelse spilles av i 2D og 3D, sett gjennom en spillers øyne og fra flere kameravinkler."></video>
 <figcaption id="cap">Trykk på en spiller. Se hva han ser.</figcaption></figure>
 <div class="store" id="storecard"><a class="badge" id="appstore" href="https://apps.apple.com/app/id6818114354"><img src="/badges/app-store-no.png" width="144" height="48" alt="Last ned fra App Store"></a><a class="badge" id="play" hidden><img width="161" height="48" alt=""></a>
 <p class="noacc"><b id="noacc1">Ingen innlogging. Ingen registrering.</b><span id="noacc2">Bare en app for fotballtrenere.</span></p>
 <p class="facts" id="facts"><span>Gratis</span> · <span>Ingen reklame</span> · <span>Virker uten nett</span></p>
-<p class="soon3d" id="soon3d"><b>3D på iPhone 12 Pro og nyere.</b></p>
+<p class="soon3d" id="soon3d"><b>3D på iPhone 12 Pro og nyere, og på Android med minst 5 GB minne.</b></p>
 <p class="droid" id="soon"><span id="droidtext">Android kommer snart.</span> <a id="droidlink" href="/android/">Bli testtrener →</a></p></div>
 <h2 id="cmphead">Det du roper i dag, og det du kan vise ham</h2>
 <table class="cmp"><thead><tr><th class="no" id="colno" scope="col">Det du roper i dag</th><th class="yes" id="colyes" scope="col">Det du kan vise ham</th></tr></thead><tbody>
@@ -164,10 +164,10 @@ const BUBBLES=[{"h":"Score and you're out. Four v three until you're back.","u":
 
 document.documentElement.lang=nb?"nb":pt?"pt-BR":it?"it":es?"es":fr?"fr":"en";
 // Forsiden (Ørjan 2026-11-01: «Se spillet før ballen kommer.»): én tekst per språk, norsk står i HTML-en uten JavaScript
-setText("headline",t("Se spillet før ballen kommer.","See the game before the ball arrives.","Veja o jogo antes da bola chegar.","Vedi il gioco prima che arrivi la palla.","Mira el juego antes de que llegue el balón.","Vois le jeu avant que le ballon arrive."));
-setText("soon3d",t("3D på iPhone 12 Pro og nyere.","3D on iPhone 12 Pro and newer.","3D no iPhone 12 Pro e mais novos.","3D su iPhone 12 Pro e successivi.","3D en iPhone 12 Pro y posteriores.","3D sur iPhone 12 Pro et plus récents."));
+setText("headline",t("Lag øvelsen. Se den i 3D. Vis den til spillerne.","Build the drill. See it in 3D. Show your players.","Crie o exercício. Veja em 3D. Mostre aos jogadores.","Crea l'esercizio. Guardalo in 3D. Mostralo ai giocatori.","Crea el ejercicio. Míralo en 3D. Muéstralo a tus jugadores.","Crée l'exercice. Vois-le en 3D. Montre-le à tes joueurs."));
+setText("soon3d",t("3D på iPhone 12 Pro og nyere, og på Android med minst 5 GB minne.","3D on iPhone 12 Pro and newer, and on Android with at least 5 GB of memory.","3D no iPhone 12 Pro e mais novos, e no Android com pelo menos 5 GB de memória.","3D su iPhone 12 Pro e successivi, e su Android con almeno 5 GB di memoria.","3D en iPhone 12 Pro y posteriores, y en Android con al menos 5 GB de memoria.","3D sur iPhone 12 Pro et plus récents, et sur Android avec au moins 5 Go de mémoire."));
 setText("craft",t("Fotballen er faget.","Football is the craft.","O futebol é o ofício.","Il calcio è il mestiere.","El fútbol es el oficio.","Le football est le métier."));
-setText("tag",t("Pitch Instincts viser spillerne hvor de skal se, hvordan de skal stå og hvor de skal flytte seg, så det blir vaner de har resten av livet.","Pitch Instincts shows players where to look, how to stand and where to move, so it becomes a habit they keep for life.","O Pitch Instincts mostra aos jogadores para onde olhar, como posicionar o corpo e para onde se mover, para que isso vire um hábito para a vida toda.","Pitch Instincts mostra ai giocatori dove guardare, come orientare il corpo e dove muoversi, così diventa un'abitudine che resta per tutta la vita.","Pitch Instincts muestra a los jugadores dónde mirar, cómo orientar el cuerpo y hacia dónde moverse, para que se convierta en un hábito para toda la vida.","Pitch Instincts montre aux joueurs où regarder, comment orienter leur corps et où se déplacer, pour que cela devienne une habitude qu'ils gardent toute leur vie."));
+setText("tag",t("Pitch Instincts er taktikktavla for fotballtrenere: lag øvelser og taktikker selv, se dem spilles av i 3D og vis dem til spillerne på telefonen. Eller velg blant over 160 ferdige øvelser.","Pitch Instincts is the app for football coaches: make your own drills and tactics, watch them play in 3D and show them to your players on your phone. Or pick from over 160 ready-made drills.","O Pitch Instincts é a prancheta tática para treinadores de futebol: crie seus próprios exercícios e táticas, veja-os em 3D e mostre aos jogadores no celular. Ou escolha entre mais de 160 exercícios prontos.","Pitch Instincts è la lavagna tattica per gli allenatori di calcio: crea i tuoi esercizi e le tue tattiche, guardali in 3D e mostrali ai giocatori sul telefono. Oppure scegli tra oltre 160 esercizi pronti.","Pitch Instincts es la pizarra táctica para entrenadores de fútbol: crea tus propios ejercicios y tácticas, míralos en 3D y muéstralos a tus jugadores en el móvil. O elige entre más de 160 ejercicios listos.","Pitch Instincts est le tableau tactique des entraîneurs de football : crée tes propres exercices et tactiques, vois-les en 3D et montre-les à tes joueurs sur ton téléphone. Ou choisis parmi plus de 160 exercices prêts."));
 setText("cap",t("Trykk på en spiller. Se hva han ser.","Tap a player. See what he sees.","Toque em um jogador. Veja o que ele vê.","Tocca un giocatore. Guarda quello che vede.","Toca a un jugador. Mira lo que ve.","Touche un joueur. Vois ce qu'il voit."));
 // Ørjan 2026-11-01: «få frem at det er ingen innlogging, ingen registrering, kun en fotballtrener-app»
 setText("noacc1",t("Ingen innlogging. Ingen registrering.","No login. No sign-up.","Sem login. Sem cadastro.","Nessun login. Nessuna registrazione.","Sin inicio de sesión. Sin registro.","Pas de connexion. Pas d'inscription."));
