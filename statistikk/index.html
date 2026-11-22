@@ -42,6 +42,10 @@ h3{font-size:16px;margin:22px 0 6px}
 .sample{background:var(--warnbg);color:var(--warn);border:1.5px solid var(--warn);border-radius:12px;padding:10px 14px;margin:14px 0 0;font-size:15px}
 .sample b{display:block;font-size:16px;letter-spacing:.02em}
 .figs{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:22px 0 0;padding:0}
+.own{margin:10px 0 0;background:var(--card);border-radius:16px;padding:14px 16px;display:flex;flex-wrap:wrap;align-items:baseline;gap:2px 12px}
+.ownbig{font-size:32px;line-height:1.15;font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums}
+.ownlab{color:var(--text);font-size:17px}
+.ownsub{width:100%;color:var(--muted);font-size:14px;line-height:1.3}
 .fig{background:var(--card);border-radius:16px;padding:14px 16px;margin:0}
 .fig dt{color:var(--muted);font-size:14px;line-height:1.3;order:2}
 .fig dd{margin:0;font-size:32px;line-height:1.15;font-weight:700;font-variant-numeric:tabular-nums;color:var(--text)}
@@ -108,6 +112,7 @@ footer{color:var(--muted);font-size:14px;margin-top:40px}footer a{color:var(--mu
 <p class="sample" id="sample" role="note" hidden><b id="sampleh">Eksempeldata</b><span id="samplep">Tallene på denne siden er oppdiktet, bare for å vise hvordan siden ser ut. De er ikke ekte.</span></p>
 
 <dl class="figs" id="figs"><div class="fig"><dt>Nedlastinger totalt</dt><dd>298</dd></div><div class="fig"><dt>Siste 30 dager</dt><dd>80</dd></div><div class="fig"><dt>Følgere totalt</dt><dd>330</dd></div><div class="fig"><dt>Øvelser i appen</dt><dd>167</dd></div></dl>
+<div class="own" id="own"><span class="ownbig" id="ownbig">0 kr</span><span class="ownlab" id="ownlab">fra investorer</span><span class="ownsub" id="ownsub">1 utvikler · 0 reklamer</span></div>
 
 <div class="range" id="range" role="group" aria-label="Periode" hidden><span id="rangel">Periode</span><button type="button" data-d="30" aria-pressed="false">30 dager</button><button type="button" data-d="90" aria-pressed="true">90 dager</button><button type="button" data-d="0" aria-pressed="false">Alt</button></div>
 
@@ -174,6 +179,9 @@ lead:t("Så mange laster ned appen, og så mange ser Reelsene våre. Åpne tall,
 upd:t("Oppdatert ","Updated ","Atualizado em ","Aggiornato il ","Actualizado el ","Mis à jour le "),
 sampleh:t("Eksempeldata","Sample data","Dados de exemplo","Dati di esempio","Datos de ejemplo","Données d'exemple"),
 samplep:t("Tallene på denne siden er oppdiktet, bare for å vise hvordan siden ser ut. De er ikke ekte.","The numbers on this page are made up, only to show what the page looks like. They are not real.","Os números desta página são inventados, só para mostrar como a página fica. Não são reais.","I numeri di questa pagina sono inventati, solo per mostrare come appare la pagina. Non sono reali.","Las cifras de esta página son inventadas, solo para mostrar cómo se ve la página. No son reales.","Les chiffres de cette page sont inventés, juste pour montrer son aspect. Ils ne sont pas réels."),
+ownbig:t("0 kr","£0","R$ 0","0 €","0 €","0 €"),
+ownlab:t("fra investorer","from investors","de investidores","da investitori","de inversores","d'investisseurs"),
+ownsub:t("1 utvikler · 0 reklamer","1 developer · 0 ads","1 desenvolvedor · 0 anúncios","1 sviluppatore · 0 pubblicità","1 desarrollador · 0 anuncios","1 développeur · 0 publicité"),
 f1:t("Nedlastinger totalt","Downloads in total","Downloads no total","Download totali","Descargas en total","Téléchargements au total"),
 f2:t("Siste 30 dager","Last 30 days","Últimos 30 dias","Ultimi 30 giorni","Últimos 30 días","30 derniers jours"),
 f3:t("Øvelser i appen","Exercises in the app","Exercícios no app","Esercizi nell'app","Ejercicios en la app","Exercices dans l'app"),
@@ -222,7 +230,7 @@ t("Tallene oppdateres av og til, ikke i sanntid. Den siste uka er ikke ferdig og
 t("Alt er samlede tall. Ingen enkeltpersoner, ingen sporing og ingen informasjonskapsler på denne siden, og den henter ingenting fra andre nettsteder.","Everything is a total. No individuals, no tracking and no cookies on this page, and it loads nothing from other websites.","Tudo são totais. Nenhuma pessoa individual, nenhum rastreamento e nenhum cookie nesta página, e ela não carrega nada de outros sites.","Tutto sono totali. Nessuna persona, nessun tracciamento e nessun cookie su questa pagina, e non carica nulla da altri siti.","Todo son totales. Ninguna persona concreta, ningún rastreo y ninguna cookie en esta página, y no carga nada de otros sitios.","Tout est en totaux. Aucune personne, aucun suivi et aucun cookie sur cette page, et elle ne charge rien d'autres sites.")]
 };
 setText("title",X.title);document.title=t("Tall","Numbers","Números","Numeri","Cifras","Chiffres")+" · Pitch Instincts";
-setText("lead",X.lead);setText("sampleh",X.sampleh);setText("samplep",X.samplep);setText("rangel",X.range);
+setText("lead",X.lead);setText("ownbig",X.ownbig);setText("ownlab",X.ownlab);setText("ownsub",X.ownsub);setText("sampleh",X.sampleh);setText("samplep",X.samplep);setText("rangel",X.range);
 document.getElementById("range").setAttribute("aria-label",X.range);
 setText("reelh",X.reelh);setText("reelsub",X.reelsub);setText("cth",X.cth);setText("ctsub",X.ctsub);setText("fh",X.fh);setText("howh",X.howh);
 setText("support",t("Støtte","Support","Suporte","Supporto","Ayuda","Assistance"));setText("privacy",t("Personvern","Privacy","Privacidade","Privacy","Privacidad","Confidentialité"));
