@@ -1,11 +1,11 @@
 {
  "schema": 1,
  "sample": false,
- "updated": "2026-11-20",
- "data_through": "2026-11-19",
+ "updated": "2026-11-22",
+ "data_through": "2026-11-21",
  "channels": {
   "instagram": {
-   "followers": 305,
+   "followers": 308,
    "followers_weekly": [
     {
      "week_start": "2026-10-19",
@@ -25,12 +25,12 @@
     },
     {
      "week_start": "2026-11-16",
-     "followers": 305
+     "followers": 308
     }
    ],
-   "views_total": 53502,
-   "likes_total": 696,
-   "posts_published": 88,
+   "views_total": 54484,
+   "likes_total": 698,
+   "posts_published": 92,
    "weekly": [
     {
      "week_start": "2026-10-26",
@@ -49,8 +49,8 @@
     },
     {
      "week_start": "2026-11-16",
-     "views": 1562,
-     "likes": 12,
+     "views": 2544,
+     "likes": 14,
      "partial": true
     }
    ]
@@ -79,9 +79,9 @@
      "followers": 22
     }
    ],
-   "views_total": 26967,
-   "likes_total": 61,
-   "posts_published": 103,
+   "views_total": 27935,
+   "likes_total": 64,
+   "posts_published": 106,
    "weekly": [
     {
      "week_start": "2026-10-26",
@@ -100,16 +100,16 @@
     },
     {
      "week_start": "2026-11-16",
-     "views": 1211,
-     "likes": 2,
+     "views": 2179,
+     "likes": 5,
      "partial": true
     }
    ]
   },
   "app_store": {
-   "downloads_total": 261,
-   "last_7d": 6,
-   "last_30d": 50,
+   "downloads_total": 262,
+   "last_7d": 5,
+   "last_30d": 44,
    "weekly": [
     {
      "week_start": "2026-10-05",
@@ -137,15 +137,15 @@
     },
     {
      "week_start": "2026-11-16",
-     "downloads": 3,
+     "downloads": 4,
      "partial": true
     }
    ]
   },
   "google_play": {
-   "downloads_total": 35,
+   "downloads_total": 36,
    "last_7d": 9,
-   "last_30d": 35,
+   "last_30d": 36,
    "weekly": [
     {
      "week_start": "2026-10-19",
@@ -165,7 +165,7 @@
     },
     {
      "week_start": "2026-11-16",
-     "downloads": 1,
+     "downloads": 2,
      "partial": true
     }
    ],
@@ -180,7 +180,7 @@
    "hook": "Up. Back. Through.",
    "url": "https://www.instagram.com/reel/DfAp41ugm8M/",
    "date": "2026-10-27",
-   "views": 2917,
+   "views": 2918,
    "likes": 30
   },
   {
@@ -207,7 +207,7 @@
    "hook": "The third man runs before the ball arrives. ⚽",
    "url": "https://www.instagram.com/reel/DfsDYDiAQ2d/",
    "date": "2026-11-13",
-   "views": 1751,
+   "views": 1756,
    "likes": 27
   },
   {
@@ -234,7 +234,7 @@
    "hook": "Lose it. Win it back. Before they look up. 🔁",
    "url": "https://www.instagram.com/reel/DfVL2upAUyC/",
    "date": "2026-11-04",
-   "views": 1453,
+   "views": 1454,
    "likes": 14
   },
   {
@@ -243,7 +243,7 @@
    "hook": "The third man is the one nobody is watching.",
    "url": "https://www.instagram.com/reel/DfeMrH9AZw8/",
    "date": "2026-11-08",
-   "views": 1450,
+   "views": 1453,
    "likes": 9
   },
   {
@@ -270,7 +270,7 @@
   "rows": [
    {
     "code": "NO",
-    "downloads": 247
+    "downloads": 248
    }
   ],
   "other": 14
@@ -286,7 +286,7 @@
   }
  ],
  "app": {
-  "latest_version": "1.24",
-  "exercises": 166
+  "latest_version": "1.26",
+  "exercises": 167
  }
 }
