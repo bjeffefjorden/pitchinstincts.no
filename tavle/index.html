@@ -174,6 +174,8 @@ function extract(root,f){
   if(!Array.isArray(g)||g.length!==2||!isInt(g[0],LIM.goalW[0],LIM.goalW[1])||!isInt(g[1],LIM.goalH[0],LIM.goalH[1])||g[0]>b[0])fail("g");
   let goals=2;
   if(v2&&root.c!==undefined){if(!(root.c===0||root.c===1)||root.k!==0)fail("c");goals=root.c}
+  // Futsal (appen 1.27): nøkkelen fu=1 sammen med k=0 («Tilpasset»); eldre apper dropper fu og viser Tilpasset
+  let futsal=false;if(root.fu!==undefined){if(root.fu!==1||root.k!==0)fail("fu");futsal=true}
   const title=root.t===undefined?"":cleanText(root.t,LIM.title);if(title===null)fail("t");
   let sharedBy="";if(v2&&root.a!==undefined){sharedBy=cleanText(root.a,LIM.sharedBy);if(sharedBy===null)fail("a")}
   // Lagene: to (blått og rødt, hver sin vei) i f=1 og f=2; tre (blått, rødt og oransje, hvert ±1) i f=3. Samme tavle har én lenke: tre lag bare i f=3, og f=3 bare med tre lag
@@ -253,7 +255,7 @@ function extract(root,f){
     }
   }
   if(v2&&root.e!==undefined){if(!Array.isArray(root.e)||root.e.length!==2||!isInt(root.e[0],-1,scorerMax)||!isInt(root.e[1],-1,scorerMax))fail("e")}
-  return {title:title,format:FORMAT[root.k],pitch:{width:b[0]/100,length:b[1]/100},goal:{width:g[0]/100,height:g[1]/100},goalCount:goals,steps:steps.length,teams:tm,
+  return {title:title,format:futsal?"futsal":FORMAT[root.k],pitch:{width:b[0]/100,length:b[1]/100},goal:{width:g[0]/100,height:g[1]/100},goalCount:goals,steps:steps.length,teams:tm,
           players:players,ball:ball,equipment:equipment,zones:zones,sharedBy:sharedBy};
 }
 
@@ -286,7 +288,7 @@ function draw(info){
 
 function formatName(f){
   return f==="seven"?t("7er","7-a-side","Futebol 7","Calcio a 7","Fútbol 7","Football à 7"):f==="nine"?t("9er","9-a-side","Futebol 9","Calcio a 9","Fútbol 9","Football à 9"):
-    f==="eleven"?t("11er","11-a-side","Futebol 11","Calcio a 11","Fútbol 11","Football à 11"):t("Tilpasset","Custom","Personalizado","Personalizzato","Personalizado","Personnalisé");
+    f==="eleven"?t("11er","11-a-side","Futebol 11","Calcio a 11","Fútbol 11","Football à 11"):f==="futsal"?t("Futsal","Futsal","Futsal","Futsal","Futsal","Futsal"):t("Tilpasset","Custom","Personalizado","Personalizzato","Personalizado","Personnalisé");
 }
 function stepsText(n){return n===1?t("1 trinn","1 step","1 passo","1 passo","1 paso","1 étape"):n+" "+t("trinn","steps","passos","passi","pasos","étapes")}
 function teamsText(n){return n===3?" · "+t("3 lag","3 teams","3 equipes","3 squadre","3 equipos","3 équipes"):""}
