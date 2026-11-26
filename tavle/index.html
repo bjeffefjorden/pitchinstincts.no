@@ -39,6 +39,9 @@ footer{color:var(--muted);font-size:14px;margin-top:28px}footer a{color:var(--mu
 .brand{display:inline-flex;align-items:center;gap:10px;margin:0 0 18px;color:var(--text);text-decoration:none;font-weight:700}
 .brand img{width:44px;height:auto;display:block}
 [hidden]{display:none!important}
+.iab{border:2px solid var(--accent)}.iab h2{font-size:20px;margin:0 0 8px}.iab p{margin:0 0 8px}.iab ol{margin:8px 0 0;padding-left:22px}.iab li{margin:4px 0}
+.iab .btn{display:block;width:100%;text-align:center;text-decoration:none;font:inherit;font-weight:600;background:var(--btn);color:var(--btntext);border:0;border-radius:12px;padding:14px 16px;margin:14px 0 0;cursor:pointer}
+.iab .iabfield{display:block;width:100%;margin:12px 0 0;padding:10px;font:14px/1.3 ui-monospace,Menlo,monospace;color:var(--text);background:#000;border:1px solid var(--muted);border-radius:8px}.iab .iabhint{color:var(--muted);font-size:15px;margin:6px 0 0}
 </style>
 </head>
 <body><main>
@@ -106,6 +109,51 @@ function stores(){
   // Begge butikkmerkene vises på alle enheter (Ørjan 7. nov); Android får Google Play først
   if(isAndroid&&PLAY_LIVE)a.parentNode.insertBefore(p,a);
 }
+/*inapp*/
+// Innebygde nettlesere (Messenger, Facebook, Instagram, Android WebView): universal links og app links virker ikke der, og treningsapp:// blir ofte stoppet. Da vises en boks øverst med
+// stegene for å åpne lenka i Safari/Chrome, «Kopier lenka» og (Android) en intent-lenke. Vanlige nettlesere ser ingenting av dette. Ingen sporing, ingenting hentes utenfra.
+const IAB=/FBAN|FBAV|FB_IAB|FBIOS|FB4A|Messenger|Instagram|; wv\)/i.test(ua);
+function inAppBox(o){
+  if(!IAB||document.getElementById("iab"))return;
+  const box=document.createElement("div");box.className="card iab";box.id="iab";box.setAttribute("role","note");
+  function el(tag,txt,cls){const e=document.createElement(tag);if(txt)e.textContent=txt;if(cls)e.className=cls;return e}
+  box.appendChild(el("h2",t("Åpne lenka i nettleseren din","Open the link in your browser","Abra o link no seu navegador","Apri il link nel tuo browser","Abre el enlace en tu navegador","Ouvre le lien dans ton navigateur")));
+  box.appendChild(el("p",o.cut?t("Lenka kan være kuttet av appen den ble åpnet i. Åpne den i nettleseren din (stegene under), eller be om en ny lenke.","The link may have been cut off by the app it was opened in. Open it in your browser (steps below), or ask for a new link.","O link pode ter sido cortado pelo app em que foi aberto. Abra-o no seu navegador (passos abaixo) ou peça um novo link.","Il link potrebbe essere stato tagliato dall'app in cui è stato aperto. Aprilo nel tuo browser (passaggi qui sotto) o chiedine uno nuovo.","Puede que la app en la que se abrió haya cortado el enlace. Ábrelo en tu navegador (pasos abajo) o pide uno nuevo.","Le lien a peut-être été coupé par l'app dans laquelle il s'est ouvert. Ouvre-le dans ton navigateur (étapes ci-dessous) ou demande un nouveau lien.")
+    :t("Lenker åpnes ikke i appen fra nettleseren inni Messenger, Facebook og Instagram.","Links don't open in the app from the browser inside Messenger, Facebook and Instagram.","Os links não abrem no app a partir do navegador dentro do Messenger, Facebook e Instagram.","I link non si aprono nell'app dal browser interno di Messenger, Facebook e Instagram.","Los enlaces no se abren en la app desde el navegador integrado de Messenger, Facebook e Instagram.","Les liens ne s'ouvrent pas dans l'app depuis le navigateur intégré de Messenger, Facebook et Instagram.")));
+  const ol=el("ol",0,"steps");
+  ol.appendChild(el("li",isAndroid?t("Trykk ⋮ eller ⋯ og velg «Åpne i Chrome» (eller «Åpne i nettleser»).","Tap ⋮ or ⋯ and choose “Open in Chrome” (or “Open in browser”).","Toque em ⋮ ou ⋯ e escolha “Abrir no Chrome” (ou “Abrir no navegador”).","Tocca ⋮ o ⋯ e scegli «Apri in Chrome» (o «Apri nel browser»).","Toca ⋮ o ⋯ y elige «Abrir en Chrome» (o «Abrir en el navegador»).","Touche ⋮ ou ⋯ et choisis « Ouvrir dans Chrome » (ou « Ouvrir dans le navigateur »).")
+    :t("Trykk ⋯ eller del-ikonet og velg «Åpne i Safari» (eller «Åpne i nettleser»).","Tap ⋯ or the share icon and choose “Open in Safari” (or “Open in browser”).","Toque em ⋯ ou no ícone de compartilhar e escolha “Abrir no Safari” (ou “Abrir no navegador”).","Tocca ⋯ o l'icona di condivisione e scegli «Apri in Safari» (o «Apri nel browser»).","Toca ⋯ o el icono de compartir y elige «Abrir en Safari» (o «Abrir en el navegador»).","Touche ⋯ ou l'icône de partage et choisis « Ouvrir dans Safari » (ou « Ouvrir dans le navigateur »).")));
+  if(!o.cut)ol.appendChild(el("li",t("Trykk «Åpne i Pitch Instincts».","Tap “Open in Pitch Instincts”.","Toque em “Abrir no Pitch Instincts”.","Tocca «Apri in Pitch Instincts».","Toca «Abrir en Pitch Instincts».","Touche « Ouvrir dans Pitch Instincts ».")));
+  box.appendChild(ol);
+  const copy=el("button",t("Kopier lenka","Copy the link","Copiar o link","Copia il link","Copiar el enlace","Copier le lien"),"btn");copy.type="button";
+  const hint=el("p",0,"iabhint");hint.hidden=true;
+  copy.addEventListener("click",function(){
+    const url=location.href;
+    function done(){copy.textContent=t("Kopiert","Copied","Copiado","Copiato","Copiado","Copié")}
+    function manual(){
+      const f=document.createElement("input");f.type="text";f.readOnly=true;f.value=url;f.className="iabfield";f.setAttribute("aria-label",copy.textContent);box.insertBefore(f,hint);
+      f.focus();f.select();try{f.setSelectionRange(0,url.length)}catch(e){}
+      hint.textContent=t("Hold inne på lenka og velg Kopier.","Press and hold the link and choose Copy.","Mantenha o link pressionado e escolha Copiar.","Tieni premuto il link e scegli Copia.","Mantén pulsado el enlace y elige Copiar.","Maintiens le lien et choisis Copier.");hint.hidden=false;
+    }
+    function legacy(){try{const f=document.createElement("textarea");f.value=url;f.setAttribute("readonly","");f.style.cssText="position:fixed;top:0;left:0;opacity:0";document.body.appendChild(f);f.select();f.setSelectionRange(0,url.length);const ok=document.execCommand("copy");document.body.removeChild(f);if(ok)done();else manual()}catch(e){manual()}}
+    if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(url).then(done,legacy)}else legacy();
+  });
+  // iPhone: x-safari-https åpner Safari rett fra innebygde nettlesere (iOS 17 og nyere); på eldre iOS skjer ingenting, og stegene over er reserven
+  if(!isAndroid&&/^https?:\/\//.test(location.href)){
+    const sa=el("a",t("Åpne i Safari","Open in Safari","Abrir no Safari","Apri in Safari","Abrir en Safari","Ouvrir dans Safari"),"btn");
+    sa.href="x-safari-https://"+location.href.replace(/^https?:\/\//,"");
+    box.appendChild(sa);
+  }
+  box.appendChild(copy);box.appendChild(hint);
+  // Android: intent-lenka åpner appen fra en WebView; mangler appen, går den til Google Play (ikke tilbake til samme side)
+  if(isAndroid&&o.href&&o.href.indexOf("treningsapp://")===0){
+    const a=el("a",t("Prøv å åpne appen direkte","Try opening the app directly","Tentar abrir o app diretamente","Prova ad aprire l'app direttamente","Prueba a abrir la app directamente","Essaie d'ouvrir l'app directement"),"btn");
+    a.href="intent://"+o.href.slice("treningsapp://".length)+"#Intent;scheme=treningsapp;package=no.hoff.treningsapp;S.browser_fallback_url="+encodeURIComponent(PLAY)+";end";
+    box.appendChild(a);
+  }
+  const anchor=document.getElementById("sub");if(anchor&&anchor.parentNode)anchor.parentNode.insertBefore(box,anchor.nextSibling);else document.querySelector("main").insertBefore(box,document.querySelector("main").firstChild);
+}
+/*end-inapp*/
 document.documentElement.lang=nb?"nb":pt?"pt-BR":it?"it":es?"es":fr?"fr":"en";
 
 // ---- Grensene (appens fasit: Contract/tavle/tavle-deling-v2-fasit.json og -v3-fasit.json, «limits») ----
@@ -318,6 +366,7 @@ async function show(){
   }catch(e){
     if(e&&e.code==="noDecompression"){problem(t("En tavle delt fra Pitch Instincts","A board shared from Pitch Instincts","Uma prancheta compartilhada do Pitch Instincts","Una lavagna condivisa da Pitch Instincts","Una pizarra compartida desde Pitch Instincts","Un tableau partagé depuis Pitch Instincts"),
       t("Nettleseren kan ikke vise tavla. Åpne lenka i appen.","This browser can't show the board. Open the link in the app.","Este navegador não consegue mostrar a prancheta. Abra o link no app.","Questo browser non può mostrare la lavagna. Apri il link nell'app.","Este navegador no puede mostrar la pizarra. Abre el enlace en la app.","Ce navigateur ne peut pas afficher le tableau. Ouvre le lien dans l'app."));document.body.dataset.result="nodecompression";return}
+    if(IAB){document.getElementById("board").hidden=true;inAppBox({cut:true})}else
     problem(t("Ugyldig lenke","Invalid link","Link inválido","Link non valido","Enlace no válido","Lien non valide"),
       t("Lenka kan være kuttet eller endret. Be om en ny lenke.","The link may be cut off or changed. Ask for a new link.","O link pode estar cortado ou alterado. Peça um novo link.","Il link potrebbe essere tagliato o modificato. Chiedine uno nuovo.","Puede que el enlace esté cortado o cambiado. Pide un enlace nuevo.","Le lien est peut-être coupé ou modifié. Demande un nouveau lien."));
     document.body.dataset.result="invalid";document.body.dataset.error=e&&e.code?String(e.code):"error";return;
@@ -331,7 +380,7 @@ async function show(){
   const o=document.getElementById("open");o.hidden=false;
   o.textContent=t("Åpne i Pitch Instincts","Open in Pitch Instincts","Abrir no Pitch Instincts","Apri in Pitch Instincts","Abrir en Pitch Instincts","Ouvrir dans Pitch Instincts");
   // Bare de sjekkede verdiene går videre til appen, aldri resten av hashen
-  o.href="treningsapp://tavle?f="+q.f+"&d="+q.d;
+  o.href="treningsapp://tavle?f="+q.f+"&d="+q.d;inAppBox({href:o.href});
   const rep=document.getElementById("report");rep.hidden=false;
   rep.textContent=t("Rapporter tavla","Report the board","Denunciar a prancheta","Segnala la lavagna","Denunciar la pizarra","Signaler le tableau");
   // Rapporter: til støttesida, der adressen står (e-postadressen står bare på støtte- og personvernsida)
