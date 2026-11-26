@@ -1,11 +1,11 @@
 {
  "schema": 1,
  "sample": false,
- "updated": "2026-11-23",
- "data_through": "2026-11-22",
+ "updated": "2026-11-26",
+ "data_through": "2026-11-25",
  "channels": {
   "instagram": {
-   "followers": 308,
+   "followers": 310,
    "followers_weekly": [
     {
      "week_start": "2026-10-19",
@@ -29,12 +29,12 @@
     },
     {
      "week_start": "2026-11-23",
-     "followers": 308
+     "followers": 310
     }
    ],
-   "views_total": 54845,
-   "likes_total": 699,
-   "posts_published": 95,
+   "views_total": 56038,
+   "likes_total": 703,
+   "posts_published": 99,
    "weekly": [
     {
      "week_start": "2026-10-26",
@@ -58,8 +58,8 @@
     },
     {
      "week_start": "2026-11-23",
-     "views": 111,
-     "likes": 0,
+     "views": 1304,
+     "likes": 4,
      "partial": true
     }
    ]
@@ -92,9 +92,9 @@
      "followers": 22
     }
    ],
-   "views_total": 28483,
-   "likes_total": 66,
-   "posts_published": 109,
+   "views_total": 29714,
+   "likes_total": 71,
+   "posts_published": 113,
    "weekly": [
     {
      "week_start": "2026-10-26",
@@ -118,16 +118,16 @@
     },
     {
      "week_start": "2026-11-23",
-     "views": 91,
-     "likes": 0,
+     "views": 1322,
+     "likes": 5,
      "partial": true
     }
    ]
   },
   "app_store": {
-   "downloads_total": 262,
+   "downloads_total": 265,
    "last_7d": 4,
-   "last_30d": 40,
+   "last_30d": 34,
    "weekly": [
     {
      "week_start": "2026-10-05",
@@ -156,6 +156,11 @@
     {
      "week_start": "2026-11-16",
      "downloads": 4
+    },
+    {
+     "week_start": "2026-11-23",
+     "downloads": 3,
+     "partial": true
     }
    ]
   },
@@ -197,7 +202,7 @@
    "hook": "Up. Back. Through.",
    "url": "https://www.instagram.com/reel/DfAp41ugm8M/",
    "date": "2026-10-27",
-   "views": 2919,
+   "views": 2924,
    "likes": 30
   },
   {
@@ -206,7 +211,7 @@
    "hook": "Your back line is fine one by one. Together it leaks. Why? 👇",
    "url": "https://www.instagram.com/reel/DeyKT9hg64o/",
    "date": "2026-10-22",
-   "views": 2363,
+   "views": 2364,
    "likes": 22
   },
   {
@@ -224,7 +229,7 @@
    "hook": "The third man runs before the ball arrives. ⚽",
    "url": "https://www.instagram.com/reel/DfsDYDiAQ2d/",
    "date": "2026-11-13",
-   "views": 1761,
+   "views": 1783,
    "likes": 27
   },
   {
@@ -233,7 +238,7 @@
    "hook": "Unpopular opinion: crossing is the laziest way to attack. 🐺",
    "url": "https://www.instagram.com/reel/DfJXqz0N4vZ/",
    "date": "2026-10-31",
-   "views": 1505,
+   "views": 1506,
    "likes": 20
   },
   {
@@ -269,7 +274,7 @@
    "hook": "Apoyo. Descarga. Tercer hombre. 🐺",
    "url": "https://www.instagram.com/reel/DfQXpRyA7c_/",
    "date": "2026-11-02",
-   "views": 1430,
+   "views": 1439,
    "likes": 25
   },
   {
@@ -287,10 +292,10 @@
   "rows": [
    {
     "code": "NO",
-    "downloads": 248
+    "downloads": 250
    }
   ],
-  "other": 14
+  "other": 15
  },
  "milestones": [
   {
@@ -303,7 +308,7 @@
   }
  ],
  "app": {
-  "latest_version": "1.27",
+  "latest_version": "1.28",
   "exercises": 244
  }
 }
